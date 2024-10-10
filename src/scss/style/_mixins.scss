@@ -1,0 +1,15 @@
+@import 'variables';
+
+@mixin bottom-line($width, $left) {
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    height: 1px;
+    background-color: $black-neutral;
+    width: $width;
+    left: $left;
+  }
+}

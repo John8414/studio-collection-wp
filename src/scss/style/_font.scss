@@ -1,0 +1,71 @@
+// /scss/_fonts.scss
+
+@font-face {
+  font-family: 'MTT Milano';
+  src: url('../fonts/MTTMilano-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'MTT Milano';
+  src: url('../fonts/MTTMilano-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'MTT Milano';
+  src: url('../fonts/MTTMilano-BoldItalic.ttf') format('truetype');
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'MTT Milano';
+  src: url('../fonts/MTTMilano-Black.ttf') format('truetype');
+  font-weight: 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'MTT Milano';
+  src: url('../fonts/MTTMilano-BlackItalic.ttf') format('truetype');
+  font-weight: 900;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'MTT Milano';
+  src: url('../fonts/MTTMilano-MediumItalic.ttf') format('truetype');
+  font-weight: 500;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'MTT Milano';
+  src: url('../fonts/MTTMilano-UltraBoldItalic.ttf') format('truetype');
+  font-weight: 800;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Type Firm MTT Milano Medium';
+  src: url('../fonts/Type Firm - MTT Milano Medium.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Type Firm MTT Milano UltraBold';
+  src: url('../fonts/Type Firm - MTT Milano UltraBold.otf') format('opentype');
+  font-weight: 800;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Type Firm MTT Milano';
+  src: url('../fonts/Type Firm - MTT Milano.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
