@@ -10,7 +10,7 @@
         </div>
         <div class="carousel-inner position-relative h-100">
             <div class="overlay-scrolldown">
-                <a class="text-20 fw-bold" href="#featureCollection">
+                <a class="text-20 fw-bold hover-yellow" href="#featureCollection">
                     EXPLORE MORE
                     <button class="arr-button pt-3">
                         <div class="icon">

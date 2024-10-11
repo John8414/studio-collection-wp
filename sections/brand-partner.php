@@ -1,7 +1,8 @@
 <!-- start BRAND PARTNER -->
-<section class="custome-container">
+ <section class="pt-40 ">
+    <div class="custome-containerpy-0">
     <!-- section title -->
-    <div>
+    <div class="pb-40">
         <h2 class="text-60 fw-normal text-center black-neutral pb-2">
             BRAND PARTNER
         </h2>
@@ -9,7 +10,9 @@
             Uncover a World of Design Possibilities for Every Room
         </p>
     </div>
-    <div class="d-flex flex-wrap align-items-center justify-content-evenly">
+    </div>
+
+    <div class="d-flex flex-wrap align-items-center justify-content-center gap-40 pb-40">
         <div class="">
             <img loading=“lazy” src="<?php echo THEME_URL . '/images/brand-4.svg' ?> " alt="">
         </div>

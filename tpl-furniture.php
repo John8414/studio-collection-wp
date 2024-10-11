@@ -79,100 +79,18 @@ get_header();
         </div>
     </div>
     <div class="slick-slider custome-container-sm" id="slider4">
-        <div class="slider-item">
+        <div class="slider-item text-start">
             <a href="#" class="text-decoration-none">
-                <div class="d-flex flex-column justify-content-around align-items-start gap-3">
-                    <div class="">
-                        <img loading=“lazy” src="<?php echo THEME_URL . '/images/sofa-1.png' ?>" alt="">
-                    </div>
-                    <div class="w-100 d-flex justify-content-between align-items-center">
-                        <p class="text-20 fw-medium text-black">$500.00</p>
-                        <div><img loading=“lazy” src="<?php echo THEME_URL . '/images/heart.svg' ?>" alt=""></div>
-                    </div>
-                    <p class="text-20 gray-tertiary">Maxwell Leather Swivel Chair</p>
-                    <p class="text-20 gray-neutral">N00-102</p>
-                    <p class="fw-medium text-20 gray-neutral">3 colors</p>
+                <div class="img-scale">
+                    <img loading=“lazy” src="<?php echo THEME_URL . '/images/sofa-1.png' ?>" alt="">
                 </div>
-            </a>
-        </div>
-        <div class="slider-item">
-            <a href="#" class="text-decoration-none">
-                <div class="d-flex flex-column justify-content-around align-items-start gap-3">
-                    <div class="">
-                        <img loading=“lazy” src="<?php echo THEME_URL . '/images/sofa-2.png' ?>" alt="">
-                    </div>
-                    <div class="w-100 d-flex justify-content-between align-items-center">
-                        <p class="text-20 fw-medium text-black">$500.00</p>
-                        <div><img loading=“lazy” src="<?php echo THEME_URL . '/images/heart.svg' ?>" alt=""></div>
-                    </div>
-                    <p class="text-20 gray-tertiary">Maxwell Leather Swivel Chair</p>
-                    <p class="text-20 gray-neutral">N00-102</p>
-                    <p class="fw-medium text-20 gray-neutral">3 colors</p>
+                <div class="w-100 position-relative pt-20 pb-2">
+                    <p class="text-20 fw-medium text-black">$500.00</p>
+                    <button class="fav-btn"><img loading=“lazy” src="<?php echo THEME_URL . '/images/heart.svg' ?>" alt=""></button>
                 </div>
-            </a>
-        </div>
-        <div class="slider-item">
-            <a href="#" class="text-decoration-none">
-                <div class="d-flex flex-column justify-content-around align-items-start gap-3">
-                    <div class="">
-                        <img loading=“lazy” src="<?php echo THEME_URL . '/images/sofa-3.png' ?>" alt="">
-                    </div>
-                    <div class="w-100 d-flex justify-content-between align-items-center">
-                        <p class="text-20 fw-medium text-black">$500.00</p>
-                        <div><img loading=“lazy” src="<?php echo THEME_URL . '/images/heart.svg' ?>" alt=""></div>
-                    </div>
-                    <p class="text-20 gray-tertiary">Maxwell Leather Swivel Chair</p>
-                    <p class="text-20 gray-neutral">N00-102</p>
-                    <p class="fw-medium text-20 gray-neutral">3 colors</p>
-                </div>
-            </a>
-        </div>
-        <div class="slider-item">
-            <a href="#" class="text-decoration-none">
-                <div class="d-flex flex-column justify-content-around align-items-start gap-3">
-                    <div class="">
-                        <img loading=“lazy” src="<?php echo THEME_URL . '/images/sofa-4.png' ?>" alt="">
-                    </div>
-                    <div class="w-100 d-flex justify-content-between align-items-center">
-                        <p class="text-20 fw-medium text-black">$500.00</p>
-                        <div><img loading=“lazy” src="<?php echo THEME_URL . '/images/heart.svg' ?>" alt=""></div>
-                    </div>
-                    <p class="text-20 gray-tertiary">Maxwell Leather Swivel Chair</p>
-                    <p class="text-20 gray-neutral">N00-102</p>
-                    <p class="fw-medium text-20 gray-neutral">3 colors</p>
-                </div>
-            </a>
-        </div>
-        <div class="slider-item">
-            <a href="#" class="text-decoration-none">
-                <div class="d-flex flex-column justify-content-around align-items-start gap-3">
-                    <div class="">
-                        <img loading=“lazy” src="<?php echo THEME_URL . '/images/sofa-1.png' ?>" alt="">
-                    </div>
-                    <div class="w-100 d-flex justify-content-between align-items-center">
-                        <p class="text-20 fw-medium text-black">$500.00</p>
-                        <div><img loading=“lazy” src="<?php echo THEME_URL . '/images/heart.svg' ?>" alt=""></div>
-                    </div>
-                    <p class="text-20 gray-tertiary">Maxwell Leather Swivel Chair</p>
-                    <p class="text-20 gray-neutral">N00-102</p>
-                    <p class="fw-medium text-20 gray-neutral">3 colors</p>
-                </div>
-            </a>
-        </div>
-        <div class="slider-item">
-            <a href="#" class="text-decoration-none">
-                <div class="d-flex flex-column justify-content-around align-items-start gap-3">
-                    <div class="">
-                        <img loading=“lazy” src="<?php echo THEME_URL . '/images/sofa-2.png' ?>" alt="">
-                    </div>
-                    <div class="w-100 d-flex justify-content-between align-items-center">
-                        <p class="text-20 fw-medium text-black">$500.00</p>
-                        <div><img loading=“lazy” src="<?php echo THEME_URL . '/images/heart.svg' ?>" alt=""></div>
-                    </div>
-                    <p class="text-20 gray-tertiary">Maxwell Leather Swivel Chair</p>
-                    <p class="text-20 gray-neutral">N00-102</p>
-                    <p class="fw-medium text-20 gray-neutral">3 colors</p>
-                </div>
+                <p class="text-20 gray-tertiary pb-2">Scott 2 Seater Sofa</p>
+                <p class="text-20 gray-neutral pb-20">N00-102</p>
+                <p class="fw-medium text-20 gray-neutral">3 colors</p>
             </a>
         </div>
     </div>
@@ -198,100 +116,18 @@ get_header();
         </div>
     </div>
     <div class="slick-slider custome-container-sm" id="slider5">
-        <div class="slider-item">
+        <div class="slider-item text-start">
             <a href="#" class="text-decoration-none">
-                <div class="d-flex flex-column justify-content-around align-items-start gap-3">
-                    <div class="">
-                        <img loading=“lazy” src="<?php echo THEME_URL . '/images/sofa-1.png' ?>" alt="">
-                    </div>
-                    <div class="w-100 d-flex justify-content-between align-items-center">
-                        <p class="text-20 fw-medium text-black">$500.00</p>
-                        <div><img loading=“lazy” src="<?php echo THEME_URL . '/images/heart.svg' ?>" alt=""></div>
-                    </div>
-                    <p class="text-20 gray-tertiary">Maxwell Leather Swivel Chair</p>
-                    <p class="text-20 gray-neutral">N00-102</p>
-                    <p class="fw-medium text-20 gray-neutral">3 colors</p>
+                <div class="img-scale">
+                    <img loading=“lazy” src="<?php echo THEME_URL . '/images/sofa-1.png' ?>" alt="">
                 </div>
-            </a>
-        </div>
-        <div class="slider-item">
-            <a href="#" class="text-decoration-none">
-                <div class="d-flex flex-column justify-content-around align-items-start gap-3">
-                    <div class="">
-                        <img loading=“lazy” src="<?php echo THEME_URL . '/images/sofa-2.png' ?>" alt="">
-                    </div>
-                    <div class="w-100 d-flex justify-content-between align-items-center">
-                        <p class="text-20 fw-medium text-black">$500.00</p>
-                        <div><img loading=“lazy” src="<?php echo THEME_URL . '/images/heart.svg' ?>" alt=""></div>
-                    </div>
-                    <p class="text-20 gray-tertiary">Maxwell Leather Swivel Chair</p>
-                    <p class="text-20 gray-neutral">N00-102</p>
-                    <p class="fw-medium text-20 gray-neutral">3 colors</p>
+                <div class="w-100 position-relative pt-20 pb-2">
+                    <p class="text-20 fw-medium text-black">$500.00</p>
+                    <button class="fav-btn"><img loading=“lazy” src="<?php echo THEME_URL . '/images/heart.svg' ?>" alt=""></button>
                 </div>
-            </a>
-        </div>
-        <div class="slider-item">
-            <a href="#" class="text-decoration-none">
-                <div class="d-flex flex-column justify-content-around align-items-start gap-3">
-                    <div class="">
-                        <img loading=“lazy” src="<?php echo THEME_URL . '/images/sofa-3.png' ?>" alt="">
-                    </div>
-                    <div class="w-100 d-flex justify-content-between align-items-center">
-                        <p class="text-20 fw-medium text-black">$500.00</p>
-                        <div><img loading=“lazy” src="<?php echo THEME_URL . '/images/heart.svg' ?>" alt=""></div>
-                    </div>
-                    <p class="text-20 gray-tertiary">Maxwell Leather Swivel Chair</p>
-                    <p class="text-20 gray-neutral">N00-102</p>
-                    <p class="fw-medium text-20 gray-neutral">3 colors</p>
-                </div>
-            </a>
-        </div>
-        <div class="slider-item">
-            <a href="#" class="text-decoration-none">
-                <div class="d-flex flex-column justify-content-around align-items-start gap-3">
-                    <div class="">
-                        <img loading=“lazy” src="<?php echo THEME_URL . '/images/sofa-4.png' ?>" alt="">
-                    </div>
-                    <div class="w-100 d-flex justify-content-between align-items-center">
-                        <p class="text-20 fw-medium text-black">$500.00</p>
-                        <div><img loading=“lazy” src="<?php echo THEME_URL . '/images/heart.svg' ?>" alt=""></div>
-                    </div>
-                    <p class="text-20 gray-tertiary">Maxwell Leather Swivel Chair</p>
-                    <p class="text-20 gray-neutral">N00-102</p>
-                    <p class="fw-medium text-20 gray-neutral">3 colors</p>
-                </div>
-            </a>
-        </div>
-        <div class="slider-item">
-            <a href="#" class="text-decoration-none">
-                <div class="d-flex flex-column justify-content-around align-items-start gap-3">
-                    <div class="">
-                        <img loading=“lazy” src="<?php echo THEME_URL . '/images/sofa-1.png' ?>" alt="">
-                    </div>
-                    <div class="w-100 d-flex justify-content-between align-items-center">
-                        <p class="text-20 fw-medium text-black">$500.00</p>
-                        <div><img loading=“lazy” src="<?php echo THEME_URL . '/images/heart.svg' ?>" alt=""></div>
-                    </div>
-                    <p class="text-20 gray-tertiary">Maxwell Leather Swivel Chair</p>
-                    <p class="text-20 gray-neutral">N00-102</p>
-                    <p class="fw-medium text-20 gray-neutral">3 colors</p>
-                </div>
-            </a>
-        </div>
-        <div class="slider-item">
-            <a href="#" class="text-decoration-none">
-                <div class="d-flex flex-column justify-content-around align-items-start gap-3">
-                    <div class="">
-                        <img loading=“lazy” src="<?php echo THEME_URL . '/images/sofa-2.png' ?>" alt="">
-                    </div>
-                    <div class="w-100 d-flex justify-content-between align-items-center">
-                        <p class="text-20 fw-medium text-black">$500.00</p>
-                        <div><img loading=“lazy” src="<?php echo THEME_URL . '/images/heart.svg' ?>" alt=""></div>
-                    </div>
-                    <p class="text-20 gray-tertiary">Maxwell Leather Swivel Chair</p>
-                    <p class="text-20 gray-neutral">N00-102</p>
-                    <p class="fw-medium text-20 gray-neutral">3 colors</p>
-                </div>
+                <p class="text-20 gray-tertiary pb-2">Scott 2 Seater Sofa</p>
+                <p class="text-20 gray-neutral pb-20">N00-102</p>
+                <p class="fw-medium text-20 gray-neutral">3 colors</p>
             </a>
         </div>
     </div>
@@ -316,100 +152,18 @@ get_header();
         </div>
     </div>
     <div class="slick-slider custome-container-sm" id="slider6">
-        <div class="slider-item">
+        <div class="slider-item text-start">
             <a href="#" class="text-decoration-none">
-                <div class="d-flex flex-column justify-content-around align-items-start gap-3">
-                    <div class="">
-                        <img loading=“lazy” src="<?php echo THEME_URL . '/images/sofa-1.png' ?>" alt="">
-                    </div>
-                    <div class="w-100 d-flex justify-content-between align-items-center">
-                        <p class="text-20 fw-medium text-black">$500.00</p>
-                        <div><img loading=“lazy” src="<?php echo THEME_URL . '/images/heart.svg' ?>" alt=""></div>
-                    </div>
-                    <p class="text-20 gray-tertiary">Maxwell Leather Swivel Chair</p>
-                    <p class="text-20 gray-neutral">N00-102</p>
-                    <p class="fw-medium text-20 gray-neutral">3 colors</p>
+                <div class="img-scale">
+                    <img loading=“lazy” src="<?php echo THEME_URL . '/images/sofa-1.png' ?>" alt="">
                 </div>
-            </a>
-        </div>
-        <div class="slider-item">
-            <a href="#" class="text-decoration-none">
-                <div class="d-flex flex-column justify-content-around align-items-start gap-3">
-                    <div class="">
-                        <img loading=“lazy” src="<?php echo THEME_URL . '/images/sofa-2.png' ?>" alt="">
-                    </div>
-                    <div class="w-100 d-flex justify-content-between align-items-center">
-                        <p class="text-20 fw-medium text-black">$500.00</p>
-                        <div><img loading=“lazy” src="<?php echo THEME_URL . '/images/heart.svg' ?>" alt=""></div>
-                    </div>
-                    <p class="text-20 gray-tertiary">Maxwell Leather Swivel Chair</p>
-                    <p class="text-20 gray-neutral">N00-102</p>
-                    <p class="fw-medium text-20 gray-neutral">3 colors</p>
+                <div class="w-100 position-relative pt-20 pb-2">
+                    <p class="text-20 fw-medium text-black">$500.00</p>
+                    <button class="fav-btn"><img loading=“lazy” src="<?php echo THEME_URL . '/images/heart.svg' ?>" alt=""></button>
                 </div>
-            </a>
-        </div>
-        <div class="slider-item">
-            <a href="#" class="text-decoration-none">
-                <div class="d-flex flex-column justify-content-around align-items-start gap-3">
-                    <div class="">
-                        <img loading=“lazy” src="<?php echo THEME_URL . '/images/sofa-3.png' ?>" alt="">
-                    </div>
-                    <div class="w-100 d-flex justify-content-between align-items-center">
-                        <p class="text-20 fw-medium text-black">$500.00</p>
-                        <div><img loading=“lazy” src="<?php echo THEME_URL . '/images/heart.svg' ?>" alt=""></div>
-                    </div>
-                    <p class="text-20 gray-tertiary">Maxwell Leather Swivel Chair</p>
-                    <p class="text-20 gray-neutral">N00-102</p>
-                    <p class="fw-medium text-20 gray-neutral">3 colors</p>
-                </div>
-            </a>
-        </div>
-        <div class="slider-item">
-            <a href="#" class="text-decoration-none">
-                <div class="d-flex flex-column justify-content-around align-items-start gap-3">
-                    <div class="">
-                        <img loading=“lazy” src="<?php echo THEME_URL . '/images/sofa-4.png' ?>" alt="">
-                    </div>
-                    <div class="w-100 d-flex justify-content-between align-items-center">
-                        <p class="text-20 fw-medium text-black">$500.00</p>
-                        <div><img loading=“lazy” src="<?php echo THEME_URL . '/images/heart.svg' ?>" alt=""></div>
-                    </div>
-                    <p class="text-20 gray-tertiary">Maxwell Leather Swivel Chair</p>
-                    <p class="text-20 gray-neutral">N00-102</p>
-                    <p class="fw-medium text-20 gray-neutral">3 colors</p>
-                </div>
-            </a>
-        </div>
-        <div class="slider-item">
-            <a href="#" class="text-decoration-none">
-                <div class="d-flex flex-column justify-content-around align-items-start gap-3">
-                    <div class="">
-                        <img loading=“lazy” src="<?php echo THEME_URL . '/images/sofa-1.png' ?>" alt="">
-                    </div>
-                    <div class="w-100 d-flex justify-content-between align-items-center">
-                        <p class="text-20 fw-medium text-black">$500.00</p>
-                        <div><img loading=“lazy” src="<?php echo THEME_URL . '/images/heart.svg' ?>" alt=""></div>
-                    </div>
-                    <p class="text-20 gray-tertiary">Maxwell Leather Swivel Chair</p>
-                    <p class="text-20 gray-neutral">N00-102</p>
-                    <p class="fw-medium text-20 gray-neutral">3 colors</p>
-                </div>
-            </a>
-        </div>
-        <div class="slider-item">
-            <a href="#" class="text-decoration-none">
-                <div class="d-flex flex-column justify-content-around align-items-start gap-3">
-                    <div class="">
-                        <img loading=“lazy” src="<?php echo THEME_URL . '/images/sofa-2.png' ?>" alt="">
-                    </div>
-                    <div class="w-100 d-flex justify-content-between align-items-center">
-                        <p class="text-20 fw-medium text-black">$500.00</p>
-                        <div><img loading=“lazy” src="<?php echo THEME_URL . '/images/heart.svg' ?>" alt=""></div>
-                    </div>
-                    <p class="text-20 gray-tertiary">Maxwell Leather Swivel Chair</p>
-                    <p class="text-20 gray-neutral">N00-102</p>
-                    <p class="fw-medium text-20 gray-neutral">3 colors</p>
-                </div>
+                <p class="text-20 gray-tertiary pb-2">Scott 2 Seater Sofa</p>
+                <p class="text-20 gray-neutral pb-20">N00-102</p>
+                <p class="fw-medium text-20 gray-neutral">3 colors</p>
             </a>
         </div>
     </div>
@@ -434,100 +188,18 @@ get_header();
         </div>
     </div>
     <div class="slick-slider custome-container-sm" id="slider7">
-        <div class="slider-item">
+        <div class="slider-item text-start">
             <a href="#" class="text-decoration-none">
-                <div class="d-flex flex-column justify-content-around align-items-start gap-3">
-                    <div class="">
-                        <img loading=“lazy” src="<?php echo THEME_URL . '/images/sofa-1.png' ?>" alt="">
-                    </div>
-                    <div class="w-100 d-flex justify-content-between align-items-center">
-                        <p class="text-20 fw-medium text-black">$500.00</p>
-                        <div><img loading=“lazy” src="<?php echo THEME_URL . '/images/heart.svg' ?>" alt=""></div>
-                    </div>
-                    <p class="text-20 gray-tertiary">Maxwell Leather Swivel Chair</p>
-                    <p class="text-20 gray-neutral">N00-102</p>
-                    <p class="fw-medium text-20 gray-neutral">3 colors</p>
+                <div class="img-scale">
+                    <img loading=“lazy” src="<?php echo THEME_URL . '/images/sofa-1.png' ?>" alt="">
                 </div>
-            </a>
-        </div>
-        <div class="slider-item">
-            <a href="#" class="text-decoration-none">
-                <div class="d-flex flex-column justify-content-around align-items-start gap-3">
-                    <div class="">
-                        <img loading=“lazy” src="<?php echo THEME_URL . '/images/sofa-2.png' ?>" alt="">
-                    </div>
-                    <div class="w-100 d-flex justify-content-between align-items-center">
-                        <p class="text-20 fw-medium text-black">$500.00</p>
-                        <div><img loading=“lazy” src="<?php echo THEME_URL . '/images/heart.svg' ?>" alt=""></div>
-                    </div>
-                    <p class="text-20 gray-tertiary">Maxwell Leather Swivel Chair</p>
-                    <p class="text-20 gray-neutral">N00-102</p>
-                    <p class="fw-medium text-20 gray-neutral">3 colors</p>
+                <div class="w-100 position-relative pt-20 pb-2">
+                    <p class="text-20 fw-medium text-black">$500.00</p>
+                    <button class="fav-btn"><img loading=“lazy” src="<?php echo THEME_URL . '/images/heart.svg' ?>" alt=""></button>
                 </div>
-            </a>
-        </div>
-        <div class="slider-item">
-            <a href="#" class="text-decoration-none">
-                <div class="d-flex flex-column justify-content-around align-items-start gap-3">
-                    <div class="">
-                        <img loading=“lazy” src="<?php echo THEME_URL . '/images/sofa-3.png' ?>" alt="">
-                    </div>
-                    <div class="w-100 d-flex justify-content-between align-items-center">
-                        <p class="text-20 fw-medium text-black">$500.00</p>
-                        <div><img loading=“lazy” src="<?php echo THEME_URL . '/images/heart.svg' ?>" alt=""></div>
-                    </div>
-                    <p class="text-20 gray-tertiary">Maxwell Leather Swivel Chair</p>
-                    <p class="text-20 gray-neutral">N00-102</p>
-                    <p class="fw-medium text-20 gray-neutral">3 colors</p>
-                </div>
-            </a>
-        </div>
-        <div class="slider-item">
-            <a href="#" class="text-decoration-none">
-                <div class="d-flex flex-column justify-content-around align-items-start gap-3">
-                    <div class="">
-                        <img loading=“lazy” src="<?php echo THEME_URL . '/images/sofa-4.png' ?>" alt="">
-                    </div>
-                    <div class="w-100 d-flex justify-content-between align-items-center">
-                        <p class="text-20 fw-medium text-black">$500.00</p>
-                        <div><img loading=“lazy” src="<?php echo THEME_URL . '/images/heart.svg' ?>" alt=""></div>
-                    </div>
-                    <p class="text-20 gray-tertiary">Maxwell Leather Swivel Chair</p>
-                    <p class="text-20 gray-neutral">N00-102</p>
-                    <p class="fw-medium text-20 gray-neutral">3 colors</p>
-                </div>
-            </a>
-        </div>
-        <div class="slider-item">
-            <a href="#" class="text-decoration-none">
-                <div class="d-flex flex-column justify-content-around align-items-start gap-3">
-                    <div class="">
-                        <img loading=“lazy” src="<?php echo THEME_URL . '/images/sofa-1.png' ?>" alt="">
-                    </div>
-                    <div class="w-100 d-flex justify-content-between align-items-center">
-                        <p class="text-20 fw-medium text-black">$500.00</p>
-                        <div><img loading=“lazy” src="<?php echo THEME_URL . '/images/heart.svg' ?>" alt=""></div>
-                    </div>
-                    <p class="text-20 gray-tertiary">Maxwell Leather Swivel Chair</p>
-                    <p class="text-20 gray-neutral">N00-102</p>
-                    <p class="fw-medium text-20 gray-neutral">3 colors</p>
-                </div>
-            </a>
-        </div>
-        <div class="slider-item">
-            <a href="#" class="text-decoration-none">
-                <div class="d-flex flex-column justify-content-around align-items-start gap-3">
-                    <div class="">
-                        <img loading=“lazy” src="<?php echo THEME_URL . '/images/sofa-2.png' ?>" alt="">
-                    </div>
-                    <div class="w-100 d-flex justify-content-between align-items-center">
-                        <p class="text-20 fw-medium text-black">$500.00</p>
-                        <div><img loading=“lazy” src="<?php echo THEME_URL . '/images/heart.svg' ?>" alt=""></div>
-                    </div>
-                    <p class="text-20 gray-tertiary">Maxwell Leather Swivel Chair</p>
-                    <p class="text-20 gray-neutral">N00-102</p>
-                    <p class="fw-medium text-20 gray-neutral">3 colors</p>
-                </div>
+                <p class="text-20 gray-tertiary pb-2">Scott 2 Seater Sofa</p>
+                <p class="text-20 gray-neutral pb-20">N00-102</p>
+                <p class="fw-medium text-20 gray-neutral">3 colors</p>
             </a>
         </div>
     </div>

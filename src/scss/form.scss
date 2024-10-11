@@ -53,6 +53,10 @@
     height: 48px;
     color: #ffffff !important;
     text-decoration: underline;
+
+    &:hover {
+      color: #C5B36A !important;
+    }
   }
 
   .gfield_description {
@@ -110,7 +114,6 @@
   }
 
   .gform_footer.before input[type=submit] {
-    margin: 0 auto !important;
     background-color: transparent !important;
     outline: none;
     cursor: pointer;
@@ -118,5 +121,17 @@
     color: #ffffff !important;
     text-decoration: underline !important;
     box-shadow: none !important;
+  }
+
+  .gform_footer.before {
+    width: fit-content !important;
+    margin-left: auto;
+    margin-right: auto;
+
+    &:hover {
+      input[type=submit] {
+        color: #C5B36A !important;
+      }
+    }
   }
 }

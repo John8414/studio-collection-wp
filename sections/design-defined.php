@@ -15,7 +15,7 @@
         <h2 class="text-60 fw-bold text-white">DESIGN.DEFINED</h2>
         <p class="text-20 white-regular">Uncover a World of Design Possibilities for Every Room</p>
         <button class="arr-button bg-transparent">
-            <a class="text-20 fw-bold" href="#">EXPLORE MORE</a>
+            <a class="text-20 fw-bold hover-yellow" href="#">EXPLORE MORE</a>
         </button>
     </div>
 </section>

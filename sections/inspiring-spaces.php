@@ -1,6 +1,6 @@
 <section class="custome-container">
     <!-- section title -->
-    <div>
+    <div class="w-title">
         <h2 class="text-60 fw-normal text-center black-neutral pb-2">
             Inspiring Spaces with Timeless Elegance
         </h2>
@@ -13,25 +13,25 @@
         </p>
     </div>
 
-    <div class="d-flex flex-wrap justify-content-evenly pt-5">
-        <div>
-            <div class="img-icon-large bottom-line">
+    <div class="d-flex flex-wrap justify-content-center gap-40 pt-5">
+        <a href="#" class="text-decoration-none black-neutral">
+            <div class="img-icon-large">
                 <img class="h-100 w-100" src="<?php echo THEME_URL . '/images/furniture.svg' ?> " alt="">
             </div>
-            <p class="pt-2 text-center">Furniture outlet</p>
-        </div>
-        <div>
-            <div class="img-icon-large bottom-line">
-                <img class="h-100 w-100" src="<?php echo THEME_URL . '/images/wardrop.svg" ' ?>" alt="">
+            <span class="pt-2 text-center">Furniture outlet</span>
+        </a>
+        <a href="#" class="text-decoration-none black-neutral">
+            <div class="img-icon-large">
+                <img class="h-100 w-100" src="<?php echo THEME_URL . '/images/furniture.svg' ?> " alt="">
             </div>
-            <p class="pt-2 text-center">Wood floor</p>
-        </div>
-        <div>
-            <div class="img-icon-large bottom-line">
-                <img class="h-100 w-100" src="<?php echo THEME_URL . '/images/sofa.svg' ?> " alt="">
+            <span class="pt-2 text-center">Furniture outlet</span>
+        </a>
+        <a href="#" class="text-decoration-none black-neutral">
+            <div class="img-icon-large">
+                <img class="h-100 w-100" src="<?php echo THEME_URL . '/images/furniture.svg' ?> " alt="">
             </div>
-            <p class="pt-2 text-center">Fabric and leather</p>
-        </div>
+            <span class="pt-2 text-center">Furniture outlet</span>
+        </a>
     </div>
 
 </section>
