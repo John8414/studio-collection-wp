@@ -42,40 +42,46 @@
             </div>
         </div>
         <!-- End search and logo header -->
-  <!-- Search enable -->
+        <!-- Search enable -->
         <div class="search-enable d-flex flex-column justify-content-center">
             <p class="text-20 black-neutral w-fit mx-auto pb-20">What are you looking for?</p>
-            <input class="text-40 w-fit mx-auto" type="text" placeholder="Start typing to search">
+            <!-- //Search -->
+            <form action="<?php echo home_url() ?>" method="get" class="search-form">
+                <div class="form-group">
+                    <input class="text-40 w-fit mx-auto" type="text" placeholder="Start typing to search">
+                </div>
+            </form>
+
             <div class="d-flex flex-wrap justify-content-center gap-40">
-            <div class="d-flex flex-column align-items-center justify-content-center">
-                <p class="pt-2 text-center fw-bold">Furniture outlet</p>
-                <div class="icon-search-enable">
-                    <img class="h-100 w-100" src="<?php echo THEME_URL . '/images/furniture.svg' ?> " alt="">
+                <div class="d-flex flex-column align-items-center justify-content-center">
+                    <p class="pt-2 text-center fw-bold">Furniture outlet</p>
+                    <div class="icon-search-enable">
+                        <img class="h-100 w-100" src="<?php echo THEME_URL . '/images/furniture.svg' ?> " alt="">
+                    </div>
                 </div>
-            </div>
-            <div class="d-flex flex-column align-items-center justify-content-center">
-                <p class="pt-2 text-center fw-bold">Wood floor</p>
-                <div class="icon-search-enable">
-                    <img class="h-100 w-100" src="<?php echo THEME_URL . '/images/furniture.svg' ?> " alt="">
+                <div class="d-flex flex-column align-items-center justify-content-center">
+                    <p class="pt-2 text-center fw-bold">Wood floor</p>
+                    <div class="icon-search-enable">
+                        <img class="h-100 w-100" src="<?php echo THEME_URL . '/images/furniture.svg' ?> " alt="">
+                    </div>
                 </div>
-            </div>
-            <div class="d-flex flex-column align-items-center justify-content-center">
-                <p class="pt-2 text-center fw-bold">Fabric and leather</p>
-                <div class="icon-search-enable">
-                    <img class="h-100 w-100" src="<?php echo THEME_URL . '/images/furniture.svg' ?> " alt="">
+                <div class="d-flex flex-column align-items-center justify-content-center">
+                    <p class="pt-2 text-center fw-bold">Fabric and leather</p>
+                    <div class="icon-search-enable">
+                        <img class="h-100 w-100" src="<?php echo THEME_URL . '/images/furniture.svg' ?> " alt="">
+                    </div>
                 </div>
-            </div>
-            <div class="d-flex flex-column align-items-center justify-content-center">
-                <p class="pt-2 text-center fw-bold">WALL COVERING</p>
-                <div class="icon-search-enable">
-                    <img class="h-100 w-100" src="<?php echo THEME_URL . '/images/furniture.svg' ?> " alt="">
+                <div class="d-flex flex-column align-items-center justify-content-center">
+                    <p class="pt-2 text-center fw-bold">WALL COVERING</p>
+                    <div class="icon-search-enable">
+                        <img class="h-100 w-100" src="<?php echo THEME_URL . '/images/furniture.svg' ?> " alt="">
+                    </div>
                 </div>
-            </div>
             </div>
         </div>
-      <!-- Search enable -->
+        <!-- Search enable -->
 
-      <!-- Tạm đóng để làm search enable -->
+        <!-- Tạm đóng để làm search enable -->
         <!-- Start Menu -->
         <!-- <?php get_template_part('sections/menu-main'); ?> -->
 
