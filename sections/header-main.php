@@ -42,10 +42,10 @@
             </div>
         </div>
         <!-- End search and logo header -->
+         
         <!-- Search enable -->
-        <div class="search-enable d-flex flex-column justify-content-center">
+        <!-- <div class="search-enable d-flex flex-column justify-content-center">
             <p class="text-20 black-neutral w-fit mx-auto pb-20">What are you looking for?</p>
-            <!-- //Search -->
             <form action="<?php echo home_url() ?>" method="get" class="search-form">
                 <div class="form-group">
                     <input class="text-40 w-fit mx-auto" type="text" placeholder="Start typing to search">
@@ -78,12 +78,11 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
         <!-- Search enable -->
 
-        <!-- Tạm đóng để làm search enable -->
         <!-- Start Menu -->
-        <!-- <?php get_template_part('sections/menu-main'); ?> -->
+        <?php get_template_part('sections/menu-main'); ?>
 
     </div>
     <!-- End Menu -->

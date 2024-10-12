@@ -503,7 +503,6 @@ header {
     width: 100%;
     z-index: 99;
     background-color: white;
-    border-bottom: 1px solid $black-neutral;
 
     .search-enable {
       .icon-search-enable {
@@ -556,18 +555,19 @@ header {
         }
       }
 
-      .icons-header {
-        display: flex;
-        justify-content: end;
-        gap: 20px;
+    }
 
-        .icon-item {
-          display: flex;
-          align-items: center;
-          gap: 5px;
-          font-size: 16px;
-          cursor: pointer;
-        }
+    .icons-header {
+      display: flex;
+      justify-content: end;
+      gap: 20px;
+
+      .icon-item {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        font-size: 16px;
+        cursor: pointer;
       }
     }
 
@@ -584,6 +584,56 @@ header {
   }
 
 }
+
+.main-menu {
+  height: 52px;
+  border: solid 1px #6A6868;
+  border-left: none;
+  border-right: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .menu-menu-main-container {
+    .menu {
+      display: flex;
+      gap: 60px;
+      width: fit-content;
+      margin: 0 auto;
+      padding: 0;
+
+      .menu-item {
+        width: fit-content;
+        list-style: none;
+        position: relative;
+
+        a {
+          color: #010101;
+          text-decoration: none;
+          text-transform: uppercase;
+        }
+
+        &::after {
+          content: "";
+          position: absolute;
+          width: 100%;
+          height: 4px;
+          background-color: #010101;
+          opacity: 0;
+          bottom: -12px;
+          display: block;
+        }
+
+        &.active {
+          &::after {
+            opacity: 1;
+          }
+        }
+      }
+    }
+  }
+}
+
 
 .navbar {
   height: 52px;
