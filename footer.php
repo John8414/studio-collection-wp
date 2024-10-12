@@ -7,11 +7,7 @@
     <div
         class="d-flex flex-column flex-lg-row gap-3 justify-content-between align-items-start pt-lg-5 custome-container-sm">
         <div class="d-flex flex-column gap-3 col-lg-4">
-            <a class="text-20 gray-tertiary text-decoration-none" href="#">HOME</a>
-            <a class="text-20 gray-tertiary text-decoration-none" href="#">FURNITURE </a>
-            <a class="text-20 gray-tertiary text-decoration-none" href="#">FURNITURE </a>
-            <a class="text-20 gray-tertiary text-decoration-none" href="#">FABRICS & WALL COVERINGS </a>
-            <a class="text-20 gray-tertiary text-decoration-none" href="#">FURNITURE </a>
+            <?php wp_nav_menu(['theme_location' => 'Menu_2',]); ?>
         </div>
         <div class="d-lg-flex justify-content-between gap-5 col-lg-8">
             <div class="d-flex flex-column gap-3">
