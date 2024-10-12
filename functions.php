@@ -19,6 +19,7 @@ $file_includes = [
     'inc/theme-shortcode.php',
     'inc/button-editer.php',
     'inc/theme-config.php',
+    'inc/custom-post-type.php'
 
 ];
 
