@@ -10,36 +10,38 @@
             <?php wp_nav_menu(['theme_location' => 'Menu_2',]); ?>
         </div>
         <div class="d-lg-flex justify-content-between gap-5 col-lg-8">
-            <div class="d-flex flex-column gap-3">
-                <div class="d-flex flex-column gap-3">
+            <div class="d-flex flex-column gap-40">
+                <div class="d-flex flex-column gap-2">
                     <p class="text-12 gray-neutral">Contact Us</p>
                     <a class="text-20 black-neutral" href="tel:+85595231536">(+855) 95 231 536
                     </a>
                     <a class="text-20 black-neutral" href="tel:+85595231536">(+855) 95 231 536
                     </a>
                 </div>
-                <div class="d-flex flex-column gap-3">
-                    <p class="text-12 gray-neutral">Location</p>
-                    <p class="text-20 black-neutral">
-                        Connexion, Ko Pich Street, Phum 14, Sangkat Tonle Bassac, Khan Chamkarmon, Phnom Penh, Cambodia
-                    </p>
+                <div class="d-flex gap-40">
+                    <div class="d-flex flex-column gap-2">
+                        <p class="text-12 gray-neutral">Location</p>
+                        <p class="text-20 black-neutral">                            Connexion, Ko Pich Street, Phum 14, Sangkat Tonle Bassac, Khan Chamkarmon, Phnom Penh, Cambodia</p>
+                    </div>
+                    
+                    <div class="d-flex flex-column gap-2">
+                        <p class="text-12 gray-neutral">Email</p>
+                        <a href="mailto:Quynh@studiocollection.asia" class="text-20 black-neutral text-decoration-none">
+                            Quynh@studiocollection.asia
+                        </a>
+                        <a href="mailto:Edgars@studiocollection.asia" class="text-20 black-neutral text-decoration-none">
+                            Edgars@studiocollection.asia
+                        </a>
+                    </div>
                 </div>
-                <div class="d-flex flex-column gap-3">
+                <div class="d-flex flex-column gap-2">
                     <p class="text-12 gray-neutral">Mo—Fr</p>
                     <p class="text-20 black-neutral">
                         9am—6pm
                     </p>
                 </div>
             </div>
-            <div class="d-flex flex-column gap-3 justify-content-center">
-                <p class="text-12 gray-neutral">Email</p>
-                <a href="mailto:Quynh@studiocollection.asia" class="text-20 black-neutral text-decoration-none">
-                    Quynh@studiocollection.asia
-                </a>
-                <a href="mailto:Edgars@studiocollection.asia" class="text-20 black-neutral text-decoration-none">
-                    Edgars@studiocollection.asia
-                </a>
-            </div>
+          
         </div>
     </div>
 </div>
