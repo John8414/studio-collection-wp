@@ -51,7 +51,7 @@
         <!-- End search and logo header -->
 
         <!-- Search enable -->
-        <!-- <div class="search-enable d-flex flex-column justify-content-center">
+        <div class="search-enable d-flex flex-column justify-content-center">
             <p class="text-20 black-neutral w-fit mx-auto pb-20">What are you looking for?</p>
             <form action="<?php echo home_url() ?>" method="get" class="search-form">
                 <div class="form-group">
@@ -59,37 +59,37 @@
                 </div>
             </form>
 
-            <div class="d-flex flex-wrap justify-content-center gap-40">
+            <div class="search-icon-list pt-40">
                 <div class="d-flex flex-column align-items-center justify-content-center">
-                    <p class="pt-2 text-center fw-bold">Furniture outlet</p>
+                    <p class="text-center text-uppercase">Furniture outlet</p>
                     <div class="icon-search-enable">
                         <img class="h-100 w-100" src="<?php echo THEME_URL . '/images/furniture.svg' ?> " alt="">
                     </div>
                 </div>
                 <div class="d-flex flex-column align-items-center justify-content-center">
-                    <p class="pt-2 text-center fw-bold">Wood floor</p>
+                    <p class="text-center text-uppercase">Wood floor</p>
                     <div class="icon-search-enable">
                         <img class="h-100 w-100" src="<?php echo THEME_URL . '/images/furniture.svg' ?> " alt="">
                     </div>
                 </div>
                 <div class="d-flex flex-column align-items-center justify-content-center">
-                    <p class="pt-2 text-center fw-bold">Fabric and leather</p>
+                    <p class="text-center text-uppercase">Fabric and leather</p>
                     <div class="icon-search-enable">
                         <img class="h-100 w-100" src="<?php echo THEME_URL . '/images/furniture.svg' ?> " alt="">
                     </div>
                 </div>
                 <div class="d-flex flex-column align-items-center justify-content-center">
-                    <p class="pt-2 text-center fw-bold">WALL COVERING</p>
+                    <p class="text-center text-uppercase">WALL COVERING</p>
                     <div class="icon-search-enable">
                         <img class="h-100 w-100" src="<?php echo THEME_URL . '/images/furniture.svg' ?> " alt="">
                     </div>
                 </div>
             </div>
-        </div> -->
+        </div>
         <!-- Search enable -->
 
         <!-- Start Menu -->
-        <?php get_template_part('sections/menu-main'); ?>
+        <!-- <?php get_template_part('sections/menu-main'); ?> -->
 
     </div>
     <!-- End Menu -->
