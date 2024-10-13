@@ -14,6 +14,4 @@
 </head>
 
 <body <?php body_class(); ?>>
-    <section class="header-group">
-        <?php get_template_part('sections/header-main'); ?>
-    </section>
+    <?php get_template_part('sections/header-main'); ?>

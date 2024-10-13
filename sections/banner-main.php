@@ -1,4 +1,4 @@
-<section class="custome-carousel position-relative ">
+<section class="custome-carousel">
     <?php if (have_rows('bn_slider', get_the_ID())): ?>
     <div class="carousel-banner" id="bannerMain">
         <?php while (have_rows('bn_slider', get_the_ID())): the_row();

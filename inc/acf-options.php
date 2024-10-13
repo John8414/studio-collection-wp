@@ -47,14 +47,13 @@ if (function_exists('acf_add_options_page')) {
     );
 }
 
-function htmlMenu($cat, $item_output, $item)
+function htmlMenu($cat, $item)
 {
-    $thumbnail_id = get_term_meta($cat->term_id, 'thumbnail_id', true);
-    $imgCat = $thumbnail_id ? wp_get_attachment_image($thumbnail_id, 'thumbnail') : '<img width="150" height="150" src="' . THEME_URL . '/images/no-image.jpg' . '" class="attachment-thumbnail size-thumbnail" alt="no image" decoding="async" loading="lazy" sizes="(max-width: 150px) 100vw, 150px">';
+    $item_output = '<div>';
     $listCat = get_terms(array(
-        'taxonomy' => 'product_cat',
+        'taxonomy' => 'loai-san-pham',
         'parent' => $cat->term_id,
-        'hide_empty' => true,
+        'hide_empty' => false,
     ));
 
     $classes = empty($item->classes) ? array() : (array) $item->classes;
@@ -66,16 +65,6 @@ function htmlMenu($cat, $item_output, $item)
 
 
 
-    $item_output .= '<div class="d-flex mega-menu-cat mb-3">';
-    $item_output .= '<div class="w-4">';
-    $item_output .= '<a  href="' . get_term_link($cat) . '" class="d-inline-block">';
-    $item_output .= '<figure class="image-cover w-100">';
-    $item_output .= $imgCat;
-    $item_output .= '</figure>';
-    $item_output .= '</a>';
-    $item_output .= '</div>';
-    $item_output .= '<div class="w-6 ps-2">';
-    $item_output .= '<a  id="' . $item->ID . '" href="' . get_term_link($cat) . '" class="cat-item ' . ($currentURL === get_term_link($cat) ? 'active' : '') . '"><h2 class="bold fs-20 color-main">' . $cat->name . '</h2></a>';
     if (!empty($listCat) && !is_wp_error($listCat)) {
         $item_output .= ' <ul class="list-none ps-0">';
 
@@ -87,10 +76,8 @@ function htmlMenu($cat, $item_output, $item)
 
         $item_output .= '  </ul>';
     }
-    $item_output .= ' </div>';
     $item_output .= '</div>';
-    $result = $item_output;
-    return $result;
+    return $item_output;
 }
 
 class Mega_Menu_Walker extends Walker_Nav_Menu
@@ -130,41 +117,61 @@ class Mega_Menu_Walker extends Walker_Nav_Menu
         // // Add custom ACF fields here
 
         if ($megaMenu) {
-            $megaList = get_terms(
-                array(
-                    'taxonomy'     => "product_cat",
-                    'hide_empty' => false,
-                    'parent' => 0,
-                )
-            );
+            $category = get_field('categories', $item);
+            $layout = get_field('layout', $item);
+            $images = get_field('outlet_images', $item);
+            $des = get_field('description', $item);
 
-            $item_output .= '<div class="mega-menu py-3">';
+            $item_output .= '<div class="mega-menu py-3 bg-white position-absolute top-100 ' . ($layout ? 'inline' : 'vertical')  . ' ">';
             $item_output .= '<div class="container">';
-            $item_output .= ' <div class="d-flex flex-wrap justify-content-end">';
+            $item_output .= ' <div class="row">';
+            if (!$layout) {
+                $item_output .= '<div class="col-3 px-2 border-end">';
+                $item_output .= '<p>View All:</p>';
+                $item_output .= htmlMenu($category, $item);
+                $item_output .= '</div>';
 
-            $item_output .= '<div class="w-25 py-lg-5 px-2 border-end">';
-            foreach ($megaList as $key => $cat) {
-                if ($key % 3 == 0) {
-                    $item_output = htmlMenu($cat, $item_output, $item);
+                if ($des) {
+                    $item_output .= '<div class="col-3 px-2">';
+                    $item_output .= '<div>' . $des . '</div>';
+                    $item_output .= '</div>';
                 }
-            }
-            $item_output .= '</div>';
 
-            $item_output .= '<div class="w-25  py-lg-5 px-2 border-end ">';
-            foreach ($megaList as $key => $cat) {
-                if ($key % 3 == 1) {
-                    $item_output = htmlMenu($cat, $item_output, $item);
+                foreach ($images as $key => $term) {
+                    $hero = get_field('image', $term);
+                    $avatar = $hero['icon'];
+                    $item_output .= '<div class="col-3 px-2">';
+                    $item_output .= '<a class="item d-block" href="' . get_term_link($term) . '">';
+                    $item_output .= '<img class="h-100 w-100" src="' . $avatar['url'] . '"alt="' . $avatar['alt'] . ' ">';
+                    $item_output .= '<p class="post-name d-block">' . $term->name . '</p>';
+                    $item_output .= '</a>';
+                    $item_output .= '</div>';
                 }
-            }
-            $item_output .= '</div>';
+            } else {
 
-            $item_output .= '<div class="w-25  px-2 py-lg-5">';
-            foreach ($megaList as $key => $cat) {
-                if ($key % 3 == 2) {
-                    $item_output = htmlMenu($cat, $item_output, $item);
+                $item_output .= '<div class="col-6 px-2 border-end">';
+                $item_output .= '<p>View All:</p>';
+                $item_output .= htmlMenu($category, $item);
+                $item_output .= '</div>';
+
+                if ($des) {
+                    $item_output .= '<div class="col-3 px-2">';
+                    $item_output .= '<div>' . $des . '</div>';
+                    $item_output .= '</div>';
                 }
+
+                $item_output .= '<div class="col-3 px-2">';
+                foreach ($images as $key => $term) {
+                    $hero = get_field('image', $term);
+                    $avatar = $hero['icon'];
+
+                    $item_output .= '<a class="item d-block" href="' . get_term_link($term) . '">';
+                    $item_output .= '<img class="h-100 w-100" src="' . $avatar['url'] . '"alt="' . $avatar['alt'] . ' ">';
+                    $item_output .= '<p class="post-name d-block">' . $term->name . '</p>';
+                    $item_output .= '</a>';
+                }
+                $item_output .= '</div>';
             }
-            $item_output .= '</div>';
 
             $item_output .= '</div>';
             $item_output .= '</div>';

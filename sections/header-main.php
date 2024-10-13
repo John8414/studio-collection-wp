@@ -1,12 +1,10 @@
-<header>
+<header class="position-sticky top-0">
     <div class="sticky-header">
-        <!-- Start info header -->
         <div class="info-header py-1">
             <div class="d-flex align-items-center justify-content-center custome-container py-2 text-white">
                 <?php the_field('promotion', 'option'); ?>
             </div>
         </div>
-        <!-- End info header -->
 
         <!-- Start search and logo header -->
         <div class="custome-container py-0">
@@ -16,8 +14,6 @@
                         <img loading=“lazy” src="<?php echo THEME_URL . '/images/search.svg' ?> " alt="">
                     </div>
                     <p class="search-text text-14">Search</p>
-                    <input type="text" class="search-input" placeholder="Type to search..." />
-                    <!-- <?php echo get_search_form() ?> -->
                 </div>
 
                 <div class="w-fit col-lg-4">
@@ -51,45 +47,41 @@
         <!-- End search and logo header -->
 
         <!-- Search enable -->
-        <div class="search-enable d-flex flex-column justify-content-center">
+        <div class="search-enable d-none flex-column justify-content-center">
             <p class="text-20 black-neutral w-fit mx-auto pb-20">What are you looking for?</p>
-            <form action="<?php echo home_url() ?>" method="get" class="search-form">
+            <form action="<?php echo home_url() ?>" method="get" _lpchecked="1" class="search-form">
                 <div class="form-group">
-                    <input class="text-40 w-fit mx-auto" type="text" placeholder="Start typing to search">
+                    <input id="searchInput" type="text" name="s" id="s" value="" placeholder="Start typing to search"
+                        class="text-40 w-fit mx-auto" autofocus>
                 </div>
             </form>
-
-            <div class="search-icon-list pt-40">
-                <div class="d-flex flex-column align-items-center justify-content-center">
-                    <p class="text-center text-uppercase">Furniture outlet</p>
+            <?php
+            $terms = get_field('search_categories', 'option');
+            if ($terms): ?>
+            <ul class="search-icon-list pt-40 ps-0">
+                <?php foreach ($terms as $term):
+                        $hero = get_field('image', $term);
+                        $avatar = $hero['icon'];
+                    ?>
+                <li class="d-flex flex-column align-items-center justify-content-center">
+                    <!-- <a href="<?php echo esc_url(get_term_link($term)); ?>"> -->
+                    <p class="text-center text-uppercase"><?php echo esc_html($term->name); ?></p>
                     <div class="icon-search-enable">
-                        <img class="h-100 w-100" src="<?php echo THEME_URL . '/images/furniture.svg' ?> " alt="">
+                        <img class="h-100 w-100" src="<?php echo $avatar['url'] ?> "
+                            alt="<?php echo $avatar['alt'] ?> ">
                     </div>
-                </div>
-                <div class="d-flex flex-column align-items-center justify-content-center">
-                    <p class="text-center text-uppercase">Wood floor</p>
-                    <div class="icon-search-enable">
-                        <img class="h-100 w-100" src="<?php echo THEME_URL . '/images/furniture.svg' ?> " alt="">
-                    </div>
-                </div>
-                <div class="d-flex flex-column align-items-center justify-content-center">
-                    <p class="text-center text-uppercase">Fabric and leather</p>
-                    <div class="icon-search-enable">
-                        <img class="h-100 w-100" src="<?php echo THEME_URL . '/images/furniture.svg' ?> " alt="">
-                    </div>
-                </div>
-                <div class="d-flex flex-column align-items-center justify-content-center">
-                    <p class="text-center text-uppercase">WALL COVERING</p>
-                    <div class="icon-search-enable">
-                        <img class="h-100 w-100" src="<?php echo THEME_URL . '/images/furniture.svg' ?> " alt="">
-                    </div>
-                </div>
-            </div>
+                    <!-- </a> -->
+                </li>
+                <?php endforeach; ?>
+            </ul>
+            <?php endif; ?>
         </div>
         <!-- Search enable -->
 
         <!-- Start Menu -->
-        <!-- <?php get_template_part('sections/menu-main'); ?> -->
+        <div class="menu-outer d-block">
+            <?php get_template_part('sections/menu-main'); ?>
+        </div>
 
     </div>
     <!-- End Menu -->

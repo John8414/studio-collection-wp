@@ -36,10 +36,12 @@ $(document).ready(function () {
   });
   // Scale zoom in image //
 
-  // còn dùng nhưng do trang khác ko có header nên đóng nhó
   // add search input //
-  document.querySelector('.search-text').addEventListener('click', function () {
-    document.querySelector('.search-header').classList.add('clicked');
+  $('.search-header').on('click', function () {
+    $('.search-enable').toggleClass('d-flex');
+    $('.search-enable').toggleClass('d-none');
+    $('.menu-outer ').toggleClass('d-none');
+    $('.menu-outer ').toggleClass('d-block');
   });
 
 
