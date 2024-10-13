@@ -1,6 +1,9 @@
 
 
 $(document).ready(function () {
+
+
+
   // Scale zoom in image //
   const imageContainers = document.querySelectorAll('.img-scale');
 
@@ -38,6 +41,8 @@ $(document).ready(function () {
   document.querySelector('.search-text').addEventListener('click', function () {
     document.querySelector('.search-header').classList.add('clicked');
   });
+
+
 
   $('.slick-slider').each(function () {
     $(this).slick({
@@ -167,6 +172,14 @@ $(document).ready(function () {
     } else {
       $(".to-top").removeClass("d-block");
     }
+  });
+
+  $('.carousel-banner').slick({
+    dots: true,
+    infinite: true,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 5000,
   });
 
 });

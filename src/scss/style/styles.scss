@@ -277,36 +277,59 @@ button {
   margin: 0 auto;
 }
 
-.custome-carousel {
-  padding-top: 148px;
+.carousel-banner {
+  .carousel-item {
+    max-height: 80vh;
 
-  .carousel-indicators {
+  }
+
+  .slick-dots {
     position: absolute;
-    z-index: 2;
+    bottom: unset;
     display: flex;
-    justify-content: center;
-    list-style: none;
-    right: 1rem;
-    top: 50%;
     flex-direction: column;
     gap: 0.5rem;
-    bottom: unset;
-    left: unset;
+    width: auto;
+    padding: 0;
     margin: 0;
+    list-style: none;
+    text-align: center;
+    right: 1rem;
+    top: 50%;
 
-    .indicators-item {
+    li {
       width: 2px;
       height: 40px;
-      padding: 0;
-      border: none;
-      background-color: #676767;
+      display: block;
 
-      &:active {
-        background-color: white !important;
+      button {
+        display: inline-block;
+        width: 100%;
+        height: 100%;
+
+        &::before {
+          content: '';
+          width: 100%;
+          height: 100%;
+          background-color: #676767;
+          opacity: 1;
+        }
+      }
+
+      &.slick-active {
+        button {
+          &::before {
+            background-color: white
+          }
+        }
       }
     }
   }
 
+}
+
+
+.custome-carousel {
   .overlay-scrolldown {
     position: absolute;
     bottom: 32px;

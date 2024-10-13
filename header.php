@@ -14,11 +14,6 @@
 </head>
 
 <body <?php body_class(); ?>>
-    <section class="header-groupØ">
-        <div class="fixed-top">
-            <?php
-            get_template_part('sections/header-main');
-            // get_template_part('sections/menu-main');
-            ?>
-        </div>Ø
+    <section class="header-group">
+        <?php get_template_part('sections/header-main'); ?>
     </section>

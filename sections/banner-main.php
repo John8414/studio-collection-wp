@@ -1,81 +1,40 @@
-<section class="custome-carousel">
-    <div id="carouselExampleCaptions" class="carousel-height carousel slide" data-bs-ride="carousel">
-        <div class="carousel-indicators">
-            <button type="button" class="indicators-item active" data-bs-target="#carouselExampleCaptions"
-                data-bs-slide-to="0" aria-current="true" aria-label="Slide 1"></button>
-            <button type="button" class="indicators-item" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
-                aria-label="Slide 2"></button>
-            <button type="button" class="indicators-item" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
-                aria-label="Slide 3"></button>
+<section class="custome-carousel position-relative ">
+    <?php if (have_rows('bn_slider', get_the_ID())): ?>
+    <div class="carousel-banner" id="bannerMain">
+        <?php while (have_rows('bn_slider', get_the_ID())): the_row();
+                $image = get_sub_field('image');
+                $title = get_sub_field('title');
+                $des = get_sub_field('description');
+                $link = get_sub_field('link');
+            ?>
+        <div class="carousel-item">
+            <div class="overlay-60"></div>
+            <a href="<?php echo $link; ?>">
+                <img loading=“lazy” src="<?php echo esc_url($image['url']); ?>"
+                    alt="<?php echo esc_attr($image['alt']); ?>" class="d-block w-100 h-100 object-fit-cover">
+                <div class="caption">
+                    <div class="caption-inner">
+                        <h1 class="text-80 fw-bold"><?php echo $title; ?></h1>
+                        <p class="text-32 white-regular"><?php echo $des; ?></p>
+                    </div>
+
+                </div>
+            </a>
+
         </div>
-        <div class="carousel-inner position-relative h-100">
-            <div class="overlay-scrolldown">
-                <a class="text-20 fw-bold hover-yellow" href="#featureCollection">
-                    EXPLORE MORE
-                    <button class="arr-button pt-3">
-                        <div class="icon">
-                            <img loading=“lazy” src="<?php echo THEME_URL . '/images/arr-down.svg' ?>" alt="arrow">
-                        </div>
-                    </button>
-                </a>
-            </div>
-            <div class="carousel-item active h-100">
-                <div class="overlay-60"></div>
-                <img loading=“lazy” src="<?php echo THEME_URL . '/images/carousel.jpg' ?>"
-                    class="d-block w-100 h-100 object-fit-cover" alt="...">
-                <div class="caption">
-                    <div class="caption-inner">
-                        <h1 class="text-80 fw-bold">Your Space, Your Life 11111</h1>
-                        <p class="text-32 white-regular">Timeless Furniture Crafted for Your Unique Style</p>
-                    </div>
-                    <!-- <a class="text-20 fw-bold" href="#featureCollection">
-                        EXPLORE MORE
-                        <button class="arr-button pt-3">
-                            <div class="icon">
-                                <img loading=“lazy” src="<?php echo THEME_URL . '/images/arr-down.svg' ?>" alt="arrow">
-                            </div>
-                        </button>
-                    </a> -->
+        <?php endwhile;
+            wp_reset_query(); ?>
+    </div>
+    <?php endif; ?>
+    <div class="overlay-scrolldown">
+        <a class="text-20 fw-bold hover-yellow" href="#featureCollection">
+            EXPLORE MORE
+            <button class="arr-button pt-3">
+                <div class="icon">
+                    <img loading=“lazy” src="<?php echo THEME_URL . '/images/arr-down.svg' ?>" alt="arrow">
                 </div>
-            </div>
-            <div class="carousel-item h-100">
-                <div class="overlay-60"></div>
-                <img loading=“lazy” src="<?php echo THEME_URL . '/images/carousel.jpg' ?>"
-                    class="d-block w-100 h-100 object-fit-cover" alt="...">
-                <div class="caption">
-                    <div class="caption-inner">
-                        <h1 class="text-80 fw-bold">Your Space, Your Life 11111</h1>
-                        <p class="text-32 white-regular">Timeless Furniture Crafted for Your Unique Style</p>
-                    </div>
-                    <!-- <a class="text-20 fw-bold" href="#featureCollection">
-                        EXPLORE MORE
-                        <button class="arr-button pt-3">
-                            <div class="icon">
-                                <img loading=“lazy” src="<?php echo THEME_URL . '/images/arr-down.svg' ?>" alt="arrow">
-                            </div>
-                        </button>
-                    </a> -->
-                </div>
-            </div>
-            <div class="carousel-item h-100">
-                <div class="overlay-60"></div>
-                <img loading=“lazy” src="<?php echo THEME_URL . '/images/carousel.jpg' ?>"
-                    class="d-block w-100 h-100 object-fit-cover" alt="...">
-                <div class="caption">
-                    <div class="caption-inner">
-                        <h1 class="text-80 fw-bold">Your Space, Your Life 11111</h1>
-                        <p class="text-32 white-regular">Timeless Furniture Crafted for Your Unique Style</p>
-                    </div>
-                    <!-- <a class="text-20 fw-bold" href="#featureCollection">
-                        EXPLORE MORE
-                        <button class="arr-button pt-3">
-                            <div class="icon">
-                                <img loading=“lazy” src="<?php echo THEME_URL . '/images/arr-down.svg' ?>" alt="arrow">
-                            </div>
-                        </button>
-                    </a> -->
-                </div>
-            </div>
-        </div>
+            </button>
+        </a>
+
     </div>
 </section>

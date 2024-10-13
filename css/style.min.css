@@ -2553,7 +2553,7 @@
   line-height: 120%;
   text-align: left;
 }
-.contact-cation .gform_footer.before input[type=submit] {
+.contact-cation .gform_footer input[type=submit] {
   background-color: transparent !important;
   outline: none;
   cursor: pointer;
@@ -2562,13 +2562,13 @@
   text-decoration: underline !important;
   box-shadow: none !important;
 }
-.contact-cation .gform_footer.before {
+.contact-cation .gform_footer {
   width: -moz-fit-content !important;
   width: fit-content !important;
   margin-left: auto;
   margin-right: auto;
 }
-.contact-cation .gform_footer.before:hover input[type=submit] {
+.contact-cation .gform_footer:hover input[type=submit] {
   color: #C5B36A !important;
 }
 
@@ -2898,33 +2898,44 @@ button {
   margin: 0 auto;
 }
 
-.custome-carousel {
-  padding-top: 148px;
+.carousel-banner .carousel-item {
+  max-height: 80vh;
 }
-.custome-carousel .carousel-indicators {
+.carousel-banner .slick-dots {
   position: absolute;
-  z-index: 2;
+  bottom: unset;
   display: flex;
-  justify-content: center;
-  list-style: none;
-  right: 1rem;
-  top: 50%;
   flex-direction: column;
   gap: 0.5rem;
-  bottom: unset;
-  left: unset;
+  width: auto;
+  padding: 0;
   margin: 0;
+  list-style: none;
+  text-align: center;
+  right: 1rem;
+  top: 50%;
 }
-.custome-carousel .carousel-indicators .indicators-item {
+.carousel-banner .slick-dots li {
   width: 2px;
   height: 40px;
-  padding: 0;
-  border: none;
+  display: block;
+}
+.carousel-banner .slick-dots li button {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+}
+.carousel-banner .slick-dots li button::before {
+  content: "";
+  width: 100%;
+  height: 100%;
   background-color: #676767;
+  opacity: 1;
 }
-.custome-carousel .carousel-indicators .indicators-item:active {
-  background-color: white !important;
+.carousel-banner .slick-dots li.slick-active button::before {
+  background-color: white;
 }
+
 .custome-carousel .overlay-scrolldown {
   position: absolute;
   bottom: 32px;
@@ -3082,6 +3093,29 @@ button {
   padding: 15px calc(8px + 0.625vw);
 }
 
+.menu-menu-footer-container .menu {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+  gap: 16px;
+  padding: 0;
+  margin: 0;
+}
+.menu-menu-footer-container .menu .menu-item {
+  width: -moz-fit-content;
+  width: fit-content;
+  list-style: none;
+  position: relative;
+}
+.menu-menu-footer-container .menu .menu-item a {
+  color: #010101;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: clamp(10px, 8.8px + 0.375vw, 16px);
+  line-height: 120%;
+}
+
 .social-bg {
   height: 32px;
   width: 32px;
@@ -3111,7 +3145,6 @@ header .sticky-header {
   width: 100%;
   z-index: 99;
   background-color: white;
-  border-bottom: 1px solid #010101;
 }
 header .sticky-header .search-enable {
   background-color: white;
@@ -3158,12 +3191,12 @@ header .sticky-header .header .search-header.active .search-text {
 header .sticky-header .header .search-header.active .search-input {
   display: inline-block;
 }
-header .sticky-header .header .icons-header {
+header .sticky-header .icons-header {
   display: flex;
   justify-content: end;
   gap: 20px;
 }
-header .sticky-header .header .icons-header .icon-item {
+header .sticky-header .icons-header .icon-item {
   display: flex;
   align-items: center;
   gap: 5px;
@@ -3175,6 +3208,50 @@ header .sticky-header .info-header {
 }
 header .sticky-header .info-header .info-header-link:hover {
   color: #939393 !important;
+}
+
+.main-menu {
+  height: 53px;
+  border: solid 1px #6A6868;
+  border-left: none;
+  border-right: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.main-menu .menu-menu-main-container .menu {
+  display: flex;
+  gap: 60px;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: 0 auto;
+  padding: 0;
+}
+.main-menu .menu-menu-main-container .menu .menu-item {
+  width: -moz-fit-content;
+  width: fit-content;
+  list-style: none;
+  position: relative;
+}
+.main-menu .menu-menu-main-container .menu .menu-item a {
+  color: #010101;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: clamp(10px, 8.8px + 0.375vw, 16px);
+  line-height: 120%;
+}
+.main-menu .menu-menu-main-container .menu .menu-item::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 4px;
+  background-color: #010101;
+  opacity: 0;
+  bottom: -12px;
+  display: block;
+}
+.main-menu .menu-menu-main-container .menu .menu-item.active::after {
+  opacity: 1;
 }
 
 .navbar {

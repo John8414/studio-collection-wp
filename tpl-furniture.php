@@ -7,7 +7,7 @@
 get_header();
 ?>
 <!-- Modern Furniture -->
-<div class="custome-container pt-180">
+<div class="custome-container">
 
     <!-- section title -->
     <div class="pb-5">

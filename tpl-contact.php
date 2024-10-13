@@ -6,7 +6,7 @@
 
 get_header();
 ?>
-<div class="custome-container pt-180">
+<div class="custome-container">
     <!-- Breadcrumd -->
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">

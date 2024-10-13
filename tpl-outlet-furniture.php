@@ -7,7 +7,7 @@
 get_header();
 ?>
 <!-- Living Room Furniture -->
-<div class="custome-container pt-180">
+<div class="custome-container">
 
     <!-- Breadcrumd -->
     <nav aria-label="breadcrumb">

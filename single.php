@@ -1,7 +1,7 @@
 <?php
 get_header();
 ?>
-<div class="custome-container pt-180">
+<div class="custome-container">
 
     <!-- Breadcrumd -->
     <nav aria-label="breadcrumb">
@@ -270,7 +270,8 @@ get_header();
                 </div>
                 <div class="w-100 position-relative pt-20 pb-2">
                     <p class="text-20 fw-medium text-black">$500.00</p>
-                    <button class="fav-btn"><img loading=“lazy” src="<?php echo THEME_URL . '/images/heart.svg' ?>" alt=""></button>
+                    <button class="fav-btn"><img loading=“lazy” src="<?php echo THEME_URL . '/images/heart.svg' ?>"
+                            alt=""></button>
                 </div>
                 <p class="text-20 gray-tertiary pb-2">Scott 2 Seater Sofa</p>
                 <p class="text-20 gray-neutral pb-20">N00-102</p>
@@ -304,7 +305,8 @@ get_header();
                 </div>
                 <div class="w-100 position-relative pt-20 pb-2">
                     <p class="text-20 fw-medium text-black">$500.00</p>
-                    <button class="fav-btn"><img loading=“lazy” src="<?php echo THEME_URL . '/images/heart.svg' ?>" alt=""></button>
+                    <button class="fav-btn"><img loading=“lazy” src="<?php echo THEME_URL . '/images/heart.svg' ?>"
+                            alt=""></button>
                 </div>
                 <p class="text-20 gray-tertiary pb-2">Scott 2 Seater Sofa</p>
                 <p class="text-20 gray-neutral pb-20">N00-102</p>
@@ -312,7 +314,7 @@ get_header();
             </a>
         </div>
     </div>
-    
+
 </div>
 <!-- slider -->
 <!-- slider -->

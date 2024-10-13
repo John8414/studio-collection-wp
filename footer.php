@@ -1,7 +1,11 @@
 <div class="custome-container">
     <div class="w-fit h-100">
-        <a href="#" class="w-fit">
-            <img loading=“lazy” src="<?php echo THEME_URL . '/images/logo.png' ?>" alt="">
+        <a href="<?php echo get_home_url('/') ?>" class="w-fit">
+            <?php
+            $logoFt = get_field('logo_footer', 'option');
+            if ($logoFt) {
+                echo wp_get_attachment_image($logoFt['id'], 'full');
+            }; ?>
         </a>
     </div>
     <div
@@ -21,15 +25,17 @@
                 <div class="d-flex gap-40">
                     <div class="d-flex flex-column gap-2">
                         <p class="text-12 gray-neutral">Location</p>
-                        <p class="text-20 black-neutral">                            Connexion, Ko Pich Street, Phum 14, Sangkat Tonle Bassac, Khan Chamkarmon, Phnom Penh, Cambodia</p>
+                        <p class="text-20 black-neutral"> Connexion, Ko Pich Street, Phum 14, Sangkat Tonle Bassac, Khan
+                            Chamkarmon, Phnom Penh, Cambodia</p>
                     </div>
-                    
+
                     <div class="d-flex flex-column gap-2">
                         <p class="text-12 gray-neutral">Email</p>
                         <a href="mailto:Quynh@studiocollection.asia" class="text-20 black-neutral text-decoration-none">
                             Quynh@studiocollection.asia
                         </a>
-                        <a href="mailto:Edgars@studiocollection.asia" class="text-20 black-neutral text-decoration-none">
+                        <a href="mailto:Edgars@studiocollection.asia"
+                            class="text-20 black-neutral text-decoration-none">
                             Edgars@studiocollection.asia
                         </a>
                     </div>
@@ -41,7 +47,7 @@
                     </p>
                 </div>
             </div>
-          
+
         </div>
     </div>
 </div>

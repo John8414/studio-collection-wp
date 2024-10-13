@@ -2,9 +2,8 @@
     <div class="sticky-header">
         <!-- Start info header -->
         <div class="info-header py-1">
-            <div class="d-flex align-items-center justify-content-center custome-container py-2">
-                <p class="text-14 text-white">Earn 10% 20% back in Reward Dollars* <span><a class="info-header-link"
-                            href="#"> Learn How</a></span></p>
+            <div class="d-flex align-items-center justify-content-center custome-container py-2 text-white">
+                <?php the_field('promotion', 'option'); ?>
             </div>
         </div>
         <!-- End info header -->
@@ -13,7 +12,9 @@
         <div class="custome-container py-0">
             <div class="header">
                 <div class="search-header col-lg-4">
-                    <div><img loading=“lazy” src="<?php echo THEME_URL . '/images/search.svg' ?> " alt=""></div>
+                    <div>
+                        <img loading=“lazy” src="<?php echo THEME_URL . '/images/search.svg' ?> " alt="">
+                    </div>
                     <p class="search-text text-14">Search</p>
                     <input type="text" class="search-input" placeholder="Type to search..." />
                     <!-- <?php echo get_search_form() ?> -->
@@ -21,8 +22,14 @@
 
                 <div class="w-fit col-lg-4">
                     <a href="<?php echo get_home_url('/') ?>" class="w-fit">
-                        <img loading=“lazy” src="<?php echo THEME_URL . '/images/logo-header.svg' ?>" alt="Logo">
+
+                        <?php
+                        $logo = get_field('logo', 'option');
+                        if ($logo) {
+                            echo wp_get_attachment_image($logo['id'], 'full');
+                        }; ?>
                     </a>
+
                 </div>
 
                 <div class="icons-header col-lg-4">
@@ -42,7 +49,7 @@
             </div>
         </div>
         <!-- End search and logo header -->
-         
+
         <!-- Search enable -->
         <!-- <div class="search-enable d-flex flex-column justify-content-center">
             <p class="text-20 black-neutral w-fit mx-auto pb-20">What are you looking for?</p>
