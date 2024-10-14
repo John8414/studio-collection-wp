@@ -10,6 +10,7 @@ body {
   scroll-behavior: smooth;
   overflow-x: hidden !important;
   font-weight: 400;
+  background-color: #F5F6F6;
 }
 
 h1,
@@ -545,9 +546,9 @@ header {
   height: fit-content;
   width: 100%;
   z-index: 99;
-  background-color: white;
 
   .sticky-header {
+    background-color: white;
 
     .header {
       display: flex;
@@ -615,7 +616,7 @@ header {
 }
 
 .search-enable {
-  border: 1px solid #6A6868;
+  border: 1px solid #E1E1E1;
   padding: 40px 0;
 
   .search-icon-list {
@@ -658,13 +659,14 @@ header {
 
 .main-menu {
   // height: 53px;
-  border: solid 1px #6A6868;
+  border: solid 1px #E1E1E1;
   border-left: none;
   border-right: none;
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
+  background-color: #F5F6F6;
 
   .menu-menu-main-container {
     .menu {
@@ -678,6 +680,7 @@ header {
         width: fit-content;
         list-style: none;
         border-bottom: 4px solid transparent;
+        transition: all .4s ease-in-out;
 
         a {
           color: #010101;
@@ -775,7 +778,6 @@ header {
   .slider-item {
     text-align: center;
     padding: 0 $psace-20;
-    background-color: white;
   }
 }
 
