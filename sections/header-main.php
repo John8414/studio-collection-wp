@@ -1,4 +1,4 @@
-<header class="position-sticky top-0">
+<header class="scroll-header">
     <div class="sticky-header">
         <div class="info-header py-1">
             <div class="d-flex align-items-center justify-content-center custome-container py-2 text-white">
