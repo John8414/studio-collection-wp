@@ -678,12 +678,11 @@ button {
   justify-content: center;
   align-items: center;
   position: relative;
-  background-color: #F5F6F6;
 
   .menu-menu-main-container {
     .menu {
       display: flex;
-      // gap: 60px;
+      gap: 60px;
       width: fit-content;
       margin: 0 auto;
       padding: 0;
@@ -700,11 +699,11 @@ button {
           text-transform: uppercase;
           font-size: clamp(10px, calc(8.8px + 0.375vw), 16px);
           line-height: 120%;
-          padding: 16px 30px;
+          padding: 16px 0;
           display: inline-block;
         }
 
-        &.active,
+        // &.active,
         &:hover {
           border-bottom: 4px solid #010101;
         }
@@ -727,6 +726,47 @@ button {
     opacity: 0;
     visibility: hidden;
     min-height: 30rem;
+  }
+
+  .menu-description {
+    padding-left: 40px;
+    border-left: 1px solid #E1E1E1;
+
+    div.text-16 {
+      max-width: 210px;
+    }
+  }
+
+  .des-img {
+    max-width: 333px;
+
+    &:nth-child(1) {
+      margin-right: 60px;
+    }
+  }
+
+  .view-all-list {
+    padding-right: 40px;
+
+    .list {
+      list-style: none;
+      padding-left: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+
+  }
+
+  .coll-inline {
+    .list {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 40px;
+      // @media (max-width: 576px) {
+      //   grid-template-columns: repeat(1, minmax(0, 1fr));
+      // }
+    }
   }
 }
 
@@ -791,6 +831,10 @@ button {
     text-align: center;
     padding: 0 $psace-20;
   }
+}
+
+.slick-track {
+  margin-left: 0 !important;
 }
 
 .fav-btn {
