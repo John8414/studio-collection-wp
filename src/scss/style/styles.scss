@@ -1,6 +1,7 @@
 @import 'variables';
 @import 'mixins';
 @import 'font';
+@import "mobile.scss";
 
 body {
   font-family: 'MTT Milano', sans-serif;
@@ -628,7 +629,8 @@ button {
 }
 
 .search-enable {
-  border: 1px solid #E1E1E1;
+  border-top: 1px solid #E1E1E1;
+  border-bottom: 1px solid #E1E1E1;
   padding: 40px 0;
 
   .search-icon-list {
@@ -669,103 +671,105 @@ button {
   }
 }
 
-.main-menu {
-  // height: 53px;
-  border: solid 1px #E1E1E1;
-  border-left: none;
-  border-right: none;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
+.sticky-header {
+  .main-menu {
+    // height: 53px;
+    border: solid 1px #E1E1E1;
+    border-left: none;
+    border-right: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
 
-  .menu-menu-main-container {
-    .menu {
-      display: flex;
-      gap: 60px;
-      width: fit-content;
-      margin: 0 auto;
-      padding: 0;
-
-      .menu-item {
+    .menu-menu-main-container {
+      .menu {
+        display: flex;
+        gap: 60px;
         width: fit-content;
-        list-style: none;
-        border-bottom: 4px solid transparent;
-        transition: all .4s ease-in-out;
+        margin: 0 auto;
+        padding: 0;
 
-        a {
-          color: #010101;
-          text-decoration: none;
-          text-transform: uppercase;
-          font-size: clamp(10px, calc(8.8px + 0.375vw), 16px);
-          line-height: 120%;
-          padding: 16px 0;
-          display: inline-block;
-        }
+        .menu-item {
+          width: fit-content;
+          list-style: none;
+          border-bottom: 4px solid transparent;
+          transition: all .4s ease-in-out;
 
-        // &.active,
-        &:hover {
-          border-bottom: 4px solid #010101;
-        }
+          a {
+            color: #010101;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: clamp(10px, calc(8.8px + 0.375vw), 16px);
+            line-height: 120%;
+            padding: 16px 0;
+            display: inline-block;
+          }
 
-        &:hover {
-          .mega-menu {
-            opacity: 1;
-            visibility: visible;
+          // &.active,
+          &:hover {
+            border-bottom: 4px solid #010101;
+          }
+
+          &:hover {
+            .mega-menu {
+              opacity: 1;
+              visibility: visible;
+            }
           }
         }
       }
     }
-  }
 
-  .mega-menu {
-    left: 0;
-    right: 0;
-    top: 100%;
-    z-index: 99;
-    opacity: 0;
-    visibility: hidden;
-    min-height: 30rem;
-  }
-
-  .menu-description {
-    padding-left: 40px;
-    border-left: 1px solid #E1E1E1;
-
-    div.text-16 {
-      max-width: 210px;
-    }
-  }
-
-  .des-img {
-    max-width: 333px;
-
-    &:nth-child(1) {
-      margin-right: 60px;
-    }
-  }
-
-  .view-all-list {
-    padding-right: 40px;
-
-    .list {
-      list-style: none;
-      padding-left: 0;
-      display: flex;
-      flex-direction: column;
-      gap: 40px;
+    .mega-menu {
+      left: 0;
+      right: 0;
+      top: 100%;
+      z-index: 99;
+      opacity: 0;
+      visibility: hidden;
+      min-height: 30rem;
     }
 
-  }
+    .menu-description {
+      padding-left: 40px;
+      border-left: 1px solid #E1E1E1;
 
-  .coll-inline {
-    .list {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 40px;
-      // @media (max-width: 576px) {
-      //   grid-template-columns: repeat(1, minmax(0, 1fr));
-      // }
+      div.text-16 {
+        max-width: 210px;
+      }
+    }
+
+    .des-img {
+      max-width: 333px;
+
+      &:nth-child(1) {
+        margin-right: 60px;
+      }
+    }
+
+    .view-all-list {
+      padding-right: 40px;
+
+      .list {
+        list-style: none;
+        padding-left: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+      }
+
+    }
+
+    .coll-inline {
+      .list {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 40px;
+        // @media (max-width: 576px) {
+        //   grid-template-columns: repeat(1, minmax(0, 1fr));
+        // }
+      }
     }
   }
 }

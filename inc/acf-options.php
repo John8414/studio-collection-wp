@@ -69,7 +69,7 @@ function htmlMenu($cat, $item)
         $item_output .= ' <ul class="list">';
 
         foreach ($listCat as $term) {
-            $item_output .= '     <li class="'  . ($currentURL === get_term_link($term) ? 'active ' : '') . $class_names . '">';
+            $item_output .= '     <li class="' . ($currentURL === get_term_link($term) ? 'active ' : '') . $class_names . '">';
             $item_output .= '        <a href="' . get_term_link($term) . '" class="text-capitalize black-neutral text-16 py-2 d-inline-flex a-red-hover">' . $term->name . '</a>';
             $item_output .= '    </li>';
         }
@@ -90,7 +90,7 @@ class Mega_Menu_Walker extends Walker_Nav_Menu
 
         $classes = empty($item->classes) ? array() : (array) $item->classes;
 
-        $megaClass = $megaMenu ?  'has-mega-menu ' : '';
+        $megaClass = $megaMenu ? 'has-mega-menu ' : '';
 
         $class_names = join(' ', apply_filters('nav_menu_css_class', array_filter($classes), $item));
         $class_names = $class_names ? ' class="' . $megaClass . esc_attr($class_names) . '"' : '';
@@ -122,7 +122,7 @@ class Mega_Menu_Walker extends Walker_Nav_Menu
             $images = get_field('outlet_images', $item);
             $des = get_field('description', $item);
 
-            $item_output .= '<div class="mega-menu bg-white position-absolute top-100 ' . ($layout ? 'inline' : 'vertical')  . ' ">';
+            $item_output .= '<div class="mega-menu bg-white position-absolute top-100 ' . ($layout ? 'inline' : 'vertical') . ' ">';
             $item_output .= '<div class="custome-container">';
             $item_output .= ' <div class="d-flex justify-content-end">';
             if (!$layout) {
@@ -138,17 +138,17 @@ class Mega_Menu_Walker extends Walker_Nav_Menu
                 }
 
                 $item_output .= '<div class="ms-auto d-flex">';
-                    foreach ($images as $key => $term) {
-                        // hình ảnh
-                        $hero = get_field('image', $term);
-                        $avatar = $hero['icon'];
-                        $item_output .= '<div class="coll-3 des-img">';
-                        $item_output .= '<a class="item d-block py-0" href="' . get_term_link($term) . '">';
-                        $item_output .= '<img class="h-100 w-100 pb-3" src="http://localhost:8080/wp-content/themes/my-theme/images/flo-0.png "alt="' . $avatar['alt'] . ' ">';
-                        $item_output .= '<p class="post-name d-block">' . $term->name . '</p>';
-                        $item_output .= '</a>';
-                        $item_output .= '</div>';
-                    }
+                foreach ($images as $key => $term) {
+                    // hình ảnh
+                    $hero = get_field('image', $term);
+                    $avatar = $hero['icon'];
+                    $item_output .= '<div class="coll-3 des-img">';
+                    $item_output .= '<a class="item d-block py-0" href="' . get_term_link($term) . '">';
+                    $item_output .= '<img class="header-thumb pb-3" src="http://localhost:8080/wp-content/themes/my-theme/images/flo-0.png "alt="' . $avatar['alt'] . ' ">';
+                    $item_output .= '<p class="post-name d-block">' . $term->name . '</p>';
+                    $item_output .= '</a>';
+                    $item_output .= '</div>';
+                }
                 $item_output .= '</div>';
             } else {
                 // layout inline
@@ -158,23 +158,23 @@ class Mega_Menu_Walker extends Walker_Nav_Menu
                 $item_output .= '</div>';
                 $item_output .= '<div class="d-flex justify-content-between flex-grow-1">';
 
-                    if ($des) {
-                        $item_output .= '<div class="menu-description">';
-                        $item_output .= '<div class="text-16 black-neutral">' . $des . '</div>';
-                        $item_output .= '</div>';
-                    }
-
-                    $item_output .= '<div class="des-img ms-5">';
-                    foreach ($images as $key => $term) {
-                        $hero = get_field('image', $term);
-                        $avatar = $hero['icon'];
-
-                        $item_output .= '<a class="item d-block" href="' . get_term_link($term) . '">';
-                        $item_output .= '<img class="h-100 w-100 pb-3" src="http://localhost:8080/wp-content/themes/my-theme/images/flo-0.png "alt="' . $avatar['alt'] . ' ">';
-                        $item_output .= '<p class="post-name d-block">' . $term->name . '</p>';
-                        $item_output .= '</a>';
-                    }
+                if ($des) {
+                    $item_output .= '<div class="menu-description">';
+                    $item_output .= '<div class="text-16 black-neutral">' . $des . '</div>';
                     $item_output .= '</div>';
+                }
+
+                $item_output .= '<div class="des-img ms-5">';
+                foreach ($images as $key => $term) {
+                    $hero = get_field('image', $term);
+                    $avatar = $hero['icon'];
+
+                    $item_output .= '<a class="item d-block" href="' . get_term_link($term) . '">';
+                    $item_output .= '<img class="header-thumb pb-3" src="http://localhost:8080/wp-content/themes/my-theme/images/flo-0.png "alt="' . $avatar['alt'] . ' ">';
+                    $item_output .= '<p class="post-name d-block">' . $term->name . '</p>';
+                    $item_output .= '</a>';
+                }
+                $item_output .= '</div>';
                 $item_output .= '</div>';
             }
 

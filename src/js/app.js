@@ -202,6 +202,24 @@ $(document).ready(function () {
     lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
   });
 
+  // toggle mobile header
+
+    const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+
+    const mobileNav = document.getElementById('mobileNav');
+    mobileMenuToggle.addEventListener('click', function() {
+      mobileNav.classList.toggle('show-menu');
+    });
+
+    // Close the menu when clicking outside of the mobile header
+    document.addEventListener('click', function(event) {
+      const isClickInsideMenu = mobileNav.contains(event.target);
+      const isClickInsideToggle = mobileMenuToggle.contains(event.target);
+
+      if (!isClickInsideMenu && !isClickInsideToggle) {
+        mobileNav.classList.remove('show-menu');
+      }
+    });
 
 });
 
