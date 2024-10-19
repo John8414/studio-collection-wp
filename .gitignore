@@ -38,3 +38,6 @@ yarn-error.log*
 .idea
 
 C:tmpnodejsnpm-cache
+
+pnpm-lock.yaml
+mix-manifest.json

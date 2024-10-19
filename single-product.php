@@ -76,11 +76,16 @@ $product_id = get_the_ID();
                 <div class="d-flex justify-content-between align-items-start">
                     <h1 class="text-32 black-neutral"><?php the_title(); ?></h1>
                     <div>
-                        <?php if ($moreInfo['favorite']): ?>
-                        <i class="fa fa-heart-o" style="color: #E91919" aria-hidden="true"></i>
-                        <?php else: ?>
-                        <i class="fa fa-heart-o" aria-hidden="true"></i>
-                        <?php endif; ?>
+                        <button class="fav-btn fs-5 position-static" data-product-id="<?php the_ID(); ?>"
+                            onclick="toggleFavorite(event)">
+                            <?php
+                            $is_favorite = get_post_meta(get_the_ID(), '_is_favorite', true);
+                            if ($is_favorite == '1'): ?>
+                            <i class="fa fa-heart" style="color: #E91919" aria-hidden="true"></i>
+                            <?php else: ?>
+                            <i class="fa fa-heart-o" aria-hidden="true"></i>
+                            <?php endif; ?>
+                        </button>
                     </div>
                 </div>
                 <p class="text-20 gray-tertiary"><?php echo $moreInfo['provider']; ?></p>
@@ -91,11 +96,13 @@ $product_id = get_the_ID();
                         <?php echo $displayPrice['currency'] . ' '; ?>
                         <span class="original-price"> <?php echo $displayPrice['original_price']; ?></span>
                     </p>
+                    <?php if ($displayPrice['original_price_copy']): ?>
                     <p class="text-32 red-primary ">
                         <?php echo $displayPrice['original_price_copy'] ?  $displayPrice['currency'] . ' ' : ''; ?>
                         <span class="sale-price">
                             <?php echo $displayPrice['original_price_copy'] ? $displayPrice['original_price_copy'] : ''; ?></span>
                     </p>
+                    <?php endif ?>
                 </div>
                 <div class="text-20 gray-tertiary"><?php the_excerpt(); ?></div>
                 <p class="text-16 gray-subtext"><?php echo $moreInfo['code'] ?></p>

@@ -1,7 +1,13 @@
 <section class="position-relative carousel-height w-100">
+    <?php
+    $content =  get_field('des_video', get_the_ID());
+    if (strpos($content, '<iframe') !== false) {
+        echo $content;
+    } else { ?>
     <video class="w-100 carousel-height object-fit-cover" autoplay loop>
-        <source src="<?php echo get_field('des_video', get_the_ID()); ?>" type="video/mp4">
+        <source src="<?php echo $content; ?>" type="video/mp4">
     </video>
+    <?php } ?>
     <div class="overlay-30"></div>
     <div
         class="z-3 position-absolute bottom-0 w-100 h-100 p-20 d-flex flex-column justify-content-center align-items-center gap-3">

@@ -3,7 +3,7 @@
     <div class="mobile px-1 d-xl-block">
         <div class="menu-toggle py-1 d-flex d-xl-none">
             <div class="img-icon-sm" id="mobileMenuToggle">
-                <img loading=“lazy” src="<?php echo THEME_URL . '/images/nav-menu.svg' ?> " alt="">
+                <i class="fa fa-bars" aria-hidden="true"></i>
             </div>
 
             <div class="d-flex justify-content-start align-items-center">
@@ -13,8 +13,7 @@
                         $logo = get_field('logo', 'option');
                         if ($logo) {
                             echo wp_get_attachment_image($logo['id'], 'full');
-                        }
-                        ; ?>
+                        }; ?>
                     </a>
                 </div>
             </div>
@@ -79,17 +78,26 @@
                         $logo = get_field('logo', 'option');
                         if ($logo) {
                             echo wp_get_attachment_image($logo['id'], 'full');
-                        }
-                        ; ?>
+                        }; ?>
                     </a>
 
                 </div>
 
                 <div class="icons-header col-lg-4">
-                    <div class="icon-item">
-                        <div><img loading=“lazy” src="<?php echo THEME_URL . '/images/heart.svg' ?> " alt=""></div>
-                        <p class="black-neutral text-14">Favorite</p>
-                    </div>
+                    <?php
+                    $favorites = get_favorite_count();
+                    ?>
+                    <a class="icon-item black-neutral text-decoration-none" href="/wishlist">
+                        <div id="favorite-count-number">
+                            <?php
+                            if ($favorites > 0): ?>
+                            <i class="fa fa-heart" style="color: #E91919" aria-hidden="true"></i>
+                            <?php else: ?>
+                            <i class="fa fa-heart-o" aria-hidden="true"></i>
+                            <?php endif; ?>
+                        </div>
+                        <p>Favorite</p>
+                    </a>
                     <div class="icon-item">
                         <div><img loading=“lazy” src="<?php echo THEME_URL . '/images/user.svg' ?> " alt=""></div>
                         <p class="black-neutral text-14">Account</p>
@@ -124,21 +132,21 @@
         <?php
         $terms = get_field('search_categories', 'option');
         if ($terms): ?>
-            <ul class="search-icon-list pt-40 ps-0">
-                <?php foreach ($terms as $term):
+        <ul class="search-icon-list pt-40 ps-0">
+            <?php foreach ($terms as $term):
                     $hero = get_field('image', $term);
                     $avatar = $hero['icon'];
-                    ?>
-                    <li class="d-flex flex-column align-items-center justify-content-center">
-                        <!-- <a href="<?php echo esc_url(get_term_link($term)); ?>"> -->
-                        <p class="text-center text-uppercase"><?php echo esc_html($term->name); ?></p>
-                        <div class="icon-search-enable">
-                            <img class="h-100 w-100" src="<?php echo $avatar['url'] ?> " alt="<?php echo $avatar['alt'] ?> ">
-                        </div>
-                        <!-- </a> -->
-                    </li>
-                <?php endforeach; ?>
-            </ul>
+                ?>
+            <li class="d-flex flex-column align-items-center justify-content-center">
+                <!-- <a href="<?php echo esc_url(get_term_link($term)); ?>"> -->
+                <p class="text-center text-uppercase"><?php echo esc_html($term->name); ?></p>
+                <div class="icon-search-enable">
+                    <img class="h-100 w-100" src="<?php echo $avatar['url'] ?> " alt="<?php echo $avatar['alt'] ?> ">
+                </div>
+                <!-- </a> -->
+            </li>
+            <?php endforeach; ?>
+        </ul>
         <?php endif; ?>
     </div>
     <!-- Search enable -->

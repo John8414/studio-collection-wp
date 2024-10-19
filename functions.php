@@ -99,3 +99,68 @@ function track_viewed_posts()
     }
 }
 add_action('wp', 'track_viewed_posts');
+
+function enqueue_favorite_scripts()
+{
+    wp_enqueue_script('favorite-js', get_template_directory_uri() . '/js/favorite.js', array('jquery'), null, true);
+    wp_localize_script('favorite-js', 'favorite_ajax', array(
+        'ajax_url' => admin_url('admin-ajax.php'),
+        'nonce'    => wp_create_nonce('favorite_nonce'),
+    ));
+}
+add_action('wp_enqueue_scripts', 'enqueue_favorite_scripts');
+
+function get_favorite_count()
+{
+    $args = array(
+        'post_type'  => 'product',
+        'posts_per_page' => -1,
+        'meta_query' => array(
+            array(
+                'key'   => '_is_favorite',
+                'value' => '1',
+            )
+        ),
+        'fields' => 'ids',
+    );
+
+    $query = new WP_Query($args);
+    return $query->found_posts;
+}
+
+
+function toggle_favorite()
+{
+    // Check nonce for security
+    if (!isset($_POST['nonce']) || !wp_verify_nonce($_POST['nonce'], 'favorite_nonce')) {
+        wp_send_json_error('Invalid nonce');
+    }
+
+    $product_id = intval($_POST['product_id']);
+
+    // Get current favorite status
+    $is_favorite = get_post_meta($product_id, '_is_favorite', true);
+
+    // Toggle favorite status
+    if ($is_favorite == '1') {
+        // Remove from favorites
+        update_post_meta($product_id, '_is_favorite', '0');
+        $new_favorite_status = false;
+    } else {
+        // Add to favorites
+        update_post_meta($product_id, '_is_favorite', '1');
+        $new_favorite_status = true;
+    }
+
+    // Get the updated favorite count
+    $favorite_count = get_favorite_count();
+
+    // Return success response with the favorite status and count
+    wp_send_json_success(array(
+        'favorite' => $new_favorite_status,
+        'favorite_count' => $favorite_count,
+    ));
+}
+
+add_action('wp_ajax_toggle_favorite', 'toggle_favorite');
+add_action('wp_ajax_nopriv_toggle_favorite', 'toggle_favorite');
