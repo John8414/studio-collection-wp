@@ -1,228 +1,91 @@
 <?php
 
 get_header();
+$category = get_queried_object();
 
 ?>
 <div class="custome-container">
     <!-- Breadcrumd -->
     <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-            <li class="text-14 gray-subtext breadcrumb-item"><a class="gray-subtext text-decoration-none"
-                    href="#">Home</a>
+        <ol class="breadcrumb text-uppercase">
+            <li class="text-14 gray-subtext breadcrumb-item">
+                <a class="gray-subtext text-decoration-none" href="<?php echo home_url(); ?>">Home</a>
             </li>
-            <li class="text-14 gray-subtext breadcrumb-item active" aria-current="page">GALLERY</li>
+
+            <?php
+            if (is_category()) {
+
+
+                if ($category->parent != 0) {
+                    $parent_categories = get_ancestors($category->term_id, 'category');
+                    $parent_categories = array_reverse($parent_categories);
+
+                    foreach ($parent_categories as $parent_id) {
+                        $parent = get_category($parent_id);
+                        $parent_link = get_category_link($parent_id);
+
+                        echo '<li class="text-14 gray-subtext breadcrumb-item">';
+                        echo '<a class="gray-subtext text-decoration-none" href="' . esc_url($parent_link) . '">' . esc_html($parent->name) . '</a>';
+                        echo '</li>';
+                    }
+                }
+
+                echo '<li class="text-14 gray-subtext breadcrumb-item active" aria-current="page">' . esc_html($category->name) . '</li>';
+            }
+            ?>
         </ol>
+
+
     </nav>
     <div class="pb-5">
         <h2 class="text-60 fw-normal text-left black-neutral pb-2">
-            Gallery
+            <?php echo $category->name; ?>
         </h2>
     </div>
     <div class="gallery">
+        <?php
+        $args = array(
+            'post_type' => 'post',
+            'posts_per_page' => -1, // Lấy tất cả các bài viết
+            'category__in' => $category->term_id, // Lấy các bài viết thuộc danh mục này
+        );
+
+        $query = new WP_Query($args);
+
+        if ($query->have_posts()) {
+
+            while ($query->have_posts()) {
+                $query->the_post(); ?>
         <div class="gallery-item d-flex flex-column gap-3">
             <div class="">
-                <img loading=“lazy” src="<?php echo THEME_URL . '/images/cate.png' ?>" alt="">
+                <?php echo get_the_post_thumbnail() ?>
             </div>
             <div>
-                <p class="text-32 black-neutral">New Arrivals</p>
-                <p class="gray-subtext text-20">Minimalist walnut wood sideboard by Studio Collection is crafted to
-                    showcase
-                    the
-                    natural
-                    beauty of the wood.
-                    The sleek design contrasts sharp edges with gently tapered legs that curve gracefully at the base.
-                    Topped
-                    with
-                    a polished marble slab for a refined finish featuring natural veining. Studio Collection exclusive.
-                </p>
+                <p class="text-32 black-neutral"><?php echo get_the_title(); ?></p>
+                <div class="gray-subtext text-20">
+                    <?php the_excerpt() ?>
+                </div>
             </div>
 
             <div class="bottom-line-full w-fit">
-                <a class="text-20 black-neutral text-decoration-none w-fit" href="#">Outlet Funiture</a>
+                <a class="text-20 black-neutral text-decoration-none w-fit" href="<?php the_permalink() ?>">READ
+                    DETAIL</a>
             </div>
         </div>
-        <div class="gallery-item d-flex flex-column gap-3">
-            <div class="">
-                <img loading=“lazy” src="<?php echo THEME_URL . '/images/cate.png' ?>" alt="">
-            </div>
-            <div>
-                <p class="text-32 black-neutral">New Arrivals</p>
-                <p class="gray-subtext text-20">Minimalist walnut wood sideboard by Studio Collection is crafted to
-                    showcase
-                    the
-                    natural
-                    beauty of the wood.
-                    The sleek design contrasts sharp edges with gently tapered legs that curve gracefully at the base.
-                    Topped
-                    with
-                    a polished marble slab for a refined finish featuring natural veining. Studio Collection exclusive.
-                </p>
-            </div>
+        <?php
+            }
+        } else {
+            echo 'Không có bài viết nào trong danh mục này.';
+        }
 
-            <div class="bottom-line-full w-fit">
-                <a class="text-20 black-neutral text-decoration-none w-fit" href="#">Outlet Funiture</a>
-            </div>
-        </div>
-        <div class="gallery-item d-flex flex-column gap-3">
-            <div class="">
-                <img loading=“lazy” src="<?php echo THEME_URL . '/images/cate.png' ?>" alt="">
-            </div>
-            <div>
-                <p class="text-32 black-neutral">New Arrivals</p>
-                <p class="gray-subtext text-20">Minimalist walnut wood sideboard by Studio Collection is crafted to
-                    showcase
-                    the
-                    natural
-                    beauty of the wood.
-                    The sleek design contrasts sharp edges with gently tapered legs that curve gracefully at the base.
-                    Topped
-                    with
-                    a polished marble slab for a refined finish featuring natural veining. Studio Collection exclusive.
-                </p>
-            </div>
+        wp_reset_postdata(); // Khôi phục dữ liệu gốc
 
-            <div class="bottom-line-full w-fit">
-                <a class="text-20 black-neutral text-decoration-none w-fit" href="#">Outlet Funiture</a>
-            </div>
-        </div>
-        <div class="gallery-item d-flex flex-column gap-3">
-            <div class="">
-                <img loading=“lazy” src="<?php echo THEME_URL . '/images/cate.png' ?>" alt="">
-            </div>
-            <div>
-                <p class="text-32 black-neutral">New Arrivals</p>
-                <p class="gray-subtext text-20">Minimalist walnut wood sideboard by Studio Collection is crafted to
-                    showcase
-                    the
-                    natural
-                    beauty of the wood.
-                    The sleek design contrasts sharp edges with gently tapered legs that curve gracefully at the base.
-                    Topped
-                    with
-                    a polished marble slab for a refined finish featuring natural veining. Studio Collection exclusive.
-                </p>
-            </div>
+        ?>
 
-            <div class="bottom-line-full w-fit">
-                <a class="text-20 black-neutral text-decoration-none w-fit" href="#">Outlet Funiture</a>
-            </div>
-        </div>
-        <div class="gallery-item d-flex flex-column gap-3">
-            <div class="">
-                <img loading=“lazy” src="<?php echo THEME_URL . '/images/cate.png' ?>" alt="">
-            </div>
-            <div>
-                <p class="text-32 black-neutral">New Arrivals</p>
-                <p class="gray-subtext text-20">Minimalist walnut wood sideboard by Studio Collection is crafted to
-                    showcase
-                    the
-                    natural
-                    beauty of the wood.
-                    The sleek design contrasts sharp edges with gently tapered legs that curve gracefully at the base.
-                    Topped
-                    with
-                    a polished marble slab for a refined finish featuring natural veining. Studio Collection exclusive.
-                </p>
-            </div>
 
-            <div class="bottom-line-full w-fit">
-                <a class="text-20 black-neutral text-decoration-none w-fit" href="#">Outlet Funiture</a>
-            </div>
-        </div>
-        <div class="gallery-item d-flex flex-column gap-3">
-            <div class="">
-                <img loading=“lazy” src="<?php echo THEME_URL . '/images/cate.png' ?>" alt="">
-            </div>
-            <div>
-                <p class="text-32 black-neutral">New Arrivals</p>
-                <p class="gray-subtext text-20">Minimalist walnut wood sideboard by Studio Collection is crafted to
-                    showcase
-                    the
-                    natural
-                    beauty of the wood.
-                    The sleek design contrasts sharp edges with gently tapered legs that curve gracefully at the base.
-                    Topped
-                    with
-                    a polished marble slab for a refined finish featuring natural veining. Studio Collection exclusive.
-                </p>
-            </div>
-
-            <div class="bottom-line-full w-fit">
-                <a class="text-20 black-neutral text-decoration-none w-fit" href="#">Outlet Funiture</a>
-            </div>
-        </div>
-        <div class="gallery-item d-flex flex-column gap-3">
-            <div class="">
-                <img loading=“lazy” src="<?php echo THEME_URL . '/images/cate.png' ?>" alt="">
-            </div>
-            <div>
-                <p class="text-32 black-neutral">New Arrivals</p>
-                <p class="gray-subtext text-20">Minimalist walnut wood sideboard by Studio Collection is crafted to
-                    showcase
-                    the
-                    natural
-                    beauty of the wood.
-                    The sleek design contrasts sharp edges with gently tapered legs that curve gracefully at the base.
-                    Topped
-                    with
-                    a polished marble slab for a refined finish featuring natural veining. Studio Collection exclusive.
-                </p>
-            </div>
-
-            <div class="bottom-line-full w-fit">
-                <a class="text-20 black-neutral text-decoration-none w-fit" href="#">Outlet Funiture</a>
-            </div>
-        </div>
-        <div class="gallery-item d-flex flex-column gap-3">
-            <div class="">
-                <img loading=“lazy” src="<?php echo THEME_URL . '/images/cate.png' ?>" alt="">
-            </div>
-            <div>
-                <p class="text-32 black-neutral">New Arrivals</p>
-                <p class="gray-subtext text-20">Minimalist walnut wood sideboard by Studio Collection is crafted to
-                    showcase
-                    the
-                    natural
-                    beauty of the wood.
-                    The sleek design contrasts sharp edges with gently tapered legs that curve gracefully at the base.
-                    Topped
-                    with
-                    a polished marble slab for a refined finish featuring natural veining. Studio Collection exclusive.
-                </p>
-            </div>
-
-            <div class="bottom-line-full w-fit">
-                <a class="text-20 black-neutral text-decoration-none w-fit" href="#">Outlet Funiture</a>
-            </div>
-        </div>
     </div>
 </div>
-<div class="contact-section">
-    <div class="contact-bg">
-        <img loading=“lazy” src="<?php echo THEME_URL . '/images/owl.svg' ?>" alt="">
-    </div>
-    <!-- section title -->
-    <div class="contact-cation custome-container py-0">
-        <h2 class="text-60 fw-normal text-center text-white pb-2">
-            Stay in the loop
-        </h2>
-        <p class="text-20 text-center white-regular">
-            Sign up to be the first to hear about new arrivals, offers and events.Enter your email address below to opt
-            in
-            to email marketing.
-        </p>
-        <input placeholder="Email Address" class="text-16" type="text">
-        <button class="text-20 text-white">SEND YOUR EMAIL</button>
-        <p class="text-16 white-regular mt-auto">See our full
-            <a href=" #">
-                Terms and Conditions,
-            </a>
-            <a href="#">
-                Privacy & Cookie Policy
-            </a>to find out more.
-        </p>
-    </div>
-</div>
+
 <?php
 get_template_part('sections/news-letter-main');
 get_footer();

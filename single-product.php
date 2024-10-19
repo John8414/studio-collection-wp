@@ -10,19 +10,24 @@ $product_id = get_the_ID();
     <!-- Breadcrumd -->
     <nav aria-label="breadcrumb" class="pb-4">
         <ol class="breadcrumb text-uppercase">
+            <li class="text-14 gray-subtext breadcrumb-item">
+                <a class="gray-subtext text-decoration-none" href="<?php echo home_url(); ?>">Home</a>
+            </li>
+
             <?php
-            // Lấy danh mục của sản phẩm
             $terms = get_the_terms(get_the_ID(), 'product-category');
 
             if ($terms && !is_wp_error($terms)) {
-                // Sắp xếp danh mục theo thứ tự
-                $terms = wp_list_sort($terms, 'name', 'ASC');
+                $term = $terms[0];
 
-                foreach ($terms as $term) {
-                    $term_link = get_term_link($term);
-                    if ($term_link) {
+                $parent_id = $term->parent;
+                if ($parent_id != 0) {
+                    $parent_term = get_term($parent_id, 'product-category');
+                    $parent_link = get_term_link($parent_term);
+
+                    if ($parent_link) {
                         echo '<li class="text-14 gray-subtext breadcrumb-item">';
-                        echo '<a class="gray-subtext text-decoration-none" href="' . esc_url($term_link) . '">' . esc_html($term->name) . '</a>';
+                        echo '<a class="gray-subtext text-decoration-none" href="' . esc_url($parent_link) . '">' . esc_html($parent_term->name) . '</a>';
                         echo '</li>';
                     }
                 }
@@ -30,11 +35,12 @@ $product_id = get_the_ID();
             ?>
 
             <li class="text-14 gray-subtext breadcrumb-item active" aria-current="page">
-                <?php the_title(); // Hiển thị tiêu đề sản phẩm 
+                <?php the_title();
                 ?>
             </li>
         </ol>
     </nav>
+
     <!-- Breadcrumd -->
 
     <!-- product detail  -->
@@ -86,8 +92,9 @@ $product_id = get_the_ID();
                         <span class="original-price"> <?php echo $displayPrice['original_price']; ?></span>
                     </p>
                     <p class="text-32 red-primary ">
-                        <?php echo $displayPrice['currency'] . ' '; ?>
-                        <span class="sale-price"> <?php echo $displayPrice['original_price_copy']; ?></span>
+                        <?php echo $displayPrice['original_price_copy'] ?  $displayPrice['currency'] . ' ' : ''; ?>
+                        <span class="sale-price">
+                            <?php echo $displayPrice['original_price_copy'] ? $displayPrice['original_price_copy'] : ''; ?></span>
                     </p>
                 </div>
                 <div class="text-20 gray-tertiary"><?php the_excerpt(); ?></div>
