@@ -17,33 +17,23 @@
             <div class="d-flex flex-column gap-40">
                 <div class="d-flex flex-column gap-2">
                     <p class="text-12 gray-neutral">Contact Us</p>
-                    <a class="text-20 black-neutral" href="tel:+85595231536">(+855) 95 231 536
-                    </a>
-                    <a class="text-20 black-neutral" href="tel:+85595231536">(+855) 95 231 536
-                    </a>
+                    <?php echo get_field('contact_us', 'option'); ?>
                 </div>
                 <div class="d-flex gap-40">
                     <div class="d-flex flex-column gap-2">
                         <p class="text-12 gray-neutral">Location</p>
-                        <p class="text-20 black-neutral"> Connexion, Ko Pich Street, Phum 14, Sangkat Tonle Bassac, Khan
-                            Chamkarmon, Phnom Penh, Cambodia</p>
+                        <p class="text-20 black-neutral"> <?php echo get_field('location', 'option'); ?></p>
                     </div>
 
                     <div class="d-flex flex-column gap-2">
                         <p class="text-12 gray-neutral">Email</p>
-                        <a href="mailto:Quynh@studiocollection.asia" class="text-20 black-neutral text-decoration-none">
-                            Quynh@studiocollection.asia
-                        </a>
-                        <a href="mailto:Edgars@studiocollection.asia"
-                            class="text-20 black-neutral text-decoration-none">
-                            Edgars@studiocollection.asia
-                        </a>
+                        <?php echo get_field('email', 'option'); ?>
                     </div>
                 </div>
                 <div class="d-flex flex-column gap-2">
                     <p class="text-12 gray-neutral">Mo—Fr</p>
                     <p class="text-20 black-neutral">
-                        9am—6pm
+                        <?php echo get_field('mo—fr', 'option'); ?>
                     </p>
                 </div>
             </div>
@@ -56,23 +46,24 @@
         <div class="d-flex justify-content-between align-items-start">
             <div class="d-flex gap-2">
                 <a class="text-14 gray-subtext" href="#">Terms and Conditions</a>
-                <p class="text-14 gray-subtext">© All rights reserved 2024 ©<a class="text-14 gray-subtext"
-                        href="#">Studio
+                <p class="text-14 gray-subtext">© All rights reserved <?php echo date('Y'); ?> ©<a
+                        class="text-14 gray-subtext" href="<?php echo home_url('/') ?>">Studio
                         Collection</a></p>
             </div>
             <div class="d-flex justify-content-between align-items-center gap-3">
+                <?php $socials = get_field('socials', 'option'); ?>
                 <div class="social-bg">
-                    <a href="#" class="w-fit">
+                    <a href="<?php echo $socials['twitter'] ?>" class="w-fit">
                         <img loading=“lazy” src="<?php echo THEME_URL . '/images/twitter.svg' ?> " alt="">
                     </a>
                 </div>
                 <div class="social-bg">
-                    <a href="#" class="w-fit">
+                    <a href="<?php echo $socials['facebook'] ?>" class="w-fit">
                         <img loading=“lazy” src="<?php echo THEME_URL . '/images/facebook.svg' ?> " alt="">
                     </a>
                 </div>
                 <div class="social-bg">
-                    <a href="#" class="w-fit">
+                    <a href="<?php echo $socials['linkedin'] ?>" class="w-fit">
                         <img loading=“lazy” src="<?php echo THEME_URL . '/images/linkedin.svg' ?> " alt="">
                     </a>
                 </div>

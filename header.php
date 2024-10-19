@@ -16,7 +16,7 @@
 <body <?php body_class(); ?>>
     <?php
 
-    $defaultImage = get_field('default_image', 'option');
+    $defaultImage = get_field('image_default', 'option');
     $defaultIcon = THEME_URL . '/images/furniture.svg';
     $defaultBanner = THEME_URL . '/images/banner-1.png';
     get_template_part('sections/header-main');

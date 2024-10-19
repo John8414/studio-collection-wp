@@ -15,22 +15,22 @@
         if (have_rows('trans_image_list')):
 
             while (have_rows('trans_image_list')) : the_row();
-                global $defaultImage;
+                $defaultImage = get_field('image_default', 'option');
                 $title = get_sub_field('title');
                 $description = get_sub_field('description');
                 $link = get_sub_field('link');
                 $image = get_sub_field('image');
         ?>
-        <div class="card-container ratio ratio-1x1">
-            <a href="<?php echo $link; ?>">
-                <img loading=“lazy” src="<?php echo $image ? $image['url'] : $defaultImage['url'];  ?> "
-                    alt="<?php echo $image ? $image['alt'] : $defaultImage['alt'];  ?>">
-                <div class="overlay">
-                    <h2 class="text-60 fw-bold text-white"><?php echo $title; ?></h2>
-                    <p class="text-20 white-regular"><?php echo $description; ?></p>
+                <div class="card-container ratio ratio-1x1">
+                    <a href="<?php echo $link; ?>">
+                        <img loading=“lazy” src="<?php echo $image ? $image['url'] : $defaultImage['url'];  ?> "
+                            alt="<?php echo $image ? $image['alt'] : $defaultImage['alt'];  ?>">
+                        <div class="overlay">
+                            <h2 class="text-60 fw-bold text-white"><?php echo $title; ?></h2>
+                            <p class="text-20 white-regular"><?php echo $description; ?></p>
+                        </div>
+                    </a>
                 </div>
-            </a>
-        </div>
         <?php
             endwhile;
         endif;

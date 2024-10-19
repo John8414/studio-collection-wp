@@ -1,7 +1,6 @@
 {
     "/js/1vendor.min.js": "/js/1vendor.min.js",
     "/js/app.min.js": "/js/app.min.js",
-    "/css/style.min.css": "/css/style.min.css",
     "/css/1vendor.min.css": "/css/1vendor.min.css",
     "/fonts/MTTMilano-Black.ttf": "/fonts/MTTMilano-Black.ttf",
     "/fonts/MTTMilano-BlackItalic.ttf": "/fonts/MTTMilano-BlackItalic.ttf",
@@ -87,5 +86,6 @@
     "/images/twitter.svg": "/images/twitter.svg",
     "/images/user.svg": "/images/user.svg",
     "/images/wardrop.svg": "/images/wardrop.svg",
-    "/images/water-mark.png": "/images/water-mark.png"
+    "/images/water-mark.png": "/images/water-mark.png",
+    "/css/style.min.css": "/css/style.min.css"
 }

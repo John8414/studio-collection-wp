@@ -130,36 +130,21 @@ $(document).ready(function () {
     });
   });
 
-
-  function toggleImage(button) {
-    const img = button.querySelector('img');
-    const plus = 'plus.svg';
-    const minus = 'minus.svg';
-    img.src = img.src.endsWith(plus) ? `images/${minus}` : `images/${plus}`;
-  }
-
-  // toggle up and down
-
-  function toggleImageUpDown(button) {
-    const img = button.querySelector('img');
-    const up = 'arr-down-thin.svg';
-    const down = 'arr-up-thin.svg';
-    img.src = img.src.endsWith(up) ? `images/${down}` : `images/${up}`;
-  }
-
   //image picker
 
-  document.querySelectorAll('.image-picker').forEach(picker => {
-    const mainImage = picker.querySelector('.main-image');
-    const thumbnails = picker.querySelectorAll('.thumbnails img');
+  $('.image-picker').each(function () {
+    const $picker = $(this);
+    const $mainImage = $picker.find('.main-image');
+    const $thumbnails = $picker.find('.thumbnails img');
 
-    thumbnails.forEach(thumbnail => {
-      thumbnail.addEventListener('click', () => {
-        const newSrc = thumbnail.getAttribute('src');
-        mainImage.src = newSrc;
-      });
+    $thumbnails.on('click', function () {
+      $('.thumbnail').removeClass('item-border');
+      $(this).parent().addClass('item-border');
+      const newSrc = $(this).attr('src');
+      $mainImage.attr('src', newSrc);
     });
   });
+
 
   /**
   * back to top
@@ -198,6 +183,21 @@ $(document).ready(function () {
     autoplay: true,
     autoplaySpeed: 5000,
   });
+
+  handleChangeColor = (price, salePrice, color, url) => {
+    $('.thumbnail').removeClass('item-border');
+    $('.color-tags').removeClass('item-border')
+    $(`[data-color=${color}]`).addClass('item-border')
+    $('.main-image').attr('src', url);
+    $('.sale-price').text(salePrice);
+    $('.original-price').text(price);
+  }
+
+  handleChangeImage = (price, salePrice) => {
+    $('.color-tags').removeClass('item-border');
+    $('.sale-price').text(salePrice);
+    $('.original-price').text(price);
+  }
 
   //sticky header
   // let lastScrollTop = 0;
