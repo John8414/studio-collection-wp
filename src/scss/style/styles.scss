@@ -685,10 +685,14 @@ button {
     position: relative;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 2a55f4c (fix: header thumbnail. feat: responsive mobile header)
     .menu-menu-main-container {
       .menu {
         display: flex;
         gap: 60px;
+<<<<<<< HEAD
 =======
   .menu-menu-main-container {
     .menu {
@@ -699,16 +703,22 @@ button {
 
       .menu-item {
 >>>>>>> 91cc202 (feat: home page)
+=======
+>>>>>>> 2a55f4c (fix: header thumbnail. feat: responsive mobile header)
         width: fit-content;
         margin: 0 auto;
         padding: 0;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 2a55f4c (fix: header thumbnail. feat: responsive mobile header)
         .menu-item {
           width: fit-content;
           list-style: none;
           border-bottom: 4px solid transparent;
           transition: all .4s ease-in-out;
+<<<<<<< HEAD
 
           a {
             color: #010101;
@@ -740,25 +750,42 @@ button {
           padding: 1.5rem 2.5rem 1rem;
           display: inline-block;
         }
+=======
+>>>>>>> 2a55f4c (fix: header thumbnail. feat: responsive mobile header)
 
-        &.active {
-          border-bottom: 4px solid #010101;
-        }
-
-        &:hover {
-          >a {
-            color: $yellow-primary !important;
+          a {
+            color: #010101;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: clamp(10px, calc(8.8px + 0.375vw), 16px);
+            line-height: 120%;
+            padding: 16px 0;
+            display: inline-block;
           }
 
+<<<<<<< HEAD
           .mega-menu {
             opacity: 1;
             visibility: visible;
 >>>>>>> 91cc202 (feat: home page)
+=======
+          // &.active,
+          &:hover {
+            border-bottom: 4px solid #010101;
+          }
+
+          &:hover {
+            .mega-menu {
+              opacity: 1;
+              visibility: visible;
+            }
+>>>>>>> 2a55f4c (fix: header thumbnail. feat: responsive mobile header)
           }
         }
       }
     }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
     .mega-menu {
       left: 0;
@@ -778,31 +805,61 @@ button {
     visibility: hidden;
     min-height: 20rem;
   }
+=======
+    &:hover {
+      >a {
+        color: $yellow-primary !important;
+      }
+>>>>>>> 2a55f4c (fix: header thumbnail. feat: responsive mobile header)
 
-  .menu-description {
-    padding-left: 40px;
-    border-left: 1px solid #E1E1E1;
-
-    div.text-16 {
-      max-width: 210px;
+      .mega-menu {
+        opacity: 1;
+        visibility: visible;
+      }
     }
   }
+}
+}
 
-  .des-img {
-    width: 333px;
-    height: 202px;
+.mega-menu {
+  left: 0;
+  right: 0;
+  top: 100%;
+  z-index: 99;
+  opacity: 0;
+  visibility: hidden;
+  min-height: 20rem;
+}
 
-    img {
-      object-fit: cover;
-      width: 100%;
-      height: 100%;
-    }
+.menu-description {
+  padding-left: 40px;
+  border-left: 1px solid #E1E1E1;
 
-    &:nth-child(1) {
-      margin-right: 60px;
-    }
+  div.text-16 {
+    max-width: 210px;
+  }
+}
+
+.des-img {
+  max-width: 333px;
+
+  &:nth-child(1) {
+    margin-right: 60px;
+  }
+}
+
+.view-all-list {
+  padding-right: 40px;
+
+  .list {
+    list-style: none;
+    padding-left: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
   }
 
+<<<<<<< HEAD
   .view-all-list {
     padding-right: 40px;
 
@@ -856,6 +913,21 @@ button {
       }
     }
   }
+=======
+}
+
+.coll-inline {
+  .list {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 40px;
+    // @media (max-width: 576px) {
+    //   grid-template-columns: repeat(1, minmax(0, 1fr));
+    // }
+  }
+}
+}
+>>>>>>> 2a55f4c (fix: header thumbnail. feat: responsive mobile header)
 }
 
 

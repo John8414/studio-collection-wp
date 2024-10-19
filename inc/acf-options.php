@@ -197,6 +197,9 @@ class Mega_Menu_Walker extends Walker_Nav_Menu
                 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 2a55f4c (fix: header thumbnail. feat: responsive mobile header)
                 $item_output .= '<div class="ms-auto d-flex">';
                 foreach ($images as $key => $term) {
                     // hình ảnh
@@ -210,9 +213,12 @@ class Mega_Menu_Walker extends Walker_Nav_Menu
                     $item_output .= '</div>';
                 }
                 $item_output .= '</div>';
+<<<<<<< HEAD
 =======
                 $item_output .= updateDefaultImages($images, $item_output);
 >>>>>>> 91cc202 (feat: home page)
+=======
+>>>>>>> 2a55f4c (fix: header thumbnail. feat: responsive mobile header)
             } else {
                 // layout inline
                 $item_output .= '<div class="view-all-list coll-inline">';
@@ -234,11 +240,15 @@ class Mega_Menu_Walker extends Walker_Nav_Menu
 
                 $item_output .= '<div class="des-img ms-5">';
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 2a55f4c (fix: header thumbnail. feat: responsive mobile header)
                 foreach ($images as $key => $term) {
                     $hero = get_field('image', $term);
                     $avatar = $hero['icon'];
 
                     $item_output .= '<a class="item d-block" href="' . get_term_link($term) . '">';
+<<<<<<< HEAD
                     $item_output .= '<img class="header-thumb pb-3" src="http://localhost:8080/wp-content/themes/my-theme/images/flo-0.png "alt="' . $avatar['alt'] . ' ">';
                     $item_output .= '<p class="post-name d-block">' . $term->name . '</p>';
                     $item_output .= '</a>';
@@ -255,6 +265,11 @@ class Mega_Menu_Walker extends Walker_Nav_Menu
                         $item_output .= '</a>';
                     }
 >>>>>>> 91cc202 (feat: home page)
+=======
+                    $item_output .= '<img class="h-100 w-100 pb-3" src="http://localhost:8080/wp-content/themes/my-theme/images/flo-0.png "alt="' . $avatar['alt'] . ' ">';
+                    $item_output .= '<p class="post-name d-block">' . $term->name . '</p>';
+                    $item_output .= '</a>';
+>>>>>>> 2a55f4c (fix: header thumbnail. feat: responsive mobile header)
                 }
                 $item_output .= '</div>';
                 $item_output .= '</div>';
