@@ -13,19 +13,19 @@
         foreach ($categories as $category) {
             $image = get_field('image', $category);
             $avatar = $image['avatar'];
+            $parent_link = get_term_link($category);
     ?>
-            <div class="custome-container-sm">
-                <div class="img-scale">
-                    <img loading=“lazy” src="<?php echo $avatar['url'] ? $avatar['url'] : $defaultImage['url']  ?>"
-                        alt="<?php echo $category->name; ?>">
-                </div>
-                <div class="bottom-line-full w-fit pt-2">
-                    <a class="text-32 black-neutral text-decoration-none w-fit"
-                        href="<?php echo get_the_permalink($category); ?>">
-                        <?php echo $category->name; ?>
-                    </a>
-                </div>
-            </div>
+    <div class="custome-container-sm">
+        <div class="img-scale">
+            <img loading=“lazy” src="<?php echo $avatar['url'] ? $avatar['url'] : $defaultImage['url']  ?>"
+                alt="<?php echo $category->name; ?>">
+        </div>
+        <div class="bottom-line-full w-fit pt-2">
+            <a class="text-32 black-neutral text-decoration-none w-fit" href="<?php echo $parent_link; ?>">
+                <?php echo $category->name; ?>
+            </a>
+        </div>
+    </div>
     <?php
         }
     }
