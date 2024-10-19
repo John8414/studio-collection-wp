@@ -232,6 +232,7 @@ button {
 .img-scale {
   overflow: hidden;
   position: relative;
+  height: calc(290px + 2.4375vw);
 
   img {
     width: 100%;
@@ -540,7 +541,7 @@ button {
 
 }
 
-.header-groupØ {
+.header-group {
   height: 0 !important;
 }
 
@@ -758,6 +759,7 @@ button {
       }
     }
 
+<<<<<<< HEAD
     .mega-menu {
       left: 0;
       right: 0;
@@ -766,6 +768,51 @@ button {
       opacity: 0;
       visibility: hidden;
       min-height: 30rem;
+=======
+  .mega-menu {
+    left: 0;
+    right: 0;
+    top: 100%;
+    z-index: 99;
+    opacity: 0;
+    visibility: hidden;
+    min-height: 20rem;
+  }
+
+  .menu-description {
+    padding-left: 40px;
+    border-left: 1px solid #E1E1E1;
+
+    div.text-16 {
+      max-width: 210px;
+    }
+  }
+
+  .des-img {
+    width: 333px;
+    height: 202px;
+
+    img {
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+    }
+
+    &:nth-child(1) {
+      margin-right: 60px;
+    }
+  }
+
+  .view-all-list {
+    padding-right: 40px;
+
+    .list {
+      list-style: none;
+      padding-left: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+>>>>>>> 77c77a1 (feat: product)
     }
 
     .menu-description {
@@ -1035,18 +1082,6 @@ button {
   .color-tags {
     width: 20px;
     height: 20px;
-
-    &:nth-child(1) {
-      background-color: $black-neutral;
-    }
-
-    &:nth-child(2) {
-      background-color: $blue-primary;
-    }
-
-    &:nth-child(3) {
-      background-color: $red-primary;
-    }
   }
 
   .product-info-cta {
@@ -1059,6 +1094,11 @@ button {
 }
 
 //product-picker
+.thumbnails {
+  max-height: 40rem;
+  overflow-y: auto;
+}
+
 .product-picker {
   .image-picker {
     .thumbnail {

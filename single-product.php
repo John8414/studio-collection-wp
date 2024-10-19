@@ -1,86 +1,149 @@
 <?php
 get_header();
+$moreInfo = get_field('more_info');
+$displayPrice = get_field('display_price');
+$information = get_field('information');
+$product_id = get_the_ID();
 ?>
 <div class="custome-container ">
 
     <!-- Breadcrumd -->
-    <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-            <li class="text-14 gray-subtext breadcrumb-item"><a class="gray-subtext text-decoration-none"
-                    href="#">FURNITURE</a>
+    <nav aria-label="breadcrumb" class="pb-4">
+        <ol class="breadcrumb text-uppercase">
+            <?php
+            // Lấy danh mục của sản phẩm
+            $terms = get_the_terms(get_the_ID(), 'product-category');
+
+            if ($terms && !is_wp_error($terms)) {
+                // Sắp xếp danh mục theo thứ tự
+                $terms = wp_list_sort($terms, 'name', 'ASC');
+
+                foreach ($terms as $term) {
+                    $term_link = get_term_link($term);
+                    if ($term_link) {
+                        echo '<li class="text-14 gray-subtext breadcrumb-item">';
+                        echo '<a class="gray-subtext text-decoration-none" href="' . esc_url($term_link) . '">' . esc_html($term->name) . '</a>';
+                        echo '</li>';
+                    }
+                }
+            }
+            ?>
+
+            <li class="text-14 gray-subtext breadcrumb-item active" aria-current="page">
+                <?php the_title(); // Hiển thị tiêu đề sản phẩm 
+                ?>
             </li>
-            <li class="text-14 gray-subtext breadcrumb-item"><a class="gray-subtext text-decoration-none"
-                    href="#">OUTLET
-                    FUNITURE</a>
-            </li>
-            <li class="text-14 gray-subtext breadcrumb-item active" aria-current="page">SOFA</li>
         </ol>
     </nav>
+    <!-- Breadcrumd -->
 
     <!-- product detail  -->
     <div class="d-md-flex d-block gap-3 align-items-start justify-content-between">
         <div class="product-picker">
             <div class="d-md-flex d-block image-picker gap-3">
                 <div class="d-flex flex-column gap-3 thumbnails">
-                    <div class="item-border thumbnail ratio ratio-1x1">
-                        <img loading=“lazy” src="<?php echo THEME_URL . '/images/sofa-1.png' ?>" alt="">
+                    <div class="item-border thumbnail ratio ratio-1x1"
+                        onclick="handleChangeImage(<?php echo $displayPrice['original_price']; ?>, <?php echo $displayPrice['original_price_copy']; ?>)">
+                        <img loading=“lazy” src="<?php echo get_the_post_thumbnail_url(); ?>"
+                            alt="<?php the_title() ?>">
                     </div>
-                    <div class="item-border thumbnail ratio ratio-1x1">
-                        <img loading=“lazy” src="<?php echo THEME_URL . '/images/sofa-2.png' ?>" alt="">
+                    <?php $gallery = get_field('gallery');
+                    if ($gallery):
+                        foreach ($gallery as $key => $image):
+                    ?>
+
+                    <div class="thumbnail ratio ratio-1x1">
+                        <img loading=“lazy” src="<?php echo $image['url']; ?>" alt="<?php the_title() ?>">
                     </div>
-                    <div class="item-border thumbnail ratio ratio-1x1">
-                        <img loading=“lazy” src="<?php echo THEME_URL . '/images/sofa-3.png' ?>" alt="">
-                    </div>
+                    <?php endforeach;
+                    endif; ?>
                 </div>
 
                 <div class="img-scale">
-                    <img class="main-image" src="<?php echo THEME_URL . '/images/sofa-4.png' ?>" alt="">
+                    <img class="main-image" loading=“lazy” src="<?php echo get_the_post_thumbnail_url(); ?>"
+                        alt="<?php the_title() ?>">
                 </div>
             </div>
         </div>
         <div class="product-info">
             <div>
                 <div class="d-flex justify-content-between align-items-start">
-                    <h3 class="text-32 black-neutral">Muse Corner Sectional</h3>
+                    <h1 class="text-32 black-neutral"><?php the_title(); ?></h1>
                     <div>
-                        <img loading=“lazy” src="<?php echo THEME_URL . '/images/heart.svg' ?>" alt="">
+                        <?php if ($moreInfo['favorite']): ?>
+                        <i class="fa fa-heart-o" style="color: #E91919" aria-hidden="true"></i>
+                        <?php else: ?>
+                        <i class="fa fa-heart-o" aria-hidden="true"></i>
+                        <?php endif; ?>
                     </div>
                 </div>
-                <p class="text-20 gray-tertiary">Exclusive to Studio Collection</p>
+                <p class="text-20 gray-tertiary"><?php echo $moreInfo['provider']; ?></p>
             </div>
             <div class="d-flex flex-column gap-3 align-items-start">
                 <div class="d-flex align-items-end justify-content-start gap-3">
-                    <p class="text-20 black-neutral">$500.00</p>
-                    <p class="text-32 red-primary">$489.99</p>
+                    <p class="text-20 black-neutral">
+                        <?php echo $displayPrice['currency'] . ' '; ?>
+                        <span class="original-price"> <?php echo $displayPrice['original_price']; ?></span>
+                    </p>
+                    <p class="text-32 red-primary ">
+                        <?php echo $displayPrice['currency'] . ' '; ?>
+                        <span class="sale-price"> <?php echo $displayPrice['original_price_copy']; ?></span>
+                    </p>
                 </div>
-                <p class="text-20 gray-tertiary">Scott 2 Seater Sofa</p>
-                <p class="text-16 gray-subtext">N00-102</p>
+                <div class="text-20 gray-tertiary"><?php the_excerpt(); ?></div>
+                <p class="text-16 gray-subtext"><?php echo $moreInfo['code'] ?></p>
 
                 <div class="d-flex align-items-center justify-content-start gap-2">
                     <p class="text-16 gray-subtext">
-                        <span>3 </span>colors
+                        <span>
+                            <?php echo (get_the_terms($product_id, 'color') && !is_wp_error(get_the_terms($product_id, 'color'))) ? count(get_the_terms($product_id, 'color')) . ' colors' : ''; ?>
+                        </span>
                     </p>
                     <div class="d-flex align-items-center justify-content-center gap-2">
-                        <button class="color-tags"></button>
-                        <button class="color-tags"></button>
-                        <button class="color-tags"></button>
+                        <?php
+                        if ($information) {
+                            foreach ($information as $row) {
+                                $term = $row['color'];
+                                $color = get_field('color', $term);
+                                $price = $row['original_price'];
+                                $salePrice = $row['sale_price'];
+                                $image = $row['image']['url'];
+                        ?>
+                        <button type="button" data-color="<?php echo $term->term_id; ?>"
+                            onclick="handleChangeColor(<?php echo $price; ?>,<?php echo $salePrice; ?>,<?php echo $term->term_id; ?>, '<?php echo $image; ?>'  )"
+                            class="color-tags" style="background-color: <?php echo $color; ?>;"></button>
+                        <?php
+                            }
+                        }
+                        ?>
+
                     </div>
                 </div>
             </div>
+            <?php $reasons_to_buy = $moreInfo['reasons_to_buy'];
+            if ($reasons_to_buy):
+            ?>
             <div class="d-flex flex-column gap-2">
                 <p class="text-20 black-neutral pb-2">Reasons to buy</p>
+                <?php
+                    foreach ($reasons_to_buy as $row) {
+                        $text = $row['text'];
+                        $tooltip = $row['tooltip'];
+                    ?>
                 <div class="d-flex align-items-center justify-content-start gap-3">
-                    <p class="text-20 gray-tertiary">Available to ship in:<span>5 weeks </span></p>
+
+                    <p class="text-20 gray-tertiary"><?php echo $text; ?></p>
+                    <?php if ($tooltip) { ?>
                     <div class="tooltip-container">
                         <img loading=“lazy” src="<?php echo THEME_URL . '/images/product-tooltip.svg' ?>" alt="">
-                        <div class="tooltip text-20 gray-tertiary">Items will be shipped within 5 weeks from the date of
-                            your
-                            order. Need more details?
-                            Contact us!</div>
+                        <div class="tooltip text-20 gray-tertiary"><?php echo $tooltip; ?> </div>
                     </div>
+                    <?php } ?>
                 </div>
-                <p class="text-20 gray-tertiary">Save over on<span> $30 </span>shipping in Cambodia</p>
+                <?php } ?>
             </div>
+            <?php endif; ?>
+            <!-- //TODO -->
             <div class="product-info-cta">
                 <h3 class="text-32 black-neutral pb-2">
                     Contact with us
@@ -91,112 +154,85 @@ get_header();
                 <input placeholder="Email Address" class="text-16 p-2" type="text">
                 <button class="mx-auto text-20 black-neutral w-fit bottom-line-full">SEND YOUR EMAIL</button>
             </div>
+            <!-- //TODO -->
             <div>
                 <h2 class="text-32 black-neutral bottom-line-full pb-2">
                     Product Highlights
                 </h2>
 
                 <!-- collapse detail -->
-                <button onclick="toggleImage(this)" class="px-0 bg-transparent w-100 text-20 fw-bold black-neutral d-flex justify-content-between align-items-center gap-1 custome-container-sm
-        type=" button" data-bs-toggle="collapse" data-bs-target="#collapse-detail" aria-expanded="false"
-                    aria-controls="collapse-detail">Detail
+                <button
+                    class="px-0 bg-transparent w-100 text-20 fw-bold black-neutral d-flex justify-content-between align-items-center gap-1 custome-container-sm"
+                    type="button" data-bs-toggle="collapse" data-bs-target="#collapse-detail" aria-expanded="false"
+                    aria-controls="collapse-detail">
+                    Detail
                     <div>
-                        <img loading=“lazy” src="<?php echo THEME_URL . '/images/plus.svg' ?>" alt="">
+                        <img class="plus" loading=“lazy” src="<?php echo THEME_URL . '/images/plus.svg' ?>" alt="">
+                        <img class="d-none minus" loading=“lazy” src="<?php echo THEME_URL . '/images/minus.svg' ?>"
+                            alt="">
                     </div>
                 </button>
 
                 <div class="collapse multi-collapse" id="collapse-detail">
                     <div class="d-flex flex-column gap-3 bottom-line-full pb-3">
-                        <p class="text-20 gray-subtext">Minimalist walnut wood sideboard by Studio Collection is crafted
-                            to
-                            showcase
-                            the natural beauty of the
-                            wood. The sleek design contrasts sharp edges with gently tapered legs that curve gracefully
-                            at the base.
-                            Topped with a polished marble slab for a refined finish featuring natural veining. Studio
-                            Collection
-                            exclusive.</p>
-                        <p class="text-20 gray-subtext">Raven 72" Walnut Wood Sideboard 72"Wx16"Dx30"H Designed by
-                            <span class="fw-bold">Studio Collection</span>
-                        </p>
-                        <div class="list-dot">
-                            <p class="text-20 gray-subtext">Solid walnut wood frame sustainably sourced</p>
-                            <p class="text-20 gray-subtext">Walnut veneer</p>
-                            <p class="text-20 gray-subtext">Polished marble top</p>
-                            <p class="text-20 gray-subtext">Adjustable interior compartments</p>
-                            <p class="text-20 gray-subtext">Each marble slab features unique veining for a one-of-a-kind
-                                look</p>
-                        </div>
+                        <?php while (have_posts()) : the_post();
+                            the_content();
+                        endwhile; ?>
                     </div>
                 </div>
                 <!-- collapse Detail -->
 
                 <!-- collapse size -->
-                <button onclick="toggleImage(this)" class="px-0 bg-transparent w-100 text-20 fw-bold black-neutral d-flex justify-content-between align-items-center gap-1 custome-container-sm
-      type=" button" data-bs-toggle="collapse" data-bs-target="#collapse-size" aria-expanded="false"
+                <button
+                    class="px-0 bg-transparent w-100 text-20 fw-bold black-neutral d-flex justify-content-between align-items-center gap-1 custome-container-sm"
+                    type=" button" data-bs-toggle="collapse" data-bs-target="#collapse-size" aria-expanded="false"
                     aria-controls="collapse-size">Size
                     <div>
-                        <img loading=“lazy” src="<?php echo THEME_URL . '/images/plus.svg' ?>" alt="">
+                        <img class="plus" loading=“lazy” src="<?php echo THEME_URL . '/images/plus.svg' ?>" alt="">
+                        <img class="d-none minus" loading=“lazy” src="<?php echo THEME_URL . '/images/minus.svg' ?>"
+                            alt="">
                     </div>
                 </button>
                 <div class="collapse multi-collapse" id="collapse-size">
                     <div class="d-flex flex-column gap-3 bottom-line-full pb-3">
-                        <div>
-                            <img loading=“lazy” src="<?php echo THEME_URL . '/images/size-img.png' ?>" alt="">
-                        </div>
-                        <div>
-                            <p class="text-20 gray-subtext">Overall Dimensions</p>
-                            <p class="text-20 gray-subtext">Width:80"</p>
-                            <p class="text-20 gray-subtext">Depth:80"</p>
-                            <p class="text-20 gray-subtext">Height:80"</p>
-                        </div>
-                        <div>
-                            <p class="text-20 gray-subtext">Overall Dimensions</p>
-                            <p class="text-20 gray-subtext">Width:80"</p>
-                            <p class="text-20 gray-subtext">Depth:80"</p>
-                            <p class="text-20 gray-subtext">Height:80"</p>
-                        </div>
+                        <?php echo get_field('size') ?>
                     </div>
                 </div>
                 <!-- collapse size -->
 
 
                 <!-- collapse Warrant -->
-                <button onclick="toggleImage(this)" class="px-0 bg-transparent w-100 text-20 fw-bold black-neutral d-flex justify-content-between align-items-center gap-1 custome-container-sm
-      type=" button" data-bs-toggle="collapse" data-bs-target="#collapse-warrant" aria-expanded="false"
+                <button
+                    class="px-0 bg-transparent w-100 text-20 fw-bold black-neutral d-flex justify-content-between align-items-center gap-1 custome-container-sm"
+                    type=" button" data-bs-toggle="collapse" data-bs-target="#collapse-warrant" aria-expanded="false"
                     aria-controls="collapse-warrant">Warrant
                     <div>
-                        <img loading=“lazy” src="<?php echo THEME_URL . '/images/plus.svg' ?>" alt="">
+                        <img class="plus" loading=“lazy” src="<?php echo THEME_URL . '/images/plus.svg' ?>" alt="">
+                        <img class="d-none minus" loading=“lazy” src="<?php echo THEME_URL . '/images/minus.svg' ?>"
+                            alt="">
                     </div>
                 </button>
                 <div class="collapse multi-collapse" id="collapse-warrant">
                     <div class="d-flex flex-column gap-3 bottom-line-full pb-3">
-                        <div>
-                            <p class="text-20 gray-subtext">2-Year Warranty</p>
-                            <p class="text-20 gray-subtext">Terms and conditions apply.
-                                <a class="text-20 gray-subtext" href="#">Learn more</a>
-                            </p>
-                        </div>
+                        <?php echo get_field('warrant'); ?>
                     </div>
                 </div>
                 <!-- collapse Warrant -->
 
                 <!-- collapse brand -->
-                <button onclick="toggleImage(this)" class="px-0 bg-transparent w-100 text-20 fw-bold black-neutral d-flex justify-content-between align-items-center gap-1 custome-container-sm
-      type=" button" data-bs-toggle="collapse" data-bs-target="#collapse-brand" aria-expanded="false"
+                <button
+                    class="px-0 bg-transparent w-100 text-20 fw-bold black-neutral d-flex justify-content-between align-items-center gap-1 custome-container-sm"
+                    type=" button" data-bs-toggle="collapse" data-bs-target="#collapse-brand" aria-expanded="false"
                     aria-controls="collapse-brand">Brand
                     <div>
-                        <img loading=“lazy” src="<?php echo THEME_URL . '/images/plus.svg' ?>" alt="">
+                        <img class="plus" loading=“lazy” src="<?php echo THEME_URL . '/images/plus.svg' ?>" alt="">
+                        <img class="d-none minus" loading=“lazy” src="<?php echo THEME_URL . '/images/minus.svg' ?>"
+                            alt="">
                     </div>
                 </button>
                 <div class="collapse multi-collapse" id="collapse-brand">
                     <div class="d-flex flex-column gap-3 bottom-line-full pb-3">
-                        <div>
-                            <p class="text-20 gray-subtext">2-Year brandy</p>
-                            <p class="text-20 gray-subtext">Terms and conditions apply.
-                                <a class="text-20 gray-subtext" href="#">Learn more</a>
-                            </p>
-                        </div>
+                        <?php echo get_field('brand'); ?>
                     </div>
                 </div>
                 <!-- collapse brand -->
@@ -215,156 +251,28 @@ get_header();
             Discover more
         </h2>
     </div>
-    <div class="position-relative carousel-height w-100">
+    <div class="position-relative w-100 pb-4">
+        <?php $discoverMore = get_field('discover_more');
+        if ($discoverMore) {
+            echo $discoverMore;
+        } else { ?>
         <img loading=“lazy” src="<?php echo THEME_URL . '/images/carousel.jpg' ?>" alt="">
         <div class="overlay-30"></div>
+        <?php }
+        ?>
     </div>
-    <div class="d-lg-flex align-items-center justify-content-between gap-3">
-        <div class="custome-container-sm">
-            <div class="img-scale">
-                <img loading=“lazy” src="<?php echo THEME_URL . '/images/outlet-furniture.png' ?>" alt="">
-            </div>
-            <div class="bottom-line-full w-fit pt-2">
-                <a class="text-32 black-neutral text-decoration-none w-fit" href="#">Outlet Funiture</a>
-            </div>
-        </div>
-        <div class="custome-container-sm">
-            <div class="img-scale">
-                <img loading=“lazy” src="<?php echo THEME_URL . '/images/outdoor-furniture.png' ?>" alt="">
-            </div>
-            <div class="bottom-line-full w-fit pt-2">
-                <a class="text-32 black-neutral text-decoration-none w-fit" href="#">Outdoor Funiture</a>
-            </div>
-        </div>
-        <div class="custome-container-sm">
-            <div class="img-scale">
-                <img loading=“lazy” src="<?php echo THEME_URL . '/images/cate.png' ?>" alt="">
-            </div>
-            <div class="bottom-line-full w-fit pt-2">
-                <a class="text-32 black-neutral text-decoration-none w-fit" href="#">Project Funiture</a>
-            </div>
-        </div>
-    </div>
+    <?php get_template_part('sections/categories') ?>
 </div>
 
 <!-- slider -->
-<div class="custome-container">
-    <div class="custome-container-sm">
-        <div class="d-flex justify-content-between">
-            <h4 class="text-32 fw-bold black-neutral">You may also like</h4>
-            <div class="custom-nav">
-                <button class="prev-btn black-neutral" data-slider-id="slider9">
-                    <img loading=“lazy” src="<?php echo THEME_URL . '/images/arr-prev.svg' ?>" alt="">
-                </button>
-                <button class="next-btn black-neutral" data-slider-id="slider9">
-                    <img loading=“lazy” src="<?php echo THEME_URL . '/images/arr-next.svg' ?>" alt="">
-                </button>
-            </div>
-        </div>
-    </div>
-    <div class="slick-slider custome-container-sm" id="slider9">
-        <div class="slider-item text-start">
-            <a href="#" class="text-decoration-none">
-                <div class="img-scale">
-                    <img loading=“lazy” src="<?php echo THEME_URL . '/images/sofa-1.png' ?>" alt="">
-                </div>
-                <div class="w-100 position-relative pt-20 pb-2">
-                    <p class="text-20 fw-medium text-black">$500.00</p>
-                    <button class="fav-btn"><img loading=“lazy” src="<?php echo THEME_URL . '/images/heart.svg' ?>"
-                            alt=""></button>
-                </div>
-                <p class="text-20 gray-tertiary pb-2">Scott 2 Seater Sofa</p>
-                <p class="text-20 gray-neutral pb-20">N00-102</p>
-                <p class="fw-medium text-20 gray-neutral">3 colors</p>
-            </a>
-        </div>
-    </div>
-</div>
+<?php get_template_part('sections/like-post'); ?>
 <!-- slider -->
 
 <!-- slider -->
-<div class="custome-container">
-    <div class="custome-container-sm">
-        <div class="d-flex justify-content-between">
-            <h4 class="text-32 fw-bold black-neutral">People Also Viewed</h4>
-            <div class="custom-nav">
-                <button class="prev-btn black-neutral" data-slider-id="slider10">
-                    <img loading=“lazy” src="<?php echo THEME_URL . '/images/arr-prev.svg' ?>" alt="">
-                </button>
-                <button class="next-btn black-neutral" data-slider-id="slider10">
-                    <img loading=“lazy” src="<?php echo THEME_URL . '/images/arr-next.svg' ?>" alt="">
-                </button>
-            </div>
-        </div>
-    </div>
-    <div class="slick-slider custome-container-sm" id="slider10">
-        <div class="slider-item text-start">
-            <a href="#" class="text-decoration-none">
-                <div class="img-scale">
-                    <img loading=“lazy” src="<?php echo THEME_URL . '/images/sofa-1.png' ?>" alt="">
-                </div>
-                <div class="w-100 position-relative pt-20 pb-2">
-                    <p class="text-20 fw-medium text-black">$500.00</p>
-                    <button class="fav-btn"><img loading=“lazy” src="<?php echo THEME_URL . '/images/heart.svg' ?>"
-                            alt=""></button>
-                </div>
-                <p class="text-20 gray-tertiary pb-2">Scott 2 Seater Sofa</p>
-                <p class="text-20 gray-neutral pb-20">N00-102</p>
-                <p class="fw-medium text-20 gray-neutral">3 colors</p>
-            </a>
-        </div>
-    </div>
-
-</div>
+<?php get_template_part('sections/viewed-post'); ?>
 <!-- slider -->
 <!-- slider -->
-<div class="custome-container">
-    <div class="custome-container-sm">
-        <div class="d-flex justify-content-between">
-            <h4 class="text-32 fw-bold black-neutral">More to Discover</h4>
-            <div class="custom-nav">
-                <button class="prev-btn black-neutral" data-slider-id="slider11">
-                    <img loading=“lazy” src="<?php echo THEME_URL . '/images/arr-prev.svg' ?>" alt="">
-                </button>
-                <button class="next-btn black-neutral" data-slider-id="slider11">
-                    <img loading=“lazy” src="<?php echo THEME_URL . '/images/arr-next.svg' ?>" alt="">
-                </button>
-            </div>
-        </div>
-    </div>
-    <div class="slider-show-3 custome-container-sm" id="slider11">
-        <div class="slider-item">
-            <div class="custome-container-sm">
-                <div class="img-scale">
-                    <img loading=“lazy” src="<?php echo THEME_URL . '/images/outlet-furniture.png' ?>" alt="">
-                </div>
-                <div class="bottom-line-full w-fit pt-2">
-                    <a class="text-32 black-neutral text-decoration-none w-fit" href="#">Outlet Funiture</a>
-                </div>
-            </div>
-        </div>
-        <div class="slider-item">
-            <div class="custome-container-sm">
-                <div class="img-scale">
-                    <img loading=“lazy” src="<?php echo THEME_URL . '/images/outdoor-furniture.png' ?>" alt="">
-                </div>
-                <div class="bottom-line-full w-fit pt-2">
-                    <a class="text-32 black-neutral text-decoration-none w-fit" href="#">Outdoor Funiture</a>
-                </div>
-            </div>
-        </div>
-        <div class="slider-item">
-            <div class="custome-container-sm">
-                <div class="img-scale">
-                    <img loading=“lazy” src="<?php echo THEME_URL . '/images/cate.png' ?>" alt="">
-                </div>
-                <div class="bottom-line-full w-fit pt-2">
-                    <a class="text-32 black-neutral text-decoration-none w-fit" href="#">Project Funiture</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+<?php get_template_part('sections/discover'); ?>
 <!-- slider -->
 <?php
 get_template_part('sections/news-letter-main');

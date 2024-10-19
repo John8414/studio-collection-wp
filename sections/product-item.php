@@ -31,7 +31,5 @@ if ($query && $query->have_posts()) :
 <?php
     endwhile;
     wp_reset_postdata();
-else :
-    echo '<p>No products found.</p>';
 endif;
 ?>

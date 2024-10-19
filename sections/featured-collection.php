@@ -13,7 +13,7 @@
     <?php
     $fc_categories = get_field('fc_categories',  get_the_ID());
     if ($fc_categories):
-        global $defaultImage;
+        $defaultImage = get_field('image_default', 'option');
         global $defaultIcon;
         global $defaultBanner;
     ?>
@@ -29,6 +29,7 @@
             $gallery = get_field('gallery', $term);
 
             set_query_var('slide_product', $term);
+            set_query_var('slide_title', 'Design Your Dream Home');
 
         ?>
     <div>
@@ -55,7 +56,7 @@
 
                 <div class="d-flex gap-2 flex-wrap thumbnails">
                     <?php foreach ($gallery as $index =>  $value): ?>
-                    <div class="item-border thumbnail ratio ratio-1x1">
+                    <div class="<?php echo $index == 0 ? 'item-border' : ''; ?> thumbnail ratio ratio-1x1">
                         <img loading=“lazy” src="<?php echo isset($value) ? $value['url'] : $defaultImage['url'];  ?> "
                             alt="<?php echo isset($value) ? $value['alt'] : $defaultImage['alt'];  ?> ">
                     </div>
