@@ -1,4 +1,4 @@
-<section class="custome-carousel">
+<section class="custome-carousel position-relative">
     <?php if (have_rows('bn_slider', get_the_ID())): ?>
     <div class="carousel-banner" id="bannerMain">
         <?php while (have_rows('bn_slider', get_the_ID())): the_row();
@@ -25,7 +25,6 @@
         <?php endwhile;
             wp_reset_query(); ?>
     </div>
-    <?php endif; ?>
     <div class="overlay-scrolldown">
         <a class="text-20 fw-bold hover-yellow" href="#featureCollection">
             EXPLORE MORE
@@ -37,4 +36,6 @@
         </a>
 
     </div>
+    <?php endif; ?>
+
 </section>

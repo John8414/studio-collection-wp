@@ -7,19 +7,22 @@
 get_header();
 ?>
 <!-- Modern Furniture -->
-<div class="custome-container">
+<div class="custome-container  ">
 
     <!-- section title -->
     <div class="pb-5">
         <h2 class="text-60 fw-normal text-left black-neutral pb-2">
-            Modern Furniture
+            <?php echo get_the_title(); ?>
         </h2>
         <p class="text-20 text-left gray-neutral">
-            Browse our full collection to find the furniture that will help you curate your perfect, forever home.
+            <?php while (have_posts()) : the_post();
+                the_content();
+            endwhile;
+            wp_reset_query(); ?>
         </p>
     </div>
     <div class="position-relative carousel-height w-100">
-        <img loading=“lazy” src="<?php echo THEME_URL . '/images/fur-banner.png' ?>" alt="">
+        <img loading=“lazy” src="<?php echo get_the_post_thumbnail_url() ?>" alt=" <?php echo get_the_title(); ?>">
         <div class="overlay-30"></div>
     </div>
 </div>
@@ -34,30 +37,37 @@ get_header();
         </h2>
     </div>
     <div class="d-lg-flex align-items-center justify-content-between gap-3">
+        <?php
+        $args = array(
+            'taxonomy'   => 'product-category', // Danh mục mặc định
+            'parent'     => 0,          // Chỉ lấy danh mục cha
+            'hide_empty' => false,      // Để hiện cả những danh mục không có bài viết
+        );
+
+        $categories = get_terms($args);
+
+        if (!empty($categories) && !is_wp_error($categories)) {
+            global $defaultImage;
+            foreach ($categories as $category) {
+                $image = get_field('image', $category);
+                $avatar = $image['avatar'];
+        ?>
         <div class="custome-container-sm">
             <div class="img-scale">
-                <img loading=“lazy” src="<?php echo THEME_URL . '/images/outlet-furniture.png' ?>" alt="">
+                <img loading=“lazy” src="<?php echo $avatar['url'] ? $avatar['url'] : $defaultImage['url']  ?>"
+                    alt="<?php echo $category->name; ?>">
             </div>
             <div class="bottom-line-full w-fit pt-2">
-                <a class="text-32 black-neutral text-decoration-none w-fit" href="#">Outlet Funiture</a>
+                <a class="text-32 black-neutral text-decoration-none w-fit"
+                    href="<?php echo get_the_permalink($category); ?>">
+                    <?php echo $category->name; ?>
+                </a>
             </div>
         </div>
-        <div class="custome-container-sm">
-            <div class="img-scale">
-                <img loading=“lazy” src="<?php echo THEME_URL . '/images/outdoor-furniture.png' ?>" alt="">
-            </div>
-            <div class="bottom-line-full w-fit pt-2">
-                <a class="text-32 black-neutral text-decoration-none w-fit" href="#">Outdoor Funiture</a>
-            </div>
-        </div>
-        <div class="custome-container-sm">
-            <div class="img-scale">
-                <img loading=“lazy” src="<?php echo THEME_URL . '/images/cate.png' ?>" alt="">
-            </div>
-            <div class="bottom-line-full w-fit pt-2">
-                <a class="text-32 black-neutral text-decoration-none w-fit" href="#">Project Funiture</a>
-            </div>
-        </div>
+        <?php
+            }
+        }
+        ?>
     </div>
 </div>
 <!-- Categories -->
@@ -86,7 +96,8 @@ get_header();
                 </div>
                 <div class="w-100 position-relative pt-20 pb-2">
                     <p class="text-20 fw-medium text-black">$500.00</p>
-                    <button class="fav-btn"><img loading=“lazy” src="<?php echo THEME_URL . '/images/heart.svg' ?>" alt=""></button>
+                    <button class="fav-btn"><img loading=“lazy” src="<?php echo THEME_URL . '/images/heart.svg' ?>"
+                            alt=""></button>
                 </div>
                 <p class="text-20 gray-tertiary pb-2">Scott 2 Seater Sofa</p>
                 <p class="text-20 gray-neutral pb-20">N00-102</p>
@@ -123,7 +134,8 @@ get_header();
                 </div>
                 <div class="w-100 position-relative pt-20 pb-2">
                     <p class="text-20 fw-medium text-black">$500.00</p>
-                    <button class="fav-btn"><img loading=“lazy” src="<?php echo THEME_URL . '/images/heart.svg' ?>" alt=""></button>
+                    <button class="fav-btn"><img loading=“lazy” src="<?php echo THEME_URL . '/images/heart.svg' ?>"
+                            alt=""></button>
                 </div>
                 <p class="text-20 gray-tertiary pb-2">Scott 2 Seater Sofa</p>
                 <p class="text-20 gray-neutral pb-20">N00-102</p>
@@ -159,7 +171,8 @@ get_header();
                 </div>
                 <div class="w-100 position-relative pt-20 pb-2">
                     <p class="text-20 fw-medium text-black">$500.00</p>
-                    <button class="fav-btn"><img loading=“lazy” src="<?php echo THEME_URL . '/images/heart.svg' ?>" alt=""></button>
+                    <button class="fav-btn"><img loading=“lazy” src="<?php echo THEME_URL . '/images/heart.svg' ?>"
+                            alt=""></button>
                 </div>
                 <p class="text-20 gray-tertiary pb-2">Scott 2 Seater Sofa</p>
                 <p class="text-20 gray-neutral pb-20">N00-102</p>
@@ -195,7 +208,8 @@ get_header();
                 </div>
                 <div class="w-100 position-relative pt-20 pb-2">
                     <p class="text-20 fw-medium text-black">$500.00</p>
-                    <button class="fav-btn"><img loading=“lazy” src="<?php echo THEME_URL . '/images/heart.svg' ?>" alt=""></button>
+                    <button class="fav-btn"><img loading=“lazy” src="<?php echo THEME_URL . '/images/heart.svg' ?>"
+                            alt=""></button>
                 </div>
                 <p class="text-20 gray-tertiary pb-2">Scott 2 Seater Sofa</p>
                 <p class="text-20 gray-neutral pb-20">N00-102</p>

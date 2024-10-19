@@ -2,36 +2,30 @@
     <!-- section title -->
     <div class="w-title">
         <h2 class="text-60 fw-normal text-center black-neutral pb-2">
-            Inspiring Spaces with Timeless Elegance
+            <?php echo get_field('is_title', get_the_ID()); ?>
         </h2>
         <p class="text-20 text-center gray-neutral">
-            At Studio Collection, symbolized by the wise owl, we craft furniture that embodies wisdom and timeless
-            beauty.
-            Every piece is a blend of tradition and modern design, transforming your space into a sanctuary of elegance.
-            Let
-            our thoughtfully crafted collections inspire you to create a home that tells your unique story.
+            <?php echo get_field('is_description', get_the_ID()); ?>
         </p>
     </div>
-
+    <?php
+    $is_categories = get_field('is_categories',  get_the_ID());
+    if ($is_categories): ?>
     <div class="d-flex flex-wrap justify-content-center gap-40 pt-5">
-        <a href="#" class="text-decoration-none black-neutral">
+        <?php foreach ($is_categories as $term):
+                $image = get_field('image', $term);
+                $icon = $image['icon'];
+            ?>
+        <a href="<?php echo esc_url(get_term_link($term)); ?>"
+            class="d-inline-flex flex-column align-items-center text-decoration-none black-neutral">
             <div class="img-icon-large">
-                <img class="h-100 w-100" src="<?php echo THEME_URL . '/images/furniture.svg' ?> " alt="">
-            </div>
-            <span class="pt-2 text-center">Furniture outlet</span>
-        </a>
-        <a href="#" class="text-decoration-none black-neutral">
-            <div class="img-icon-large">
-                <img class="h-100 w-100" src="<?php echo THEME_URL . '/images/furniture.svg' ?> " alt="">
-            </div>
-            <span class="pt-2 text-center">Furniture outlet</span>
-        </a>
-        <a href="#" class="text-decoration-none black-neutral">
-            <div class="img-icon-large">
-                <img class="h-100 w-100" src="<?php echo THEME_URL . '/images/furniture.svg' ?> " alt="">
-            </div>
-            <span class="pt-2 text-center">Furniture outlet</span>
-        </a>
-    </div>
+                <img class="h-100 w-100" src="<?php echo $icon['url'] ?> " alt="<?php echo $icon['alt'] ?>">
 
+            </div>
+            <p class="pt-2"><?php echo esc_html($term->name); ?></p>
+        </a>
+        <?php endforeach;
+            wp_reset_query(); ?>
+    </div>
+    <?php endif; ?>
 </section>

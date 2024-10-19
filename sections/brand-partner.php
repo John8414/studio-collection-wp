@@ -1,36 +1,28 @@
-<!-- start BRAND PARTNER -->
- <section class="pt-40 ">
+<section class="pt-40 ">
     <div class="custome-containerpy-0">
-    <!-- section title -->
-    <div class="pb-40">
-        <h2 class="text-60 fw-normal text-center black-neutral pb-2">
-            BRAND PARTNER
-        </h2>
-        <p class="text-20 text-center gray-neutral">
-            Uncover a World of Design Possibilities for Every Room
-        </p>
-    </div>
+        <div class="pb-40">
+            <h2 class="text-60 fw-normal text-center black-neutral pb-2">
+                <?php echo get_field('bp_title', get_the_ID()); ?>
+            </h2>
+            <p class="text-20 text-center gray-neutral">
+                <?php echo get_field('bp_description', get_the_ID()); ?>
+            </p>
+        </div>
     </div>
 
+    <?php
+    $images = get_field('bp_partners', get_the_ID());
+    if ($images): ?>
     <div class="d-flex flex-wrap align-items-center justify-content-center gap-40 pb-40">
-        <div class="">
-            <img loading=“lazy” src="<?php echo THEME_URL . '/images/brand-4.svg' ?> " alt="">
+
+        <?php foreach ($images as $image): ?>
+        <div>
+            <img loading=“lazy” src="<?php echo esc_url($image['sizes']['thumbnail']); ?>"
+                alt="<?php echo esc_attr($image['alt']); ?>">
+
         </div>
-        <div class="">
-            <img loading=“lazy” src="<?php echo THEME_URL . '/images/brand-1.svg' ?> " alt="">
-        </div>
-        <div class="">
-            <img loading=“lazy” src="<?php echo THEME_URL . '/images/brand-2.svg' ?> " alt="">
-        </div>
-        <div class="">
-            <img loading=“lazy” src="<?php echo THEME_URL . '/images/brand-3.svg' ?> " alt="">
-        </div>
-        <div class="">
-            <img loading=“lazy” src="<?php echo THEME_URL . '/images/brand-6.svg' ?> " alt="">
-        </div>
-        <div class="">
-            <img loading=“lazy” src="<?php echo THEME_URL . '/images/brand-5.svg' ?> " alt="">
-        </div>
+        <?php endforeach; ?>
     </div>
+
+    <?php endif; ?>
 </section>
-<!-- end BRAND PARTNER -->
