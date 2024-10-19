@@ -47,17 +47,22 @@ if (function_exists('acf_add_options_page')) {
     );
 }
 
-function htmlMenu($cat, $item)
+function htmlMenu($listCat, $item)
 {
     $item_output = '<div>';
-    $listCat = get_terms(array(
-        'taxonomy' => 'loai-san-pham',
-        'parent' => $cat->term_id,
-        'hide_empty' => false,
-    ));
+
 
     $classes = empty($item->classes) ? array() : (array) $item->classes;
+
+    if ($listCat) {
+        $classes[] = 'submenu-item';
+    }
+
     $class_names = join(' ', apply_filters('nav_menu_css_class', array_filter($classes), $item));
+
+    $class_names = str_replace('active', '', $class_names);
+    $class_names = trim(preg_replace('/\s+/', ' ', $class_names));
+
     $protocol = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https://' : 'http://';
     $host = $_SERVER['HTTP_HOST'];
     $uri = $_SERVER['REQUEST_URI'];
@@ -79,6 +84,48 @@ function htmlMenu($cat, $item)
     $item_output .= '</div>';
     return $item_output;
 }
+function updateDefaultImages($images, $item_output)
+{
+    // Lấy hình ảnh mặc định từ ACF
+    $defaultImage = get_field('image_default', 'option');
+
+    // Tạo mảng hình ảnh mặc định
+    $defaultImages = array(
+        array(
+            'url' => $defaultImage['url'],
+            'alt' => $defaultImage['alt'],
+            'defaultID' => 0
+        ),
+        array(
+            'url' => $defaultImage['url'],
+            'alt' => $defaultImage['alt'],
+            'defaultID' => 1
+        ),
+    );
+
+    $item_output = '<div class="ms-auto d-flex">';
+
+    foreach ($defaultImages as $key => $image) {
+        $item_output .= '<div class="coll-3 des-img">';
+        if (isset($images[$key])) {
+            $term = $images[0];
+            $hero = get_field('image', $term);
+            if ($hero && isset($hero['avatar'])) { // Kiểm tra nếu $hero và $avatar có giá trị
+                $avatar = $hero['avatar'];
+                $item_output .= '<a class="item d-block py-0" href="' . esc_url(get_term_link($term)) . '">';
+                $item_output .= '<img class="h-100 w-100 pb-3" src="' . esc_url($avatar['url']) . '" alt="' . esc_attr($avatar['alt']) . '">';
+                $item_output .= '<p class="post-name d-block">' . esc_html($term->name) . '</p>';
+                $item_output .= '</a>';
+            }
+        } else {
+            $item_output .= '<img class="h-100 w-100 pb-3" src="' . esc_url($image['url']) . '" alt="' . esc_attr($image['alt']) . '">';
+        }
+        $item_output .= '</div>';
+    }
+    $item_output .= '</div>';
+    return $item_output;
+}
+
 
 class Mega_Menu_Walker extends Walker_Nav_Menu
 {
@@ -118,6 +165,14 @@ class Mega_Menu_Walker extends Walker_Nav_Menu
 
         if ($megaMenu) {
             $category = get_field('categories', $item);
+            $defaultImage = get_field('image_default', 'option');
+
+            $listCat = get_terms(array(
+                'post_type' => 'product',
+                'taxonomy' => 'product-category',
+                'parent' => $category->term_id,
+                'hide_empty' => false,
+            ));
             $layout = get_field('layout', $item);
             $images = get_field('outlet_images', $item);
             $des = get_field('description', $item);
@@ -127,8 +182,12 @@ class Mega_Menu_Walker extends Walker_Nav_Menu
             $item_output .= ' <div class="d-flex justify-content-end">';
             if (!$layout) {
                 $item_output .= '<div class="view-all-list">';
-                $item_output .= '<p class="pb-40 text-16 black-neutral fw-bold">View All:</p>';
-                $item_output .= htmlMenu($category, $item);
+                if (!empty($listCat) && !is_wp_error($listCat)) {
+                    $item_output .= '<p class="pb-40 text-16 black-neutral fw-bold">View All:</p>';
+                    $item_output .= htmlMenu($listCat, $item);
+                } else {
+                    $item_output .= '<p class="pb-40 text-16 black-neutral fw-bold">' . $category->name . '</p>';
+                }
                 $item_output .= '</div>';
 
                 if ($des) {
@@ -137,44 +196,40 @@ class Mega_Menu_Walker extends Walker_Nav_Menu
                     $item_output .= '</div>';
                 }
 
-                $item_output .= '<div class="ms-auto d-flex">';
-                    foreach ($images as $key => $term) {
-                        // hình ảnh
-                        $hero = get_field('image', $term);
-                        $avatar = $hero['icon'];
-                        $item_output .= '<div class="coll-3 des-img">';
-                        $item_output .= '<a class="item d-block py-0" href="' . get_term_link($term) . '">';
-                        $item_output .= '<img class="h-100 w-100 pb-3" src="http://localhost:8080/wp-content/themes/my-theme/images/flo-0.png "alt="' . $avatar['alt'] . ' ">';
-                        $item_output .= '<p class="post-name d-block">' . $term->name . '</p>';
-                        $item_output .= '</a>';
-                        $item_output .= '</div>';
-                    }
-                $item_output .= '</div>';
+                $item_output .= updateDefaultImages($images, $item_output);
             } else {
                 // layout inline
                 $item_output .= '<div class="view-all-list coll-inline">';
-                $item_output .= '<p class="pb-40 text-16 black-neutral fw-bold">View All:</p>';
-                $item_output .= htmlMenu($category, $item);
+
+                if (!empty($listCat) && !is_wp_error($listCat)) {
+                    $item_output .= '<p class="pb-40 text-16 black-neutral fw-bold">View All:</p>';
+                    $item_output .= htmlMenu($listCat, $item);
+                } else {
+                    $item_output .= '<p class="pb-40 text-16 black-neutral fw-bold">' . $category->name . '</p>';
+                }
                 $item_output .= '</div>';
                 $item_output .= '<div class="d-flex justify-content-between flex-grow-1">';
 
-                    if ($des) {
-                        $item_output .= '<div class="menu-description">';
-                        $item_output .= '<div class="text-16 black-neutral">' . $des . '</div>';
-                        $item_output .= '</div>';
-                    }
+                if ($des) {
+                    $item_output .= '<div class="menu-description">';
+                    $item_output .= '<div class="text-16 black-neutral">' . $des . '</div>';
+                    $item_output .= '</div>';
+                }
 
-                    $item_output .= '<div class="des-img ms-5">';
+                $item_output .= '<div class="des-img ms-5">';
+                if (!$images) {
+                    $item_output .= '<img class="h-100 w-100 pb-3" src="' . esc_url($defaultImage['url']) . '" alt="' . esc_attr($defaultImage['alt']) . '">';
+                } else {
                     foreach ($images as $key => $term) {
                         $hero = get_field('image', $term);
-                        $avatar = $hero['icon'];
-
+                        $avatar = $hero['avatar'];
                         $item_output .= '<a class="item d-block" href="' . get_term_link($term) . '">';
-                        $item_output .= '<img class="h-100 w-100 pb-3" src="http://localhost:8080/wp-content/themes/my-theme/images/flo-0.png "alt="' . $avatar['alt'] . ' ">';
+                        $item_output .= '<img class="h-100 w-100 pb-3" src="' . $avatar['url'] . '" alt="' . $avatar['alt'] . ' ">';
                         $item_output .= '<p class="post-name d-block">' . $term->name . '</p>';
                         $item_output .= '</a>';
                     }
-                    $item_output .= '</div>';
+                }
+                $item_output .= '</div>';
                 $item_output .= '</div>';
             }
 

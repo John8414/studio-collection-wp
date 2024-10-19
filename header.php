@@ -14,4 +14,11 @@
 </head>
 
 <body <?php body_class(); ?>>
-    <?php get_template_part('sections/header-main'); ?>
+    <?php
+
+    $defaultImage = get_field('default_image', 'option');
+    $defaultIcon = THEME_URL . '/images/furniture.svg';
+    $defaultBanner = THEME_URL . '/images/banner-1.png';
+    get_template_part('sections/header-main');
+    ?>
+    <div class="pt-180"></div>

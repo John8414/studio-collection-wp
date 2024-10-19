@@ -1,9 +1,5 @@
 <?php
 
-/**
- * Template Name: Outlet Furniture
- */
-
 get_header();
 ?>
 <!-- Living Room Furniture -->

@@ -176,6 +176,21 @@ $(document).ready(function () {
     }
   });
 
+  let lastScrollTop = 0;
+  const element = $('.scroll-header');
+
+  $(window).on('scroll', function () {
+    const scrollTop = $(this).scrollTop(); // Lấy vị trí cuộn
+
+    if (scrollTop > lastScrollTop && scrollTop > 180) {
+      element.addClass('scroll-down').removeClass('scroll-up ');
+    } else {
+      element.addClass('scroll-up').removeClass('scroll-down');
+    }
+
+    lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // Cập nhật vị trí cuộn
+  });
+
   $('.carousel-banner').slick({
     dots: true,
     infinite: true,
@@ -184,23 +199,23 @@ $(document).ready(function () {
     autoplaySpeed: 5000,
   });
 
-//sticky header
-  let lastScrollTop = 0;
-  const element = document.querySelector('.scroll-header');
+  //sticky header
+  // let lastScrollTop = 0;
+  // const element = document.querySelector('.scroll-header');
 
-  window.addEventListener('scroll', function() {
-    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+  // window.addEventListener('scroll', function() {
+  //   const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
-    if (scrollTop > lastScrollTop && scrollTop > 180) {
-      element.classList.add('scroll-down');
-      element.classList.remove('scroll-up');
-    } else {
-      element.classList.add('scroll-up');
-      element.classList.remove('scroll-down');
-    }
-    
-    lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
-  });
+  //   if (scrollTop > lastScrollTop && scrollTop > 180) {
+  //     element.classList.add('scroll-down');
+  //     element.classList.remove('scroll-up');
+  //   } else {
+  //     element.classList.add('scroll-up');
+  //     element.classList.remove('scroll-down');
+  //   }
+
+  //   lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+  // });
 
 
 });
