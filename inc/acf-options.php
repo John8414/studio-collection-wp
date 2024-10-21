@@ -74,7 +74,7 @@ function htmlMenu($listCat, $item)
         $item_output .= ' <ul class="list">';
 
         foreach ($listCat as $term) {
-            $item_output .= '     <li class="'  . ($currentURL === get_term_link($term) ? 'active ' : '') . $class_names . '">';
+            $item_output .= '     <li class="' . ($currentURL === get_term_link($term) ? 'active ' : '') . $class_names . '">';
             $item_output .= '        <a href="' . get_term_link($term) . '" class="text-capitalize black-neutral text-16 py-2 d-inline-flex a-red-hover">' . $term->name . '</a>';
             $item_output .= '    </li>';
         }
@@ -137,7 +137,7 @@ class Mega_Menu_Walker extends Walker_Nav_Menu
 
         $classes = empty($item->classes) ? array() : (array) $item->classes;
 
-        $megaClass = $megaMenu ?  'has-mega-menu ' : '';
+        $megaClass = $megaMenu ? 'has-mega-menu ' : '';
 
         $class_names = join(' ', apply_filters('nav_menu_css_class', array_filter($classes), $item));
         $class_names = $class_names ? ' class="' . $megaClass . esc_attr($class_names) . '"' : '';
@@ -177,7 +177,7 @@ class Mega_Menu_Walker extends Walker_Nav_Menu
             $images = get_field('outlet_images', $item);
             $des = get_field('description', $item);
 
-            $item_output .= '<div class="mega-menu bg-white position-absolute top-100 ' . ($layout ? 'inline' : 'vertical')  . ' ">';
+            $item_output .= '<div class="mega-menu bg-white position-absolute top-100 ' . ($layout ? 'inline' : 'vertical') . ' ">';
             $item_output .= '<div class="custome-container">';
             $item_output .= ' <div class="d-flex justify-content-end">';
             if (!$layout) {
