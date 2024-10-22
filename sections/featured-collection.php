@@ -32,7 +32,7 @@
             set_query_var('slide_title', 'Design Your Dream Home');
 
             ?>
-            <div>
+            <div class="feature-collection-section">
 
                 <!-- Item preview -->
                 <div class="d-block d-md-flex gap-25 image-picker">
