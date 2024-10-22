@@ -4,13 +4,13 @@ $term = get_queried_object();
 $id = get_queried_object_id();
 
 $total_products = count(get_posts(array(
-    'post_type'      => 'product',
+    'post_type' => 'product',
     'posts_per_page' => -1,
-    'tax_query'      => array(
+    'tax_query' => array(
         array(
             'taxonomy' => 'product-category',
-            'field'    => 'term_id',
-            'terms'    => $id,
+            'field' => 'term_id',
+            'terms' => $id,
         ),
     ),
     'fields' => 'ids' // Chỉ lấy ID để giảm tải truy vấn
@@ -97,7 +97,7 @@ $total_products = count(get_posts(array(
     </div>
     <!-- Filter bar  -->
 
-    <div class="d-flex gap-4">
+    <div class="d-flex gap-40">
         <!-- filter collapse -->
         <div class="">
             <?php get_template_part('sidebar'); ?>
@@ -122,50 +122,51 @@ $total_products = count(get_posts(array(
                 ),
             ]);
 
-            if ($query && $query->have_posts()) :
-                while ($query->have_posts()) :
+            if ($query && $query->have_posts()):
+                while ($query->have_posts()):
                     $query->the_post();
                     $product_id = get_the_ID();
                     $displayPrice = get_field('display_price');
-            ?>
-            <div class="card-product text-start">
-                <a href="<?php the_permalink(); ?>" class="text-decoration-none">
-                    <div class="img-scale">
-                        <?php the_post_thumbnail('full'); ?>
-                    </div>
-                </a>
-                <div class="w-100 position-relative pt-20 pb-2">
-                    <a href="<?php the_permalink(); ?>" class="text-decoration-none">
-                        <p class="text-20 fw-medium text-black">
-                            <?php echo $displayPrice['currency'] . $displayPrice['original_price']; ?>
-                        </p>
-                    </a>
-                    <button class="fav-btn fs-5 " data-product-id="<?php the_ID(); ?>" onclick="toggleFavorite(event)">
-                        <?php
+                    ?>
+                    <div class="card-product text-start">
+                        <a href="<?php the_permalink(); ?>" class="text-decoration-none">
+                            <div class="img-scale">
+                                <?php the_post_thumbnail('full'); ?>
+                            </div>
+                        </a>
+                        <div class="w-100 position-relative pt-20 pb-2">
+                            <a href="<?php the_permalink(); ?>" class="text-decoration-none">
+                                <p class="text-20 fw-medium text-black">
+                                    <?php echo $displayPrice['currency'] . $displayPrice['original_price']; ?>
+                                </p>
+                            </a>
+                            <button class="fav-btn fs-5 " data-product-id="<?php the_ID(); ?>" onclick="toggleFavorite(event)">
+                                <?php
                                 $is_favorite = get_post_meta(get_the_ID(), '_is_favorite', true);
                                 if ($is_favorite == '1'): ?>
-                        <i class="fa fa-heart" style="color: #E91919" aria-hidden="true"></i>
-                        <?php else: ?>
-                        <i class="fa fa-heart-o" aria-hidden="true"></i>
-                        <?php endif; ?>
-                    </button>
-                </div>
-                <a href="<?php the_permalink(); ?>" class="text-decoration-none">
-                    <p class="text-20 gray-tertiary pb-2"><?php the_title(); ?></p>
-                    <p class="text-20 gray-neutral pb-20"><?php echo get_field('more_info')['code']; ?></p>
-                    <p class="fw-medium text-20 gray-neutral">
-                        <?php echo (get_the_terms($product_id, 'color') && !is_wp_error(get_the_terms($product_id, 'color'))) ? count(get_the_terms($product_id, 'color')) . ' colors' : ''; ?>
-                    </p>
-                </a>
-            </div>
-            <?php
+                                    <i class="fa fa-heart" style="color: #E91919" aria-hidden="true"></i>
+                                <?php else: ?>
+                                    <i class="fa fa-heart-o" aria-hidden="true"></i>
+                                <?php endif; ?>
+                            </button>
+                        </div>
+                        <a href="<?php the_permalink(); ?>" class="text-decoration-none">
+                            <p class="text-20 gray-tertiary pb-2"><?php the_title(); ?></p>
+                            <p class="text-20 gray-neutral pb-20"><?php echo get_field('more_info')['code']; ?></p>
+                            <p class="fw-medium text-20 gray-neutral">
+                                <?php echo (get_the_terms($product_id, 'color') && !is_wp_error(get_the_terms($product_id, 'color'))) ? count(get_the_terms($product_id, 'color')) . ' colors' : ''; ?>
+                            </p>
+                        </a>
+                    </div>
+                    <?php
                 endwhile;
                 wp_reset_postdata();
 
             endif;
             ?>
             <div class="pagenavi">
-                <?php if (function_exists('devvn_wp_corenavi')) devvn_wp_corenavi($query); ?>
+                <?php if (function_exists('devvn_wp_corenavi'))
+                    devvn_wp_corenavi($query); ?>
             </div>
         </div>
         <!-- list -->

@@ -113,12 +113,12 @@ function updateDefaultImages($images, $item_output)
             if ($hero && isset($hero['avatar'])) { // Kiểm tra nếu $hero và $avatar có giá trị
                 $avatar = $hero['avatar'];
                 $item_output .= '<a class="item d-block py-0" href="' . esc_url(get_term_link($term)) . '">';
-                $item_output .= '<img class="h-100 w-100 pb-3" src="' . esc_url($avatar['url']) . '" alt="' . esc_attr($avatar['alt']) . '">';
+                $item_output .= '<img class="header-thumb pb-3" src="' . esc_url($avatar['url']) . '" alt="' . esc_attr($avatar['alt']) . '">';
                 $item_output .= '<p class="post-name d-block">' . esc_html($term->name) . '</p>';
                 $item_output .= '</a>';
             }
         } else {
-            $item_output .= '<img class="h-100 w-100 pb-3" src="' . esc_url($image['url']) . '" alt="' . esc_attr($image['alt']) . '">';
+            $item_output .= '<img class="header-thumb pb-3" src="' . esc_url($image['url']) . '" alt="' . esc_attr($image['alt']) . '">';
         }
         $item_output .= '</div>';
     }
@@ -192,7 +192,7 @@ class Mega_Menu_Walker extends Walker_Nav_Menu
 
                 if ($des) {
                     $item_output .= '<div class="coll-2 menu-description">';
-                    $item_output .= '<div class="text-16 black-neutral">' . $des . '</div>';
+                    $item_output .= '<div class="text-16 gray-subtext">' . $des . '</div>';
                     $item_output .= '</div>';
                 }
 
@@ -212,19 +212,19 @@ class Mega_Menu_Walker extends Walker_Nav_Menu
 
                 if ($des) {
                     $item_output .= '<div class="menu-description">';
-                    $item_output .= '<div class="text-16 black-neutral">' . $des . '</div>';
+                    $item_output .= '<div class="text-16 gray-subtext">' . $des . '</div>';
                     $item_output .= '</div>';
                 }
 
                 $item_output .= '<div class="des-img ms-5">';
                 if (!$images) {
-                    $item_output .= '<img class="h-100 w-100 pb-3" src="' . esc_url($defaultImage['url']) . '" alt="' . esc_attr($defaultImage['alt']) . '">';
+                    $item_output .= '<img class="header-thumb pb-3" src="' . esc_url($defaultImage['url']) . '" alt="' . esc_attr($defaultImage['alt']) . '">';
                 } else {
                     foreach ($images as $key => $term) {
                         $hero = get_field('image', $term);
                         $avatar = $hero['avatar'];
                         $item_output .= '<a class="item d-block" href="' . get_term_link($term) . '">';
-                        $item_output .= '<img class="h-100 w-100 pb-3" src="' . $avatar['url'] . '" alt="' . $avatar['alt'] . ' ">';
+                        $item_output .= '<img class="header-thumb pb-3" src="' . $avatar['url'] . '" alt="' . $avatar['alt'] . ' ">';
                         $item_output .= '<p class="post-name d-block">' . $term->name . '</p>';
                         $item_output .= '</a>';
                     }

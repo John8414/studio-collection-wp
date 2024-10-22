@@ -47,14 +47,15 @@ get_header();
         </div>
 
         <div class="d-flex flex-column gap-3 w-628 p-4 contact-form">
-            <?php echo do_shortcode('[gravityform id="3" title="true" description="true" ajax="true"] '); ?>
+            <?php echo do_shortcode('[gravityform id="1" title="true" description="true" ajax="true"] '); ?>
         </div>
     </div>
 </div>
 
 
 <div class="custome-container">
-    <?php while (have_posts()) : the_post();
+    <?php while (have_posts()):
+        the_post();
         the_content();
     endwhile; ?>
 </div>

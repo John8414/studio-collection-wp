@@ -13,7 +13,8 @@
                         $logo = get_field('logo', 'option');
                         if ($logo) {
                             echo wp_get_attachment_image($logo['id'], 'full');
-                        }; ?>
+                        }
+                        ; ?>
                     </a>
                 </div>
             </div>
@@ -53,11 +54,17 @@
     </div>
     <!-- end mobile  -->
 
-
     <div class="sticky-header d-none d-xl-block">
-        <div class="info-header py-1">
-            <div class="d-flex align-items-center justify-content-center custome-container py-2 text-white">
+        <div class="info-header">
+            <div class="d-flex align-items-center justify-content-between custome-container py-2 text-white">
                 <?php the_field('promotion', 'option'); ?>
+                <div class="d-flex align-items-center justify-content-center gap-2">
+                    <a class="text-14" href="#">DESIGN.DEFINED</a>
+                    <p class="text-14 text-white">•</p>
+                    <a class="text-14" href="#">CONTACT</a>
+                    <p class="text-14 text-white">•</p>
+                    <a class="text-14" href="#">LOCATION</a>
+                </div>
             </div>
         </div>
 
@@ -78,7 +85,8 @@
                         $logo = get_field('logo', 'option');
                         if ($logo) {
                             echo wp_get_attachment_image($logo['id'], 'full');
-                        }; ?>
+                        }
+                        ; ?>
                     </a>
 
                 </div>
@@ -91,9 +99,9 @@
                         <div id="favorite-count-number">
                             <?php
                             if ($favorites > 0): ?>
-                            <i class="fa fa-heart" style="color: #E91919" aria-hidden="true"></i>
+                                <i class="fa fa-heart" style="color: #E91919" aria-hidden="true"></i>
                             <?php else: ?>
-                            <i class="fa fa-heart-o" aria-hidden="true"></i>
+                                <i class="fa fa-heart-o" aria-hidden="true"></i>
                             <?php endif; ?>
                         </div>
                         <p>Favorite</p>
@@ -132,21 +140,21 @@
         <?php
         $terms = get_field('search_categories', 'option');
         if ($terms): ?>
-        <ul class="search-icon-list pt-40 ps-0">
-            <?php foreach ($terms as $term):
+            <ul class="search-icon-list pt-40 ps-0">
+                <?php foreach ($terms as $term):
                     $hero = get_field('image', $term);
                     $avatar = $hero['icon'];
-                ?>
-            <li class="d-flex flex-column align-items-center justify-content-center">
-                <!-- <a href="<?php echo esc_url(get_term_link($term)); ?>"> -->
-                <p class="text-center text-uppercase"><?php echo esc_html($term->name); ?></p>
-                <div class="icon-search-enable">
-                    <img class="h-100 w-100" src="<?php echo $avatar['url'] ?> " alt="<?php echo $avatar['alt'] ?> ">
-                </div>
-                <!-- </a> -->
-            </li>
-            <?php endforeach; ?>
-        </ul>
+                    ?>
+                    <li class="d-flex flex-column align-items-center justify-content-center">
+                        <!-- <a href="<?php echo esc_url(get_term_link($term)); ?>"> -->
+                        <p class="text-center text-uppercase"><?php echo esc_html($term->name); ?></p>
+                        <div class="icon-search-enable">
+                            <img class="h-100 w-100" src="<?php echo $avatar['url'] ?> " alt="<?php echo $avatar['alt'] ?> ">
+                        </div>
+                        <!-- </a> -->
+                    </li>
+                <?php endforeach; ?>
+            </ul>
         <?php endif; ?>
     </div>
     <!-- Search enable -->

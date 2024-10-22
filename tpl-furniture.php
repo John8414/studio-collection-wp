@@ -13,7 +13,8 @@ get_header();
             <?php echo get_the_title(); ?>
         </h2>
         <p class="text-20 text-left gray-neutral">
-            <?php while (have_posts()) : the_post();
+            <?php while (have_posts()):
+                the_post();
                 the_content();
             endwhile;
             wp_reset_query(); ?>
@@ -34,10 +35,10 @@ get_header();
 </div>
 
 
-<?php $page_category = get_field('category_page',  get_the_ID());
+<?php $page_category = get_field('category_page', get_the_ID());
 $child_terms = get_terms(array(
-    'taxonomy'   => 'product-category',
-    'parent'     => $page_category->term_id,
+    'taxonomy' => 'product-category',
+    'parent' => $page_category->term_id,
     'hide_empty' => false,
 ));
 

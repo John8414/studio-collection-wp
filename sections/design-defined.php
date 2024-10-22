@@ -1,16 +1,16 @@
-<section class="position-relative carousel-height w-100">
+<section class="position-relative carousel-height w-100 my-80">
     <?php
-    $content =  get_field('des_video', get_the_ID());
+    $content = get_field('des_video', get_the_ID());
     if (strpos($content, '<iframe') !== false) {
         echo $content;
     } else { ?>
-    <video class="w-100 carousel-height object-fit-cover" autoplay loop>
-        <source src="<?php echo $content; ?>" type="video/mp4">
-    </video>
+        <video class="w-100 carousel-height object-fit-cover" autoplay loop>
+            <source src="<?php echo $content; ?>" type="video/mp4">
+        </video>
     <?php } ?>
     <div class="overlay-30"></div>
     <div
-        class="z-3 position-absolute bottom-0 w-100 h-100 p-20 d-flex flex-column justify-content-center align-items-center gap-3">
+        class="z-3 position-absolute bottom-0 w-100 h-100 d-flex flex-column justify-content-center align-items-center gap-3">
         <h2 class="text-60 fw-bold text-white"><?php echo get_field('des_title', get_the_ID()); ?></h2>
         <p class="text-20 white-regular"><?php echo get_field('des_description', get_the_ID()); ?></p>
         <button class="arr-button bg-transparent">

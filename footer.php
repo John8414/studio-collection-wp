@@ -5,11 +5,11 @@
             $logoFt = get_field('logo_footer', 'option');
             if ($logoFt) {
                 echo wp_get_attachment_image($logoFt['id'], 'full');
-            }; ?>
+            }
+            ; ?>
         </a>
     </div>
-    <div
-        class="d-flex flex-column flex-lg-row gap-3 justify-content-between align-items-start pt-lg-5 custome-container-sm">
+    <div class="d-flex flex-column flex-lg-row gap-3 justify-content-between align-items-start pt-lg-5">
         <div class="d-flex flex-column gap-3 col-lg-4">
             <?php wp_nav_menu(['theme_location' => 'Menu_2',]); ?>
         </div>

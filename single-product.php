@@ -56,12 +56,12 @@ $product_id = get_the_ID();
                     <?php $gallery = get_field('gallery');
                     if ($gallery):
                         foreach ($gallery as $key => $image):
-                    ?>
+                            ?>
 
-                    <div class="thumbnail ratio ratio-1x1">
-                        <img loading=“lazy” src="<?php echo $image['url']; ?>" alt="<?php the_title() ?>">
-                    </div>
-                    <?php endforeach;
+                            <div class="thumbnail ratio ratio-1x1">
+                                <img loading=“lazy” src="<?php echo $image['url']; ?>" alt="<?php the_title() ?>">
+                            </div>
+                        <?php endforeach;
                     endif; ?>
                 </div>
 
@@ -81,9 +81,9 @@ $product_id = get_the_ID();
                             <?php
                             $is_favorite = get_post_meta(get_the_ID(), '_is_favorite', true);
                             if ($is_favorite == '1'): ?>
-                            <i class="fa fa-heart" style="color: #E91919" aria-hidden="true"></i>
+                                <i class="fa fa-heart" style="color: #E91919" aria-hidden="true"></i>
                             <?php else: ?>
-                            <i class="fa fa-heart-o" aria-hidden="true"></i>
+                                <i class="fa fa-heart-o" aria-hidden="true"></i>
                             <?php endif; ?>
                         </button>
                     </div>
@@ -97,11 +97,11 @@ $product_id = get_the_ID();
                         <span class="original-price"> <?php echo $displayPrice['original_price']; ?></span>
                     </p>
                     <?php if ($displayPrice['original_price_copy']): ?>
-                    <p class="text-32 red-primary ">
-                        <?php echo $displayPrice['original_price_copy'] ?  $displayPrice['currency'] . ' ' : ''; ?>
-                        <span class="sale-price">
-                            <?php echo $displayPrice['original_price_copy'] ? $displayPrice['original_price_copy'] : ''; ?></span>
-                    </p>
+                        <p class="text-32 red-primary ">
+                            <?php echo $displayPrice['original_price_copy'] ? $displayPrice['currency'] . ' ' : ''; ?>
+                            <span class="sale-price">
+                                <?php echo $displayPrice['original_price_copy'] ? $displayPrice['original_price_copy'] : ''; ?></span>
+                        </p>
                     <?php endif ?>
                 </div>
                 <div class="text-20 gray-tertiary"><?php the_excerpt(); ?></div>
@@ -122,11 +122,11 @@ $product_id = get_the_ID();
                                 $price = $row['original_price'];
                                 $salePrice = $row['sale_price'];
                                 $image = $row['image']['url'];
-                        ?>
-                        <button type="button" data-color="<?php echo $term->term_id; ?>"
-                            onclick="handleChangeColor(<?php echo $price; ?>,<?php echo $salePrice; ?>,<?php echo $term->term_id; ?>, '<?php echo $image; ?>'  )"
-                            class="color-tags" style="background-color: <?php echo $color; ?>;"></button>
-                        <?php
+                                ?>
+                                <button type="button" data-color="<?php echo $term->term_id; ?>"
+                                    onclick="handleChangeColor(<?php echo $price; ?>,<?php echo $salePrice; ?>,<?php echo $term->term_id; ?>, '<?php echo $image; ?>'  )"
+                                    class="color-tags" style="background-color: <?php echo $color; ?>;"></button>
+                                <?php
                             }
                         }
                         ?>
@@ -136,37 +136,30 @@ $product_id = get_the_ID();
             </div>
             <?php $reasons_to_buy = $moreInfo['reasons_to_buy'];
             if ($reasons_to_buy):
-            ?>
-            <div class="d-flex flex-column gap-2">
-                <p class="text-20 black-neutral pb-2">Reasons to buy</p>
-                <?php
+                ?>
+                <div class="d-flex flex-column gap-2">
+                    <p class="text-20 black-neutral pb-2">Reasons to buy</p>
+                    <?php
                     foreach ($reasons_to_buy as $row) {
                         $text = $row['text'];
                         $tooltip = $row['tooltip'];
-                    ?>
-                <div class="d-flex align-items-center justify-content-start gap-3">
+                        ?>
+                        <div class="d-flex align-items-center justify-content-start gap-3">
 
-                    <p class="text-20 gray-tertiary"><?php echo $text; ?></p>
-                    <?php if ($tooltip) { ?>
-                    <div class="tooltip-container">
-                        <img loading=“lazy” src="<?php echo THEME_URL . '/images/product-tooltip.svg' ?>" alt="">
-                        <div class="tooltip text-20 gray-tertiary"><?php echo $tooltip; ?> </div>
-                    </div>
+                            <p class="text-20 gray-tertiary"><?php echo $text; ?></p>
+                            <?php if ($tooltip) { ?>
+                                <div class="tooltip-container">
+                                    <img loading=“lazy” src="<?php echo THEME_URL . '/images/product-tooltip.svg' ?>" alt="">
+                                    <div class="tooltip text-20 gray-tertiary"><?php echo $tooltip; ?> </div>
+                                </div>
+                            <?php } ?>
+                        </div>
                     <?php } ?>
                 </div>
-                <?php } ?>
-            </div>
             <?php endif; ?>
             <!-- //TODO -->
             <div class="product-info-cta">
-                <h3 class="text-32 black-neutral pb-2">
-                    Contact with us
-                </h3>
-                <p class="text-20 gray-subtext">
-                    Leave your details, and we’ll reach out to assist with your purchase
-                </p>
-                <input placeholder="Email Address" class="text-16 p-2" type="text">
-                <button class="mx-auto text-20 black-neutral w-fit bottom-line-full">SEND YOUR EMAIL</button>
+                <?php echo do_shortcode('[gravityform id="3" title="true" description="true" ajax="true"] '); ?>
             </div>
             <!-- //TODO -->
             <div>
@@ -189,7 +182,8 @@ $product_id = get_the_ID();
 
                 <div class="collapse multi-collapse" id="collapse-detail">
                     <div class="d-flex flex-column gap-3 bottom-line-full pb-3">
-                        <?php while (have_posts()) : the_post();
+                        <?php while (have_posts()):
+                            the_post();
                             the_content();
                         endwhile; ?>
                     </div>
@@ -265,13 +259,13 @@ $product_id = get_the_ID();
             Discover more
         </h2>
     </div>
-    <div class="position-relative w-100 pb-4">
+    <div class="position-relative w-100">
         <?php $discoverMore = get_field('discover_more');
         if ($discoverMore) {
             echo $discoverMore;
         } else { ?>
-        <img loading=“lazy” src="<?php echo THEME_URL . '/images/carousel.jpg' ?>" alt="">
-        <div class="overlay-30"></div>
+            <img loading=“lazy” src="<?php echo THEME_URL . '/images/carousel.jpg' ?>" alt="">
+            <div class="overlay-30"></div>
         <?php }
         ?>
     </div>

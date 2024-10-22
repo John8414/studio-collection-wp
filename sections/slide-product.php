@@ -20,10 +20,9 @@ $title = get_query_var('slide_title');
 ?>
 
 <div class="custome-container">
-    <div class="custome-container-sm">
-        <div class="d-flex justify-content-between">
-            <h4 class="text-32 fw-bold black-neutral"><?php echo $title; ?></h4>
-            <?php if ($query->have_posts()) : ?>
+    <div class="d-flex justify-content-between pb-40">
+        <h4 class="text-32 fw-bold black-neutral"><?php echo $title; ?></h4>
+        <?php if ($query->have_posts()): ?>
             <div class="custom-nav">
                 <button class="prev-btn black-neutral" data-slider-id="slider<?php echo $term_id; ?>">
                     <img loading=“lazy” src="<?php echo THEME_URL . '/images/arr-prev.svg' ?> " alt="">
@@ -32,12 +31,11 @@ $title = get_query_var('slide_title');
                     <img loading=“lazy” src="<?php echo THEME_URL . '/images/arr-next.svg' ?> " alt="">
                 </button>
             </div>
-            <?php endif; ?>
-        </div>
+        <?php endif; ?>
     </div>
-    <div class="slick-slider custome-container-sm" id="slider<?php echo $term_id; ?>">
+    <div class="slick-slider" id="slider<?php echo $term_id; ?>">
         <?php
-        if ($query->have_posts()) :
+        if ($query->have_posts()):
             get_template_part('sections/product-item');
         endif;
         wp_reset_postdata();

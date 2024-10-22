@@ -1,4 +1,4 @@
-<div class="filter-collapse custome-container-sm d-flex flex-column gap-3">
+<div class="filter-collapse custome-container-sm d-flex flex-column">
     <p class="text-32 black-neutral filter-title">Filter</p>
     <button onclick="toggleImage(this)"
         class="bg-transparent px-0 w-100 text-20 black-neutral d-flex justify-content-between align-items-center gap-1"
