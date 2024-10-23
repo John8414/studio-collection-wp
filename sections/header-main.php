@@ -1,7 +1,7 @@
 <header class="scroll-header">
     <!-- start mobile  -->
     <div class="mobile px-1 d-xl-block">
-        <div class="menu-toggle py-1 d-flex d-xl-none">
+        <div class="menu-toggle py-1 justify-content-between align-items-center d-flex d-xl-none">
             <div class="img-icon-sm d-flex" id="mobileMenuToggle">
                 <i class="fa fa-bars" aria-hidden="true"></i>
             </div>
