@@ -9,7 +9,7 @@ get_header();
 <div class="custome-container  ">
 
     <div class="pb-5">
-        <h2 class="text-60 fw-normal text-left black-neutral pb-2">
+        <h2 class="text-60 fw-bold text-left black-neutral pb-2">
             <?php echo get_the_title(); ?>
         </h2>
         <p class="text-20 text-left gray-neutral">
@@ -27,7 +27,7 @@ get_header();
 </div>
 <div class="custome-container">
     <div class="pb-5">
-        <h2 class="text-60 fw-normal text-left black-neutral pb-2">
+        <h2 class="text-60 fw-bold text-left black-neutral pb-2">
             Categories
         </h2>
     </div>

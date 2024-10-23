@@ -2,7 +2,7 @@
     <!-- start mobile  -->
     <div class="mobile px-1 d-xl-block">
         <div class="menu-toggle py-1 d-flex d-xl-none">
-            <div class="img-icon-sm" id="mobileMenuToggle">
+            <div class="img-icon-sm d-flex" id="mobileMenuToggle">
                 <i class="fa fa-bars" aria-hidden="true"></i>
             </div>
 
@@ -18,30 +18,27 @@
                     </a>
                 </div>
             </div>
-            <div class="d-flex justify-content-start align-items-center search-header">
-                <div class="img-icon-sm">
+            <div class="d-flex justify-content-start align-items-center search-header gap-24">
+                <div class="img-icon-sm d-flex">
                     <img loading=“lazy” src="<?php echo THEME_URL . '/images/search.svg' ?> " alt="">
                 </div>
-                <p class="search-text text-14">Search</p>
+                <div class="img-icon-sm d-flex"><img loading=“lazy” src="<?php echo THEME_URL . '/images/heart.svg' ?> "
+                        alt="">
+                </div>
             </div>
         </div>
 
         <div class="text-60 black-neutral mobile-nav" id="mobileNav">
             <div class="custome-container py-0">
-                <div class="d-flex justify-content-center align-items-center gap-3 py-3">
+                <div class="d-flex justify-content-start align-items-center gap-3 py-3">
                     <div class="d-flex justify-content-start align-items-center">
-                        <div class="img-icon-sm"><img loading=“lazy”
-                                src="<?php echo THEME_URL . '/images/heart.svg' ?> " alt=""></div>
-                        <p class="black-neutral text-14">Favorite</p>
-                    </div>
-                    <div class="d-flex justify-content-start align-items-center">
-                        <div class="img-icon-sm"><img loading=“lazy” src="<?php echo THEME_URL . '/images/user.svg' ?> "
-                                alt=""></div>
+                        <div class="img-icon-sm d-flex"><img loading=“lazy”
+                                src="<?php echo THEME_URL . '/images/user.svg' ?> " alt=""></div>
                         <p class="black-neutral text-14">Account</p>
                     </div>
                     <div class="d-flex justify-content-start align-items-center">
-                        <div class="img-icon-sm"><img loading=“lazy” src="<?php echo THEME_URL . '/images/cart.svg' ?> "
-                                alt=""></div>
+                        <div class="img-icon-sm d-flex"><img loading=“lazy”
+                                src="<?php echo THEME_URL . '/images/cart.svg' ?> " alt=""></div>
                         <p class="black-neutral text-14">Cart</p>
                     </div>
                 </div>

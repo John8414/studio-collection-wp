@@ -42,7 +42,7 @@
                             alt="<?php echo isset($gallery) ? $gallery[0]['alt'] : $defaultImage['alt']; ?> ">
                     </div>
 
-                    <div class="w-790 d-flex flex-column justify-content-between">
+                    <div class="w-790 feature-collection-picker">
                         <div>
                             <div class="bottom-line-full d-flex align-items-center gap-2 w-fit pb-1">
                                 <img class="img-icon" src="<?php echo isset($icon) ? $icon['url'] : $defaultIcon ?> "

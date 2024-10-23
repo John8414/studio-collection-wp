@@ -18,11 +18,11 @@ get_header();
 
     <!-- section title -->
     <div class="pb-5">
-        <h2 class="text-60 fw-normal text-left black-neutral pb-2">
+        <h2 class="text-60 fw-bold text-left black-neutral pb-2">
             Living Room Furniture
         </h2>
     </div>
-    <div class="d-lg-flex align-items-center justify-content-between gap-3">
+    <div class="d-lg-flex align-items-center gap-40">
         <div class="custome-container-sm">
             <div class="img-scale">
                 <img loading=“lazy” src="<?php echo THEME_URL . '/images/outlet-furniture.png' ?>" alt="">

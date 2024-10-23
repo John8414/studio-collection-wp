@@ -11,7 +11,7 @@
     <?php
     $images = get_field('bp_partners', get_the_ID());
     if ($images): ?>
-        <div class="d-flex flex-wrap align-items-center justify-content-center gap-40">
+        <div class="brand-partner">
 
             <?php foreach ($images as $image): ?>
                 <div>

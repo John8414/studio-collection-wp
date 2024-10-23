@@ -21,4 +21,4 @@
     $defaultBanner = THEME_URL . '/images/banner-1.png';
     get_template_part('sections/header-main');
     ?>
-    <div class="pt-180 d-none d-lg-block"></div>
+    <div class="pt-180"></div>

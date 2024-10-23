@@ -42,15 +42,15 @@
     </div>
 </div>
 <footer class="border-top border-secondary">
-    <div class="custome-container py-3">
-        <div class="d-flex justify-content-between align-items-start">
-            <div class="d-flex gap-2">
+    <div class="custome-container py-0">
+        <div class="d-block d-lg-flex justify-content-between align-items-start">
+            <div class="d-flex gap-2 py-3">
                 <a class="text-14 gray-subtext" href="#">Terms and Conditions</a>
                 <p class="text-14 gray-subtext">© All rights reserved <?php echo date('Y'); ?> ©<a
                         class="text-14 gray-subtext" href="<?php echo home_url('/') ?>">Studio
                         Collection</a></p>
             </div>
-            <div class="d-flex justify-content-between align-items-center gap-3">
+            <div class="d-flex justify-content-center align-items-center gap-3 py-3">
                 <?php $socials = get_field('socials', 'option'); ?>
                 <div class="social-bg">
                     <a href="<?php echo $socials['twitter'] ?>" class="w-fit">

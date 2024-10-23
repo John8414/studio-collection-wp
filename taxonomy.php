@@ -25,7 +25,7 @@ $total_products = count(get_posts(array(
 
     <!-- section title -->
     <div class="pb-5">
-        <h2 class="text-60 fw-normal text-left black-neutral pb-2">
+        <h2 class="text-60 fw-bold text-left black-neutral pb-2">
             <?php echo $term->name; ?>
         </h2>
     </div>
@@ -36,8 +36,8 @@ $total_products = count(get_posts(array(
 <!-- Product list -->
 <div class="custome-container">
     <!-- Filter bar  -->
-    <div class="d-flex flex-wrap align-items-center justify-content-between pb-4">
-        <div class="d-flex flex-wrap align-items-center gap-2">
+    <div class="d-block d-lg-flex align-items-center justify-content-between pb-4">
+        <div class="d-flex flex-wrap align-items-center gap-24">
             <button class="text-20 black-neutral d-flex justify-content-center align-items-center gap-1">
                 <div>
                     <img loading=“lazy” src="<?php echo THEME_URL . '/images/filter.svg' ?>" alt="">
@@ -45,12 +45,12 @@ $total_products = count(get_posts(array(
                 Filter
             </button>
             <button id="reset-button" class="bottom-line-full text-20 gray-subtext">Clear filter</button>
-            <div class="d-flex flex-wrap align-items-center justify-content-center gap-2">
+            <div class="d-flex flex-wrap align-items-center justify-content-center gap-24">
                 <button class="tag clicked text-20 gray-subtext">View All </button>
                 <button class="tag text-20 gray-subtext">In Stock</button>
             </div>
         </div>
-        <div class="d-flex flex-wrap align-items-center gap-2">
+        <div class="d-flex flex-wrap align-items-center gap-24 justify-content-center">
             <div class="d-flex justify-content-center align-items-center gap-1">
                 <p class="text-20 black-neutral"><?php echo $total_products; ?></p>
                 <p class="text-20 black-neutral">Item</p>
@@ -65,7 +65,7 @@ $total_products = count(get_posts(array(
                         <img loading=“lazy” src="<?php echo THEME_URL . '/images/arr-down-thin.svg' ?>" alt="">
                     </div>
                 </button>
-                <div class="dropdown-menu px-2 w-fit" aria-labelledby="dropdownMenuLink">
+                <div class="dropdown-menu p-3 w-fit d-flex flex-column gap-3" aria-labelledby="dropdownMenuLink">
                     <div class="form-check">
                         <input class="form-check-input" type="radio" name="option" id="option1">
                         <label class="text-20 gray-subtext form-check-label text-20 gray-subtext" for="option1">

@@ -38,7 +38,7 @@ $category = get_queried_object();
 
     </nav>
     <div class="pb-5">
-        <h2 class="text-60 fw-normal text-left black-neutral pb-2">
+        <h2 class="text-60 fw-bold text-left black-neutral pb-2">
             <?php echo $category->name; ?>
         </h2>
     </div>
@@ -56,30 +56,30 @@ $category = get_queried_object();
 
             while ($query->have_posts()) {
                 $query->the_post(); ?>
-        <div class="gallery-item d-flex flex-column gap-3">
-            <div class="">
-                <?php echo get_the_post_thumbnail() ?>
-            </div>
-            <div>
-                <p class="text-32 black-neutral"><?php echo get_the_title(); ?></p>
-                <div class="gray-subtext text-20">
-                    <?php the_excerpt() ?>
-                </div>
-            </div>
+                <div class="gallery-item d-flex flex-column gap-3">
+                    <div class="">
+                        <?php echo get_the_post_thumbnail() ?>
+                    </div>
+                    <div>
+                        <p class="text-32 black-neutral"><?php echo get_the_title(); ?></p>
+                        <div class="gray-subtext text-20">
+                            <?php the_excerpt() ?>
+                        </div>
+                    </div>
 
-            <div class="bottom-line-full w-fit">
-                <a class="text-20 black-neutral text-decoration-none w-fit" href="<?php the_permalink() ?>">READ
-                    DETAIL</a>
-            </div>
-        </div>
-        <?php
+                    <div class="bottom-line-full w-fit">
+                        <a class="text-20 black-neutral text-decoration-none w-fit" href="<?php the_permalink() ?>">READ
+                            DETAIL</a>
+                    </div>
+                </div>
+                <?php
             }
         } else {
             echo 'Không có bài viết nào trong danh mục này.';
         }
 
         wp_reset_postdata(); // Khôi phục dữ liệu gốc
-
+        
         ?>
 
 

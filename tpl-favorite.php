@@ -25,7 +25,7 @@ $total_products = get_favorite_count();
     <!-- Breadcrumd -->
 
     <!-- section title -->
-    <h2 class="text-60 fw-normal text-left black-neutral pb-2">
+    <h2 class="text-60 fw-bold text-left black-neutral pb-2">
         <?php the_title(); ?>
     </h2>
     <div class="d-flex border-bottom align-items-center gap-1">
@@ -41,11 +41,11 @@ $total_products = get_favorite_count();
     <div class="d-flex flex-wrap align-items-center justify-content-start product-list custome-container-sm">
         <?php
         $args = array(
-            'post_type'  => 'product',
+            'post_type' => 'product',
             'posts_per_page' => -1,
             'meta_query' => array(
                 array(
-                    'key'   => '_is_favorite',
+                    'key' => '_is_favorite',
                     'value' => '1',
                 )
             ),
@@ -54,43 +54,43 @@ $total_products = get_favorite_count();
 
         $query = new WP_Query($args);
 
-        if ($query && $query->have_posts()) :
-            while ($query->have_posts()) :
+        if ($query && $query->have_posts()):
+            while ($query->have_posts()):
                 $query->the_post();
                 $product_id = get_the_ID();
                 $displayPrice = get_field('display_price');
-        ?>
-        <div class="card-product text-start">
-            <a href="<?php the_permalink(); ?>" class="text-decoration-none">
-                <div class="img-scale">
-                    <?php the_post_thumbnail('full'); ?>
-                </div>
-            </a>
-            <div class="w-100 position-relative pt-20 pb-2">
-                <a href="<?php the_permalink(); ?>" class="text-decoration-none">
-                    <p class="text-20 fw-medium text-black">
-                        <?php echo $displayPrice['currency'] . $displayPrice['original_price']; ?>
-                    </p>
-                </a>
-                <button class="fav-btn fs-5 " data-product-id="<?php the_ID(); ?>" onclick="toggleFavorite(event)">
-                    <?php
+                ?>
+                <div class="card-product text-start">
+                    <a href="<?php the_permalink(); ?>" class="text-decoration-none">
+                        <div class="img-scale">
+                            <?php the_post_thumbnail('full'); ?>
+                        </div>
+                    </a>
+                    <div class="w-100 position-relative pt-20 pb-2">
+                        <a href="<?php the_permalink(); ?>" class="text-decoration-none">
+                            <p class="text-20 fw-medium text-black">
+                                <?php echo $displayPrice['currency'] . $displayPrice['original_price']; ?>
+                            </p>
+                        </a>
+                        <button class="fav-btn fs-5 " data-product-id="<?php the_ID(); ?>" onclick="toggleFavorite(event)">
+                            <?php
                             $is_favorite = get_post_meta(get_the_ID(), '_is_favorite', true);
                             if ($is_favorite == '1'): ?>
-                    <i class="fa fa-heart" style="color: #E91919" aria-hidden="true"></i>
-                    <?php else: ?>
-                    <i class="fa fa-heart-o" aria-hidden="true"></i>
-                    <?php endif; ?>
-                </button>
-            </div>
-            <a href="<?php the_permalink(); ?>" class="text-decoration-none">
-                <p class="text-20 gray-tertiary pb-2"><?php the_title(); ?></p>
-                <p class="text-20 gray-neutral pb-20"><?php echo get_field('more_info')['code']; ?></p>
-                <p class="fw-medium text-20 gray-neutral">
-                    <?php echo (get_the_terms($product_id, 'color') && !is_wp_error(get_the_terms($product_id, 'color'))) ? count(get_the_terms($product_id, 'color')) . ' colors' : ''; ?>
-                </p>
-            </a>
-        </div>
-        <?php
+                                <i class="fa fa-heart" style="color: #E91919" aria-hidden="true"></i>
+                            <?php else: ?>
+                                <i class="fa fa-heart-o" aria-hidden="true"></i>
+                            <?php endif; ?>
+                        </button>
+                    </div>
+                    <a href="<?php the_permalink(); ?>" class="text-decoration-none">
+                        <p class="text-20 gray-tertiary pb-2"><?php the_title(); ?></p>
+                        <p class="text-20 gray-neutral pb-20"><?php echo get_field('more_info')['code']; ?></p>
+                        <p class="fw-medium text-20 gray-neutral">
+                            <?php echo (get_the_terms($product_id, 'color') && !is_wp_error(get_the_terms($product_id, 'color'))) ? count(get_the_terms($product_id, 'color')) . ' colors' : ''; ?>
+                        </p>
+                    </a>
+                </div>
+                <?php
             endwhile;
             wp_reset_postdata();
 
