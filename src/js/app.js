@@ -1,9 +1,6 @@
 
 
 $(document).ready(function () {
-
-
-
   // Scale zoom in image //
   const imageContainers = document.querySelectorAll('.img-scale');
 
@@ -199,98 +196,84 @@ $(document).ready(function () {
     $('.original-price').text(price);
   }
 
-  //sticky header
-  // let lastScrollTop = 0;
-  // const element = document.querySelector('.scroll-header');
+  // toggle mobile header
 
-  // window.addEventListener('scroll', function() {
-  //   const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+  $('#mobileMenuToggle').on('click', function () {
+    $('#mobileNav').toggleClass('show-menu');
+  });
 
-  //   if (scrollTop > lastScrollTop && scrollTop > 180) {
-  //     element.classList.add('scroll-down');
-  //     element.classList.remove('scroll-up');
-  //   } else {
-  //     element.classList.add('scroll-up');
-  //     element.classList.remove('scroll-down');
-  //   }
+  // Close the menu when clicking outside of the mobile header
+  document.addEventListener('click', function (event) {
+    const isClickInsideMenu = mobileNav.contains(event.target);
+    const isClickInsideToggle = mobileMenuToggle.contains(event.target);
+    if (!isClickInsideMenu && !isClickInsideToggle) {
+      mobileNav.classList.remove('show-menu');
+    }
+  });
 
-  //   lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
-  // });
-  
- // toggle mobile header
- const mobileMenuToggle = document.getElementById('mobileMenuToggle');
- const mobileNav = document.getElementById('mobileNav');
- mobileMenuToggle.addEventListener('click', function() {
-   mobileNav.classList.toggle('show-menu');
- });
- // Close the menu when clicking outside of the mobile header
- document.addEventListener('click', function(event) {
-   const isClickInsideMenu = mobileNav.contains(event.target);
-   const isClickInsideToggle = mobileMenuToggle.contains(event.target);
-   if (!isClickInsideMenu && !isClickInsideToggle) {
-     mobileNav.classList.remove('show-menu');
-   }
- });
+  // zoom image
+  let lens = $('<div class="img-zoom-lens"></div>');
+  imageZoom = (imgID, resultID) => {
+    let img = $('#' + imgID);
+    let result = $('#' + resultID);
 
+    // Insert lens into DOM
+    img.before(lens);
 
+    // Calculate the ratio between result DIV and lens
+    let cx = result.width() / lens.width();
+    let cy = result.height() / lens.height();
 
- // zoom image
- function imageZoom(imgID, resultID) {
-  var img, lens, result, cx, cy;
-  img = document.getElementById(imgID);
-  result = document.getElementById(resultID);
-  /* Create lens: */
-  lens = document.createElement("DIV");
-  lens.setAttribute("class", "img-zoom-lens");
-  /* Insert lens: */
-  img.parentElement.insertBefore(lens, img);
-  /* Calculate the ratio between result DIV and lens: */
-  cx = result.offsetWidth / lens.offsetWidth;
-  cy = result.offsetHeight / lens.offsetHeight;
-  /* Set background properties for the result DIV */
-  result.style.backgroundImage = "url('" + img.src + "')";
-  result.style.backgroundSize = (img.width * cx) + "px " + (img.height * cy) + "px";
-  /* Execute a function when someone moves the cursor over the image, or the lens: */
-  lens.addEventListener("mousemove", moveLens);
-  img.addEventListener("mousemove", moveLens);
-  /* And also for touch screens: */
-  lens.addEventListener("touchmove", moveLens);
-  img.addEventListener("touchmove", moveLens);
-  function moveLens(e) {
-    var pos, x, y;
-    /* Prevent any other actions that may occur when moving over the image */
-    e.preventDefault();
-    /* Get the cursor's x and y positions: */
-    pos = getCursorPos(e);
-    /* Calculate the position of the lens: */
-    x = pos.x - (lens.offsetWidth / 2);
-    y = pos.y - (lens.offsetHeight / 2);
-    /* Prevent the lens from being positioned outside the image: */
-    if (x > img.width - lens.offsetWidth) {x = img.width - lens.offsetWidth;}
-    if (x < 0) {x = 0;}
-    if (y > img.height - lens.offsetHeight) {y = img.height - lens.offsetHeight;}
-    if (y < 0) {y = 0;}
-    /* Set the position of the lens: */
-    lens.style.left = x + "px";
-    lens.style.top = y + "px";
-    /* Display what the lens "sees": */
-    result.style.backgroundPosition = "-" + (x * cx) + "px -" + (y * cy) + "px";
+    // Set background properties for the result DIV
+    result.css('backgroundImage', 'url("' + img.attr('src') + '")');
+    result.css('backgroundSize', (img.width() * cx) + "px " + (img.height() * cy) + "px");
+
+    // Function to move lens on mouse or touch event
+    function moveLens(e) {
+      e.preventDefault();
+      let pos = getCursorPos(e);
+      let x = pos.x - (lens.width() / 2);
+      let y = pos.y - (lens.height() / 2);
+
+      // Prevent lens from being positioned outside the image
+      if (x > img.width() - lens.width()) { x = img.width() - lens.width(); }
+      if (x < 0) { x = 0; }
+      if (y > img.height() - lens.height()) { y = img.height() - lens.height(); }
+      if (y < 0) { y = 0; }
+
+      // Set the position of the lens
+      lens.css({ left: x + "px", top: y + "px" });
+
+      // Display what the lens "sees"
+      result.css('backgroundPosition', '-' + (x * cx) + 'px -' + (y * cy) + 'px');
+    }
+
+    // Get cursor's x and y position relative to the image
+    function getCursorPos(e) {
+      let a = img[0].getBoundingClientRect();
+      let x = e.pageX - a.left - window.pageXOffset;
+      let y = e.pageY - a.top - window.pageYOffset;
+      return { x: x, y: y };
+    }
+
+    // Mousemove and touchmove event listeners
+    lens.on('mousemove touchmove', moveLens);
+    img.on('mousemove touchmove', moveLens);
   }
-  function getCursorPos(e) {
-    var a, x = 0, y = 0;
-    e = e || window.event;
-    /* Get the x and y positions of the image: */
-    a = img.getBoundingClientRect();
-    /* Calculate the cursor's x and y coordinates, relative to the image: */
-    x = e.pageX - a.left;
-    y = e.pageY - a.top;
-    /* Consider any page scrolling: */
-    x = x - window.pageXOffset;
-    y = y - window.pageYOffset;
-    return {x : x, y : y};
+  handleHideLens = () => {
+    $('.img-zoom-lens').remove();
+    $('#myresult').css('backgroundImage', 'none');
+    console.log('first')
   }
-}
-imageZoom("myimage", "myresult");
+
+  $('input[name="option"]').on('change', function () {
+    let selectedOption = $(this).attr('id');
+    let sortValue = '';
+    sortValue = selectedOption
+    // Reload page with sort parameter and scroll to #productList
+    window.location.href = window.location.pathname + '?sort=' + sortValue + '#productList';
+  });
+
 
 });
 

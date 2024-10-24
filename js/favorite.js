@@ -27,9 +27,9 @@ jQuery(document).ready(function ($) {
 
                         // Update the favorite count in the header
                         if (response?.data?.favorite_count > 0) {
-                            $("#favorite-count-number").html('<i class="fa fa-heart" style="color: #E91919" aria-hidden="true"></i>')
+                            $("[data-id=favorite-count-number]").html('<i class="fa fa-heart" style="color: #E91919" aria-hidden="true"></i>')
                         } else {
-                            $("#favorite-count-number").html('<i class="fa fa-heart-o" aria-hidden="true"></i>')
+                            $("[data-id=favorite-count-number]").html('<i class="fa fa-heart-o" aria-hidden="true"></i>')
                         }
                     }
                 },

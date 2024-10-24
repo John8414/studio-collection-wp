@@ -8,9 +8,9 @@ $s = get_search_query(); ?>
             <div class="col-12 border-bottom py-5">
                 <div class="page-title-content">
                     <h1 class="text-black fs-30 bold">
-                        Tìm kiếm: <?php echo $s; ?>
+                        Search: <?php echo $s; ?>
                     </h1>
-                    <span class="sub-title"><?php echo 'Kết quả: ' . $wp_query->found_posts; ?></span>
+                    <span class="sub-title"><?php echo 'Results: ' . $wp_query->found_posts; ?></span>
                 </div>
             </div>
 
@@ -58,11 +58,9 @@ $s = get_search_query(); ?>
                     <?php
                     } else {
                     ?>
-                    <p class="bold fs-20">Không tìm thấy kết quả</p>
-                    <p>Rất xin lỗi, nhưng không có nội dung nào phù hợp với yêu cầu tìm kiếm của bạn. Vui
-                        lòng
-                        thử
-                        lại với một số từ khóa khác nhau.</p>
+                    <p class="bold fs-20">No results found</p>
+                    <p>We are sorry, but no content matches your search query. Please try again with different keywords.
+                    </p>
                     <?php } ?>
                 </ul>
             </div>
