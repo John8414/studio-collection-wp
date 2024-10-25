@@ -936,10 +936,11 @@ button {
 }
 
 .filter-collapse {
-  width: 302px;
-  position: sticky;
-  top: 10rem;
+  max-width: 302px;
+  min-width: 302px;
   gap: 40px;
+  position: sticky;
+  top: 2rem;
 
   .filter-title {
     @include bottom-line(100%, 0);
@@ -1020,10 +1021,11 @@ button {
 
   .card-product,
   .card-cta-bg {
-    max-width: 302px;
-    width: 302px;
-    height: 430px;
-    max-height: 420px;
+    min-width: 297px;
+    max-width: 297px;
+    height: 100%;
+    // height: 430px;
+    // max-height: 420px;
 
     .img-card-product {
       width: 302px;
@@ -1257,4 +1259,15 @@ button {
   @media (max-width: 1068px) {
     display: none;
   }
+}
+
+.bg-transparent {
+  background: transparent;
+}
+
+.color-filter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }

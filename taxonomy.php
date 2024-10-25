@@ -41,13 +41,14 @@ $total_products = count(get_posts(array(
     <!-- Filter bar  -->
     <div class="d-block d-lg-flex align-items-center justify-content-between pb-4">
         <div class="d-flex flex-wrap align-items-center gap-24">
-            <button class="text-20 black-neutral d-flex justify-content-center align-items-center gap-1">
+            <button
+                class="bg-transparent transtext-20 black-neutral d-flex justify-content-center align-items-center gap-1">
                 <div>
                     <img loading=“lazy” src="<?php echo THEME_URL . '/images/filter.svg' ?>" alt="">
                 </div>
                 Filter
             </button>
-            <button id="reset-button" class="bottom-line-full text-20 gray-subtext">Clear filter</button>
+            <button id="reset-button" class="bg-transparent bottom-line-full text-20 gray-subtext">Clear filter</button>
             <div class="d-flex flex-wrap align-items-center justify-content-center gap-24">
                 <button class="tag clicked text-20 gray-subtext">View All </button>
                 <button class="tag text-20 gray-subtext">In Stock</button>
@@ -93,15 +94,15 @@ $total_products = count(get_posts(array(
     </div>
     <!-- Filter bar  -->
 
-    <div class="d-flex gap-40">
+    <div class="d-block d-md-flex gap-40">
         <!-- filter collapse -->
-        <div class="">
+        <div class="filter-collapse pb-5">
             <?php get_template_part('sidebar'); ?>
         </div>
         <!-- filter collapse -->
 
         <!-- list -->
-        <div class="w-75 d-flex flex-wrap align-items-center justify-content-start product-list custome-container-sm">
+        <div class="d-flex flex-wrap align-items-center justify-content-start product-list">
             <?php
             $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
             $args = [
@@ -149,8 +150,8 @@ $total_products = count(get_posts(array(
                     $query->the_post();
                     $product_id = get_the_ID();
                     $displayPrice = get_field('display_price');
-            ?>
-                    <div class="card-product text-start">
+                    ?>
+                    <div class="card-product text-start flex-grow-1">
                         <a href="<?php the_permalink(); ?>" class="text-decoration-none">
                             <div class="img-scale">
                                 <?php the_post_thumbnail('full'); ?>
@@ -180,7 +181,7 @@ $total_products = count(get_posts(array(
                             </p>
                         </a>
                     </div>
-            <?php
+                    <?php
                 endwhile;
                 wp_reset_postdata();
 
