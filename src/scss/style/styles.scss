@@ -939,8 +939,6 @@ button {
   max-width: 302px;
   min-width: 302px;
   gap: 40px;
-  position: sticky;
-  top: 2rem;
 
   .filter-title {
     @include bottom-line(100%, 0);
@@ -1016,13 +1014,20 @@ button {
 }
 
 .product-list {
-  column-gap: $psace-20;
+  column-gap: 20px;
   row-gap: 40px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 
   .card-product,
   .card-cta-bg {
-    min-width: 297px;
-    max-width: 297px;
+    // min-width: 297px;
+    // max-width: 297px;
+    width: 100%;
     height: 100%;
     // height: 430px;
     // max-height: 420px;
