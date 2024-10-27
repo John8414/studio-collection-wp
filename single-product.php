@@ -46,14 +46,14 @@ $product_id = get_the_ID();
     <!-- product detail  -->
     <div class="d-md-flex d-block align-items-start gap-24">
         <div class="product-picker">
-            <div class="d-flex image-picker gap-24 pb-40">
-                <div class="d-flex flex-column gap-2 thumbnails">
+            <div class="row gap-24 pb-40">
+                <div class="col-12 col-lg-3 d-flex d-lg-block gap-2 thumbnails">
                     <?php
 
                     $price = formatCurrency($displayPrice['original_price'], $displayPrice['currency']);
                     $salePrice = formatCurrency($displayPrice['original_price_copy'], $displayPrice['currency']);
                     ?>
-                    <div class="item-border thumbnail d-flex"
+                    <div class="item-border thumbnail ratio ratio-1x1 d-flex"
                         onclick="handleChangeImage('<?php echo $price; ?>', '<?php echo $salePrice; ?>')">
                         <img loading=“lazy” src="<?php echo get_the_post_thumbnail_url(); ?>"
                             alt="<?php the_title() ?>">
@@ -62,16 +62,16 @@ $product_id = get_the_ID();
                     <?php $gallery = get_field('gallery');
                     if ($gallery):
                         foreach ($gallery as $key => $image):
-                    ?>
+                            ?>
 
-                    <div class="thumbnail ratio ratio-1x1">
-                        <img loading=“lazy” src="<?php echo $image['url']; ?>" alt="<?php the_title() ?>">
-                    </div>
-                    <?php endforeach;
+                            <div class="thumbnail ratio ratio-1x1 d-flex">
+                                <img loading=“lazy” src="<?php echo $image['url']; ?>" alt="<?php the_title() ?>">
+                            </div>
+                        <?php endforeach;
                     endif; ?>
                 </div>
 
-                <div class="single-product-detail img-zoom-container" onmouseleave="handleHideLens()"
+                <div class="col-12 col-lg-8 single-product-detail img-zoom-container" onmouseleave="handleHideLens()"
                     onmouseenter="imageZoom('myimage', 'myresult')">
                     <img id="myimage" class="main-image" loading=“lazy”
                         src="<?php echo get_the_post_thumbnail_url(); ?>" alt="<?php the_title() ?>">
@@ -89,9 +89,9 @@ $product_id = get_the_ID();
                             <?php
                             $is_favorite = get_post_meta(get_the_ID(), '_is_favorite', true);
                             if ($is_favorite == '1'): ?>
-                            <i class="fa fa-heart" style="color: #E91919" aria-hidden="true"></i>
+                                <i class="fa fa-heart" style="color: #E91919" aria-hidden="true"></i>
                             <?php else: ?>
-                            <i class="fa fa-heart-o" aria-hidden="true"></i>
+                                <i class="fa fa-heart-o" aria-hidden="true"></i>
                             <?php endif; ?>
                         </button>
                     </div>
@@ -103,14 +103,14 @@ $product_id = get_the_ID();
                     <p
                         class="text-20 black-neutral <?php echo $displayPrice['original_price_copy'] ? 'text-decoration-line-through' . ' ' : ''; ?>">
                         <span class="original-price">
-                            <?php echo formatCurrency($displayPrice['original_price'], $displayPrice['currency']);  ?>
+                            <?php echo formatCurrency($displayPrice['original_price'], $displayPrice['currency']); ?>
                         </span>
                     </p>
                     <?php if ($displayPrice['original_price_copy']): ?>
-                    <p class="text-32 red-primary ">
-                        <span
-                            class="sale-price"><?php echo formatCurrency($displayPrice['original_price_copy'], $displayPrice['currency']);  ?></span>
-                    </p>
+                        <p class="text-32 red-primary ">
+                            <span
+                                class="sale-price"><?php echo formatCurrency($displayPrice['original_price_copy'], $displayPrice['currency']); ?></span>
+                        </p>
                     <?php endif ?>
                 </div>
                 <div class="text-20 gray-tertiary"><?php the_excerpt(); ?></div>
@@ -131,11 +131,11 @@ $product_id = get_the_ID();
                                 $price = formatCurrency($row['original_price'], $row['currency']);
                                 $salePrice = formatCurrency($row['sale_price'], $row['currency']);
                                 $image = $row['image']['url'];
-                        ?>
-                        <button type="button" data-color="<?php echo $term->term_id; ?>"
-                            onclick="handleChangeColor('<?php echo $price; ?>','<?php echo $salePrice; ?>',<?php echo $term->term_id; ?>, '<?php echo $image; ?>'  )"
-                            class="color-tags" style="background-color: <?php echo $color; ?>;"></button>
-                        <?php
+                                ?>
+                                <button type="button" data-color="<?php echo $term->term_id; ?>"
+                                    onclick="handleChangeColor('<?php echo $price; ?>','<?php echo $salePrice; ?>',<?php echo $term->term_id; ?>, '<?php echo $image; ?>'  )"
+                                    class="color-tags" style="background-color: <?php echo $color; ?>;"></button>
+                                <?php
                             }
                         }
                         ?>
@@ -145,26 +145,26 @@ $product_id = get_the_ID();
             </div>
             <?php $reasons_to_buy = $moreInfo['reasons_to_buy'];
             if ($reasons_to_buy):
-            ?>
-            <div class="d-flex flex-column gap-2">
-                <p class="text-20 black-neutral pb-2">Reasons to buy</p>
-                <?php
+                ?>
+                <div class="d-flex flex-column gap-2">
+                    <p class="text-20 black-neutral pb-2">Reasons to buy</p>
+                    <?php
                     foreach ($reasons_to_buy as $row) {
                         $text = $row['text'];
                         $tooltip = $row['tooltip'];
-                    ?>
-                <div class="d-flex align-items-center justify-content-start gap-3">
+                        ?>
+                        <div class="d-flex align-items-center justify-content-start gap-3">
 
-                    <p class="text-20 gray-tertiary"><?php echo $text; ?></p>
-                    <?php if ($tooltip) { ?>
-                    <div class="tooltip-container">
-                        <img loading=“lazy” src="<?php echo THEME_URL . '/images/product-tooltip.svg' ?>" alt="">
-                        <div class="tooltip text-20 gray-tertiary"><?php echo $tooltip; ?> </div>
-                    </div>
+                            <p class="text-20 gray-tertiary"><?php echo $text; ?></p>
+                            <?php if ($tooltip) { ?>
+                                <div class="tooltip-container">
+                                    <img loading=“lazy” src="<?php echo THEME_URL . '/images/product-tooltip.svg' ?>" alt="">
+                                    <div class="tooltip text-20 gray-tertiary"><?php echo $tooltip; ?> </div>
+                                </div>
+                            <?php } ?>
+                        </div>
                     <?php } ?>
                 </div>
-                <?php } ?>
-            </div>
             <?php endif; ?>
             <!-- //TODO -->
             <div class="product-info-cta">
@@ -273,8 +273,8 @@ $product_id = get_the_ID();
         if ($discoverMore) {
             echo $discoverMore;
         } else { ?>
-        <img loading=“lazy” src="<?php echo THEME_URL . '/images/carousel.jpg' ?>" alt="">
-        <div class="overlay-30"></div>
+            <img loading=“lazy” src="<?php echo THEME_URL . '/images/carousel.jpg' ?>" alt="">
+            <div class="overlay-30"></div>
         <?php }
         ?>
     </div>

@@ -1,6 +1,18 @@
 .scroll-header {
 
   .mobile {
+    .logo-info {
+      width: 298px;
+      height: fit-content;
+      background-color: white;
+      padding: 24px 20px;
+      margin-right: auto !important;
+
+      .logo {
+        width: 158px;
+      }
+    }
+
     .menu-toggle {
       justify-content: left;
       align-content: center;
@@ -12,8 +24,9 @@
     }
 
     .mobile-nav {
-      // display: none;
+      position: absolute;
       height: 0;
+      width: 0;
       overflow: hidden;
       opacity: 0;
       visibility: hidden;
@@ -21,27 +34,35 @@
     }
 
     .mobile-nav.show-menu {
-      // display: block !important;
-      height: 100% !important;
+      top: 0;
+      left: 0;
+      background: white;
+      z-index: 999;
       opacity: 1;
       visibility: visible;
+      width: 100%;
+      height: 100vh;
+      background-color: #000000CC;
     }
 
     .main-menu {
-      border: solid 1px #E1E1E1;
-      border-left: none;
-      border-right: none;
+      // border-top: solid 1px #E1E1E1;
       display: flex;
       justify-content: left;
       align-items: center;
       position: relative;
 
       .menu-menu-main-container {
+        width: 298px;
+        height: 100vh;
+        background-color: white;
+        padding: 24px 20px;
+
         .menu {
           display: flex;
           gap: 20px;
           width: fit-content;
-          margin: 0 auto;
+          // margin: 0 auto;
           padding: 0;
           flex-direction: column;
 
@@ -57,7 +78,7 @@
               text-transform: uppercase;
               font-size: clamp(10px, calc(8.8px + 0.375vw), 16px);
               line-height: 120%;
-              padding: 16px 0;
+              // padding: 16px 0;
               display: inline-block;
             }
 
@@ -65,13 +86,15 @@
               border-bottom: 4px solid #010101;
             }
           }
+
+          .mega-menu {
+            opacity: 0;
+            visibility: hidden;
+          }
         }
       }
 
-      .mega-menu {
-        opacity: 0;
-        visibility: hidden;
-      }
+
     }
   }
 }
