@@ -44,12 +44,17 @@ $product_id = get_the_ID();
     <!-- Breadcrumd -->
 
     <!-- product detail  -->
-    <div class="d-md-flex d-block gap-3 align-items-start gap-24">
+    <div class="d-md-flex d-block align-items-start gap-24">
         <div class="product-picker">
             <div class="d-flex image-picker gap-24 pb-40">
                 <div class="d-flex flex-column gap-2 thumbnails">
+                    <?php
+
+                    $price = formatCurrency($displayPrice['original_price'], $displayPrice['currency']);
+                    $salePrice = formatCurrency($displayPrice['original_price_copy'], $displayPrice['currency']);
+                    ?>
                     <div class="item-border thumbnail d-flex"
-                        onclick="handleChangeImage(<?php echo $displayPrice['original_price']; ?>, <?php echo $displayPrice['original_price_copy']; ?>)">
+                        onclick="handleChangeImage('<?php echo $price; ?>', '<?php echo $salePrice; ?>')">
                         <img loading=“lazy” src="<?php echo get_the_post_thumbnail_url(); ?>"
                             alt="<?php the_title() ?>">
                     </div>
@@ -70,11 +75,11 @@ $product_id = get_the_ID();
                     onmouseenter="imageZoom('myimage', 'myresult')">
                     <img id="myimage" class="main-image" loading=“lazy”
                         src="<?php echo get_the_post_thumbnail_url(); ?>" alt="<?php the_title() ?>">
-                    <div id="myresult" class="img-zoom-result"></div>
+                    <div id="myresult" class="img-zoom-result" onmouseenter="handleHideLens()"></div>
                 </div>
             </div>
         </div>
-        <div class="product-info">
+        <div class="product-info w-100">
             <div>
                 <div class="d-flex justify-content-between align-items-start">
                     <h1 class="text-32 black-neutral"><?php the_title(); ?></h1>
@@ -97,14 +102,14 @@ $product_id = get_the_ID();
                 <div class="d-flex align-items-end justify-content-start gap-3">
                     <p
                         class="text-20 black-neutral <?php echo $displayPrice['original_price_copy'] ? 'text-decoration-line-through' . ' ' : ''; ?>">
-                        <?php echo $displayPrice['currency'] . ' '; ?>
-                        <span class="original-price"> <?php echo $displayPrice['original_price']; ?></span>
+                        <span class="original-price">
+                            <?php echo formatCurrency($displayPrice['original_price'], $displayPrice['currency']);  ?>
+                        </span>
                     </p>
                     <?php if ($displayPrice['original_price_copy']): ?>
                     <p class="text-32 red-primary ">
-                        <?php echo $displayPrice['original_price_copy'] ? $displayPrice['currency'] . ' ' : ''; ?>
-                        <span class="sale-price">
-                            <?php echo $displayPrice['original_price_copy'] ? $displayPrice['original_price_copy'] : ''; ?></span>
+                        <span
+                            class="sale-price"><?php echo formatCurrency($displayPrice['original_price_copy'], $displayPrice['currency']);  ?></span>
                     </p>
                     <?php endif ?>
                 </div>
@@ -123,12 +128,12 @@ $product_id = get_the_ID();
                             foreach ($information as $row) {
                                 $term = $row['color'];
                                 $color = get_field('color', $term);
-                                $price = $row['original_price'];
-                                $salePrice = $row['sale_price'];
+                                $price = formatCurrency($row['original_price'], $row['currency']);
+                                $salePrice = formatCurrency($row['sale_price'], $row['currency']);
                                 $image = $row['image']['url'];
                         ?>
                         <button type="button" data-color="<?php echo $term->term_id; ?>"
-                            onclick="handleChangeColor(<?php echo $price; ?>,<?php echo $salePrice; ?>,<?php echo $term->term_id; ?>, '<?php echo $image; ?>'  )"
+                            onclick="handleChangeColor('<?php echo $price; ?>','<?php echo $salePrice; ?>',<?php echo $term->term_id; ?>, '<?php echo $image; ?>'  )"
                             class="color-tags" style="background-color: <?php echo $color; ?>;"></button>
                         <?php
                             }
@@ -163,7 +168,7 @@ $product_id = get_the_ID();
             <?php endif; ?>
             <!-- //TODO -->
             <div class="product-info-cta">
-                <?php echo do_shortcode('[gravityform id="5" title="true" description="true" ajax="true"] '); ?>
+                <?php echo do_shortcode('[gravityform id="3" title="true" description="true" ajax="true"] '); ?>
             </div>
             <!-- //TODO -->
             <div>

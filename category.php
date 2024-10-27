@@ -44,9 +44,11 @@ $category = get_queried_object();
     </div>
     <div class="gallery">
         <?php
+        $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
         $args = array(
             'post_type' => 'post',
-            'posts_per_page' => -1, // Lấy tất cả các bài viết
+            'paged' => $paged,
+            'posts_per_page' => 18, // Lấy tất cả các bài viết
             'category__in' => $category->term_id, // Lấy các bài viết thuộc danh mục này
         );
 
@@ -72,14 +74,15 @@ $category = get_queried_object();
                             DETAIL</a>
                     </div>
                 </div>
-                <?php
+        <?php
             }
         } else {
-            echo 'Không có bài viết nào trong danh mục này.';
+            echo 'There are no posts in this category.';
         }
 
-        wp_reset_postdata(); // Khôi phục dữ liệu gốc
-        
+        wp_reset_postdata();
+        if (function_exists('devvn_wp_corenavi'))
+            devvn_wp_corenavi($query);
         ?>
 
 

@@ -1,11 +1,9 @@
-
-
 $(document).ready(function () {
   // Scale zoom in image //
-  const imageContainers = document.querySelectorAll('.img-scale');
+  const imageContainers = document.querySelectorAll(".img-scale");
 
   imageContainers.forEach((imageContainer) => {
-    const img = imageContainer.querySelector('img');
+    const img = imageContainer.querySelector("img");
 
     const handleMouseMove = (e) => {
       const rect = imageContainer.getBoundingClientRect();
@@ -19,31 +17,28 @@ $(document).ready(function () {
     };
 
     const handleMouseLeave = () => {
-      img.style.transformOrigin = 'center center';
+      img.style.transformOrigin = "center center";
     };
 
-    imageContainer.addEventListener('mousemove', handleMouseMove);
-    imageContainer.addEventListener('mouseleave', handleMouseLeave);
+    imageContainer.addEventListener("mousemove", handleMouseMove);
+    imageContainer.addEventListener("mouseleave", handleMouseLeave);
 
     const removeZoomEffect = () => {
-      imageContainer.removeEventListener('mousemove', handleMouseMove);
-      imageContainer.removeEventListener('mouseleave', handleMouseLeave);
+      imageContainer.removeEventListener("mousemove", handleMouseMove);
+      imageContainer.removeEventListener("mouseleave", handleMouseLeave);
     };
-
   });
   // Scale zoom in image //
 
   // add search input //
-  $('.search-header').on('click', function () {
-    $('.search-enable').toggleClass('d-flex');
-    $('.search-enable').toggleClass('d-none');
-    $('.menu-outer ').toggleClass('d-none');
-    $('.menu-outer ').toggleClass('d-block');
+  $(".search-header").on("click", function () {
+    $(".search-enable").toggleClass("d-flex");
+    $(".search-enable").toggleClass("d-none");
+    $(".menu-outer ").toggleClass("d-none");
+    $(".menu-outer ").toggleClass("d-block");
   });
 
-
-
-  $('.slick-slider').each(function () {
+  $(".slick-slider").each(function () {
     $(this).slick({
       dots: false,
       infinite: false,
@@ -57,49 +52,39 @@ $(document).ready(function () {
           breakpoint: 1024,
           settings: {
             slidesToShow: 3,
-            slidesToScroll: 1,
-            infinite: true,
-            dots: true
-          }
+            dots: true,
+          },
         },
         {
           breakpoint: 768,
           settings: {
             slidesToShow: 2,
-            slidesToScroll: 1
-          }
+          },
         },
-        {
-          breakpoint: 480,
-          settings: {
-            slidesToShow: 1,
-            slidesToScroll: 1
-          }
-        }
-      ]
+      ],
     });
   });
 
-  $('.prev-btn').on('click', function () {
-    var targetSlider = $(this).data('slider-id');
-    $('#' + targetSlider).slick('slickPrev');
+  $(".prev-btn").on("click", function () {
+    var targetSlider = $(this).data("slider-id");
+    $("#" + targetSlider).slick("slickPrev");
   });
 
-  $('.next-btn').on('click', function () {
-    var targetSlider = $(this).data('slider-id');
-    $('#' + targetSlider).slick('slickNext');
+  $(".next-btn").on("click", function () {
+    var targetSlider = $(this).data("slider-id");
+    $("#" + targetSlider).slick("slickNext");
   });
 
   // Product outlet
 
   // tags
-  $('.tag').each(function () {
-    $(this).on('click', function () {
-      $(this).toggleClass('clicked');
-    });
-  });
+  // $(".tag").each(function () {
+  //   $(this).on("click", function () {
+  //     $(this).toggleClass("clicked");
+  //   });
+  // });
 
-  $('.slider-show-3').each(function () {
+  $(".slider-show-3").each(function () {
     $(this).slick({
       dots: false,
       infinite: false,
@@ -113,39 +98,38 @@ $(document).ready(function () {
           breakpoint: 768,
           settings: {
             slidesToShow: 2,
-            slidesToScroll: 1
-          }
+            slidesToScroll: 1,
+          },
         },
         {
           breakpoint: 480,
           settings: {
             slidesToShow: 1,
-            slidesToScroll: 1
-          }
-        }
-      ]
+            slidesToScroll: 1,
+          },
+        },
+      ],
     });
   });
 
   //image picker
 
-  $('.image-picker').each(function () {
+  $(".image-picker").each(function () {
     const $picker = $(this);
-    const $mainImage = $picker.find('.main-image');
-    const $thumbnails = $picker.find('.thumbnails img');
+    const $mainImage = $picker.find(".main-image");
+    const $thumbnails = $picker.find(".thumbnails img");
 
-    $thumbnails.on('click', function () {
-      $('.thumbnail').removeClass('item-border');
-      $(this).parent().addClass('item-border');
-      const newSrc = $(this).attr('src');
-      $mainImage.attr('src', newSrc);
+    $thumbnails.on("click", function () {
+      $(".thumbnail").removeClass("item-border");
+      $(this).parent().addClass("item-border");
+      const newSrc = $(this).attr("src");
+      $mainImage.attr("src", newSrc);
     });
   });
 
-
   /**
-  * back to top
-  */
+   * back to top
+   */
   $("#backToTop").on("click", function () {
     $("body,html").animate({ scrollTop: 0 }, "slow");
   });
@@ -159,21 +143,21 @@ $(document).ready(function () {
   });
 
   let lastScrollTop = 0;
-  const element = $('.scroll-header');
+  const element = $(".scroll-header");
 
-  $(window).on('scroll', function () {
+  $(window).on("scroll", function () {
     const scrollTop = $(this).scrollTop(); // Lấy vị trí cuộn
 
     if (scrollTop > lastScrollTop && scrollTop > 180) {
-      element.addClass('scroll-down').removeClass('scroll-up ');
+      element.addClass("scroll-down").removeClass("scroll-up ");
     } else {
-      element.addClass('scroll-up').removeClass('scroll-down');
+      element.addClass("scroll-up").removeClass("scroll-down");
     }
 
     lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // Cập nhật vị trí cuộn
   });
 
-  $('.carousel-banner').slick({
+  $(".carousel-banner").slick({
     dots: true,
     infinite: true,
     slidesToScroll: 1,
@@ -182,40 +166,40 @@ $(document).ready(function () {
   });
 
   handleChangeColor = (price, salePrice, color, url) => {
-    $('.thumbnail').removeClass('item-border');
-    $('.color-tags').removeClass('item-border')
-    $(`[data-color=${color}]`).addClass('item-border')
-    $('.main-image').attr('src', url);
-    $('.sale-price').text(salePrice);
-    $('.original-price').text(price);
-  }
+    $(".thumbnail").removeClass("item-border");
+    $(".color-tags").removeClass("item-border");
+    $(`[data-color=${color}]`).addClass("item-border");
+    $(".main-image").attr("src", url);
+    $(".sale-price").text(salePrice);
+    $(".original-price").text(price);
+  };
 
   handleChangeImage = (price, salePrice) => {
-    $('.color-tags').removeClass('item-border');
-    $('.sale-price').text(salePrice);
-    $('.original-price').text(price);
-  }
+    $(".color-tags").removeClass("item-border");
+    $(".sale-price").text(salePrice);
+    $(".original-price").text(price);
+  };
 
   // toggle mobile header
 
-  $('#mobileMenuToggle').on('click', function () {
-    $('#mobileNav').toggleClass('show-menu');
+  $("#mobileMenuToggle").on("click", function () {
+    $("#mobileNav").toggleClass("show-menu");
   });
 
   // Close the menu when clicking outside of the mobile header
-  document.addEventListener('click', function (event) {
+  document.addEventListener("click", function (event) {
     const isClickInsideMenu = mobileNav.contains(event.target);
     const isClickInsideToggle = mobileMenuToggle.contains(event.target);
     if (!isClickInsideMenu && !isClickInsideToggle) {
-      mobileNav.classList.remove('show-menu');
+      mobileNav.classList.remove("show-menu");
     }
   });
 
   // zoom image
   let lens = $('<div class="img-zoom-lens"></div>');
   imageZoom = (imgID, resultID) => {
-    let img = $('#' + imgID);
-    let result = $('#' + resultID);
+    let img = $("#" + imgID);
+    let result = $("#" + resultID);
 
     // Insert lens into DOM
     img.before(lens);
@@ -225,27 +209,39 @@ $(document).ready(function () {
     let cy = result.height() / lens.height();
 
     // Set background properties for the result DIV
-    result.css('backgroundImage', 'url("' + img.attr('src') + '")');
-    result.css('backgroundSize', (img.width() * cx) + "px " + (img.height() * cy) + "px");
+    result.addClass("d-block").removeClass("d-none");
+    result.css("backgroundImage", 'url("' + img.attr("src") + '")');
+    result.css(
+      "backgroundSize",
+      img.width() * cx + "px " + img.height() * cy + "px"
+    );
 
     // Function to move lens on mouse or touch event
     function moveLens(e) {
       e.preventDefault();
       let pos = getCursorPos(e);
-      let x = pos.x - (lens.width() / 2);
-      let y = pos.y - (lens.height() / 2);
+      let x = pos.x - lens.width() / 2;
+      let y = pos.y - lens.height() / 2;
 
       // Prevent lens from being positioned outside the image
-      if (x > img.width() - lens.width()) { x = img.width() - lens.width(); }
-      if (x < 0) { x = 0; }
-      if (y > img.height() - lens.height()) { y = img.height() - lens.height(); }
-      if (y < 0) { y = 0; }
+      if (x > img.width() - lens.width()) {
+        x = img.width() - lens.width();
+      }
+      if (x < 0) {
+        x = 0;
+      }
+      if (y > img.height() - lens.height()) {
+        y = img.height() - lens.height();
+      }
+      if (y < 0) {
+        y = 0;
+      }
 
       // Set the position of the lens
       lens.css({ left: x + "px", top: y + "px" });
 
       // Display what the lens "sees"
-      result.css('backgroundPosition', '-' + (x * cx) + 'px -' + (y * cy) + 'px');
+      result.css("backgroundPosition", "-" + x * cx + "px -" + y * cy + "px");
     }
 
     // Get cursor's x and y position relative to the image
@@ -257,23 +253,70 @@ $(document).ready(function () {
     }
 
     // Mousemove and touchmove event listeners
-    lens.on('mousemove touchmove', moveLens);
-    img.on('mousemove touchmove', moveLens);
-  }
+    lens.on("mousemove touchmove", moveLens);
+    img.on("mousemove touchmove", moveLens);
+  };
   handleHideLens = () => {
-    $('.img-zoom-lens').remove();
-    $('#myresult').css('backgroundImage', 'none');
-    console.log('first')
-  }
+    $(".img-zoom-lens").remove();
+    $("#myresult")
+      .css("backgroundImage", "none")
+      .removeClass("d-block")
+      .addClass("d-none");
+  };
 
-  $('input[name="option"]').on('change', function () {
-    let selectedOption = $(this).attr('id');
-    let sortValue = '';
-    sortValue = selectedOption
-    // Reload page with sort parameter and scroll to #productList
-    window.location.href = window.location.pathname + '?sort=' + sortValue + '#productList';
+  $("#reset-button").on("click", function () {
+    window.location.href = window.location.pathname + "#productList";
+  });
+  $("#toggleFilter").on("click", function () {
+    window.location.reload();
   });
 
+  handleUpdateSearchParams = (
+    paramsToToggle = {},
+    isToggle = false,
+    isCheckbox = false
+  ) => {
+    let url = new URL(window.location.href);
+    let searchParams = new URLSearchParams(url.search);
+    let hash = "#productList";
+    $.each(paramsToToggle, function (key, value) {
+      let currentValue = searchParams.get(key);
+      if (isToggle && currentValue) {
+        let valuesArray = currentValue.split(",");
+        valuesArray = valuesArray.filter(
+          (val) => val.trim() !== value.toString()
+        );
 
+        if (valuesArray.length > 0) {
+          searchParams.set(key, valuesArray.join(","));
+        } else {
+          searchParams.delete(key);
+        }
+      } else if (isCheckbox && currentValue) {
+        let valuesArray = currentValue.split(",");
+        if (valuesArray.includes(value.toString())) {
+          valuesArray = valuesArray.filter((val) => val !== value.toString());
+        } else {
+          valuesArray.push(value.toString());
+        }
+        if (valuesArray.length > 0) {
+          searchParams.set(key, valuesArray.join(","));
+        } else {
+          searchParams.delete(key);
+        }
+      } else {
+        searchParams.set(key, value);
+      }
+    });
+
+    url.search = searchParams.toString();
+    url.hash = hash;
+    window.location.href = url.toString();
+  };
+
+  $("#priceFilter").on("click", function () {
+    let min = $("#minPrice").val();
+    let max = $("#maxPrice").val();
+    handleUpdateSearchParams({ min, max });
+  });
 });
-

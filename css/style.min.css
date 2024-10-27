@@ -311,7 +311,6 @@ html,
 body {
   font-family: "MTT Milano", sans-serif;
   margin: 0 !important;
-  height: 100vh;
   flex-direction: column;
   scroll-behavior: smooth;
   overflow-x: hidden !important;
@@ -1137,9 +1136,6 @@ button {
 }
 
 .filter-collapse {
-  width: 302px;
-  position: sticky;
-  top: 10rem;
   gap: 40px;
 }
 .filter-collapse .filter-title {
@@ -1205,17 +1201,10 @@ button {
   color: #010101;
 }
 
-.product-list {
-  -moz-column-gap: calc(8px + 0.625vw);
-       column-gap: calc(8px + 0.625vw);
-  row-gap: 40px;
-}
 .product-list .card-product,
 .product-list .card-cta-bg {
-  max-width: 302px;
-  width: 302px;
-  height: 430px;
-  max-height: 420px;
+  width: 100%;
+  height: 100%;
 }
 .product-list .card-product .img-card-product,
 .product-list .card-cta-bg .img-card-product {
@@ -1415,6 +1404,7 @@ button {
 }
 
 .img-zoom-result {
+  background: white;
   position: absolute;
   border: 1px solid #6A6868;
   width: 500px;
@@ -1430,6 +1420,28 @@ button {
   .img-zoom-result {
     display: none;
   }
+}
+
+.bg-transparent {
+  background: transparent;
+}
+
+.color-filter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.pagenavi span {
+  color: #010101;
+}
+.pagenavi a {
+  color: #676767;
+  text-decoration: none;
+}
+.pagenavi a:hover {
+  color: rgba(151, 134, 64, 0.8);
 }
 
 /*# sourceMappingURL=style.min.css.map*/

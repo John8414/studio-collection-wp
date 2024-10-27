@@ -68,11 +68,23 @@
             <div class="d-flex align-items-center justify-content-between custome-container py-2 text-white">
                 <?php the_field('promotion', 'option'); ?>
                 <div class="d-flex align-items-center justify-content-center gap-2">
-                    <a class="text-14" href="/#">DESIGN.DEFINED</a>
+                    menu_header
+                    <?php
+                    $rows = get_field('menu_header', 'option');
+                    if (have_rows('menu_header', 'option')):
+                        $i = 1;
+                        while (have_rows('menu_header', 'option')) : the_row();
+                            $title = get_sub_field('title');
+                            $link = get_sub_field('link'); ?>
+                    <a class="text-14 text-uppercase" href="<?php echo $link ?>"><?php echo $title; ?></a>
+                    <?php if($i < count($rows)): ?>
                     <p class="text-14 text-white">•</p>
-                    <a class="text-14" href="/contact-us">CONTACT</a>
-                    <p class="text-14 text-white">•</p>
-                    <a class="text-14" href="/#">LOCATION</a>
+                    <?php
+                    endif; 
+                            $i++;
+                        endwhile;
+                        wp_reset_query();
+                    endif; ?>
                 </div>
             </div>
         </div>

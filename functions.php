@@ -164,3 +164,8 @@ function toggle_favorite()
 
 add_action('wp_ajax_toggle_favorite', 'toggle_favorite');
 add_action('wp_ajax_nopriv_toggle_favorite', 'toggle_favorite');
+
+function formatCurrency($amount, $currencySymbol, $decimals = 2)
+{
+    return ($currencySymbol ? $currencySymbol : '$') . number_format($amount, $decimals);
+}

@@ -12,7 +12,6 @@ html,
 body {
   font-family: 'MTT Milano', sans-serif;
   margin: 0 !important;
-  height: 100vh;
   flex-direction: column;
   scroll-behavior: smooth;
   overflow-x: hidden !important;
@@ -936,8 +935,8 @@ button {
 }
 
 .filter-collapse {
-  max-width: 302px;
-  min-width: 302px;
+  // max-width: 302px;
+  // min-width: 302px;
   gap: 40px;
 
   .filter-title {
@@ -1014,14 +1013,14 @@ button {
 }
 
 .product-list {
-  column-gap: 20px;
-  row-gap: 40px;
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  // column-gap: 20px;
+  // row-gap: 40px;
+  // display: grid;
+  // grid-template-columns: repeat(3, minmax(0, 1fr));
 
-  @media (max-width: 768px) {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
+  // @media (max-width: 768px) {
+  //   grid-template-columns: repeat(2, minmax(0, 1fr));
+  // }
 
   .card-product,
   .card-cta-bg {
@@ -1276,4 +1275,19 @@ button {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+.pagenavi {
+  span {
+    color: $black-neutral;
+  }
+
+  a {
+    color: $gray-neutral;
+    text-decoration: none;
+
+    &:hover {
+      color: $yellow-primary;
+    }
+  }
 }

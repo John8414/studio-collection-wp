@@ -179,12 +179,14 @@ function custom_post_type_product()
         'exclude_from_search'   => false,
         'publicly_queryable'    => true,
         'capability_type'       => 'post',
+        'rewrite' => array('slug' => '%product-category%'),
     );
 
     register_post_type('product', $args);
 }
 
 add_action('init', 'custom_post_type_product', 0);
+
 
 function add_taxonomy_image_column($columns)
 {
