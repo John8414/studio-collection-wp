@@ -1,4 +1,4 @@
-<div class="row gap-3">
+<div class="row">
     <?php
     $args = array(
         'taxonomy' => 'product-category',

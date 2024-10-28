@@ -49,7 +49,7 @@ if (function_exists('acf_add_options_page')) {
 
 function htmlMenu($listCat, $item)
 {
-    $item_output = '<div>';
+    $item_output = '<div class="all-list">';
 
 
     $classes = empty($item->classes) ? array() : (array) $item->classes;
@@ -103,7 +103,7 @@ function updateDefaultImages($images, $item_output)
         ),
     );
 
-    $item_output = '<div class="ms-auto d-flex">';
+    $item_output = '<div class="ms-auto d-block d-lg-flex">';
 
     foreach ($defaultImages as $key => $image) {
         $item_output .= '<div class="coll-3 des-img">';
@@ -178,12 +178,14 @@ class Mega_Menu_Walker extends Walker_Nav_Menu
             $des = get_field('description', $item);
 
             $item_output .= '<div class="mega-menu bg-white position-absolute top-100 ' . ($layout ? 'inline' : 'vertical') . ' ">';
+            $item_output .= '<div class="mobile-title-mega"><span class="d-block d-lg-none mega-menu-toggle"> < </span> ' . $atts['title'] . ' </div>';
             $item_output .= '<div class="custome-container">';
-            $item_output .= ' <div class="d-flex justify-content-end">';
+
+            $item_output .= ' <div class="d-lg-flex d-block justify-content-end">';
             if (!$layout) {
                 $item_output .= '<div class="view-all-list">';
                 if (!empty($listCat) && !is_wp_error($listCat)) {
-                    $item_output .= '<p class="pb-40 text-16 black-neutral fw-bold">View All:</p>';
+                    $item_output .= '<p class="pb-40 text-16 black-neutral fw-bold d-none d-lg-block">View All:</p>';
                     $item_output .= htmlMenu($listCat, $item);
                 } else {
                     $item_output .= '<p class="pb-40 text-16 black-neutral fw-bold">' . $category->name . '</p>';
@@ -202,13 +204,13 @@ class Mega_Menu_Walker extends Walker_Nav_Menu
                 $item_output .= '<div class="view-all-list coll-inline">';
 
                 if (!empty($listCat) && !is_wp_error($listCat)) {
-                    $item_output .= '<p class="pb-40 text-16 black-neutral fw-bold">View All:</p>';
+                    $item_output .= '<p class="pb-40 text-16 black-neutral fw-bold d-none d-lg-block">View All:</p>';
                     $item_output .= htmlMenu($listCat, $item);
                 } else {
                     $item_output .= '<p class="pb-40 text-16 black-neutral fw-bold">' . $category->name . '</p>';
                 }
                 $item_output .= '</div>';
-                $item_output .= '<div class="d-flex justify-content-between flex-grow-1">';
+                $item_output .= '<div class="d-lg-flex d-block justify-content-between flex-grow-1">';
 
                 if ($des) {
                     $item_output .= '<div class="menu-description">';
@@ -216,7 +218,7 @@ class Mega_Menu_Walker extends Walker_Nav_Menu
                     $item_output .= '</div>';
                 }
 
-                $item_output .= '<div class="des-img ms-5">';
+                $item_output .= '<div class="des-img ms-0 ms-lg-5">';
                 if (!$images) {
                     $item_output .= '<img class="header-thumb pb-3" src="' . esc_url($defaultImage['url']) . '" alt="' . esc_attr($defaultImage['alt']) . '">';
                 } else {
@@ -236,6 +238,8 @@ class Mega_Menu_Walker extends Walker_Nav_Menu
             $item_output .= '</div>';
             $item_output .= '</div>';
             $item_output .= '</div>';
+            $item_output .= '<span class="d-block d-lg-none mega-menu-toggle"> > </span>';
+
         }
 
 

@@ -1,12 +1,12 @@
 <header class="scroll-header">
     <!-- start mobile  -->
-    <div class="info-header d-block d-xl-none">
+    <div class="info-header d-block d-lg-none">
         <div class="d-flex align-items-center justify-content-center custome-container py-2 text-white">
             <?php the_field('promotion', 'option'); ?>
         </div>
     </div>
-    <div class="mobile px-1 d-xl-block">
-        <div class="menu-toggle py-1 justify-content-between align-items-center d-flex d-xl-none">
+    <div class="mobile px-1 d-lg-block">
+        <div class="menu-toggle py-1 justify-content-between align-items-center d-flex d-lg-none">
             <div class="d-flex justify-content-start align-items-center gap-2">
 
                 <div class="img-icon-sm" id="mobileMenuToggle">
@@ -69,15 +69,13 @@
                 </div>
 
             </div>
-            <div>
-                <?php get_template_part('sections/menu-main'); ?>
-            </div>
+            <?php get_template_part('sections/menu-main'); ?>
         </div>
 
     </div>
     <!-- end mobile  -->
 
-    <div class="sticky-header d-none d-xl-block">
+    <div class="sticky-header d-none d-lg-block">
         <div class="info-header">
             <div class="d-flex align-items-center justify-content-between custome-container py-2 text-white">
                 <?php the_field('promotion', 'option'); ?>

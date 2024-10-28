@@ -311,4 +311,14 @@ $(document).ready(function () {
     let max = $("#maxPrice").val();
     handleUpdateSearchParams({ min, max });
   });
+
+
+
+
+
+  ///mobile mega
+  $('.has-mega-menu .mega-menu-toggle').on('click', function() {
+    $(this).closest('.has-mega-menu').toggleClass('show-mega-mobile');
+  });
+
 });
