@@ -163,10 +163,13 @@ $(document).ready(function () {
     $(".original-price").text(price);
   };
 
-  handleChangeImage = (price, salePrice) => {
+  handleChangeImage = (price, salePrice, url, key) => {
     $(".color-tags").removeClass("item-border");
+    $(".thumbnail").removeClass("item-border");
     $(".sale-price").text(salePrice);
     $(".original-price").text(price);
+    $(`[data-image=${key}]`).addClass("item-border");
+    $(".main-image").attr("src", url);
   };
 
   // toggle mobile header
