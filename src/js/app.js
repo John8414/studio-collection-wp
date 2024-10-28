@@ -1,41 +1,37 @@
 $(document).ready(function () {
   // Scale zoom in image //
-  const imageContainers = document.querySelectorAll(".img-scale");
+  $(".img-scale").each(function () {
+    const img = $(this).find("img");
 
-  imageContainers.forEach((imageContainer) => {
-    const img = imageContainer.querySelector("img");
-
-    const handleMouseMove = (e) => {
-      const rect = imageContainer.getBoundingClientRect();
+    $(this).on("mousemove", function (e) {
+      const rect = this.getBoundingClientRect();
       const x = e.clientX - rect.left;
       const y = e.clientY - rect.top;
 
       const xPercent = (x / rect.width) * 100;
       const yPercent = (y / rect.height) * 100;
 
-      img.style.transformOrigin = `${xPercent}% ${yPercent}%`;
-    };
+      img.css("transform-origin", `${xPercent}% ${yPercent}%`);
+    });
 
-    const handleMouseLeave = () => {
-      img.style.transformOrigin = "center center";
-    };
-
-    imageContainer.addEventListener("mousemove", handleMouseMove);
-    imageContainer.addEventListener("mouseleave", handleMouseLeave);
-
-    const removeZoomEffect = () => {
-      imageContainer.removeEventListener("mousemove", handleMouseMove);
-      imageContainer.removeEventListener("mouseleave", handleMouseLeave);
-    };
+    $(this).on("mouseleave", function () {
+      img.css("transform-origin", "center center");
+    });
   });
-  // Scale zoom in image //
 
   // add search input //
   $(".search-header").on("click", function () {
-    $(".search-enable").toggleClass("d-flex");
-    $(".search-enable").toggleClass("d-none");
-    $(".menu-outer ").toggleClass("d-none");
-    $(".menu-outer ").toggleClass("d-block");
+    if ($(".search-enable").hasClass("d-none")) {
+      $(".search-enable").removeClass("d-none").addClass("d-flex");
+    } else {
+      $(".search-enable").removeClass("d-flex").addClass("d-none");
+    }
+
+    if ($(".menu-outer").hasClass("d-none")) {
+      $(".menu-outer").removeClass("d-none").addClass("d-block");
+    } else {
+      $(".menu-outer").removeClass("d-block").addClass("d-none");
+    }
   });
 
   $(".slick-slider").each(function () {
@@ -76,13 +72,6 @@ $(document).ready(function () {
   });
 
   // Product outlet
-
-  // tags
-  // $(".tag").each(function () {
-  //   $(this).on("click", function () {
-  //     $(this).toggleClass("clicked");
-  //   });
-  // });
 
   $(".slider-show-3").each(function () {
     $(this).slick({

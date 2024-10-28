@@ -179,7 +179,6 @@ function custom_post_type_product()
         'exclude_from_search'   => false,
         'publicly_queryable'    => true,
         'capability_type'       => 'post',
-        'rewrite' => array('slug' => '%product-category%'),
     );
 
     register_post_type('product', $args);

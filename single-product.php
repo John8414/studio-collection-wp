@@ -64,10 +64,10 @@ $product_id = get_the_ID();
                         foreach ($gallery as $key => $image):
                             ?>
 
-                            <div class="thumbnail ratio ratio-1x1 d-flex">
-                                <img loading=“lazy” src="<?php echo $image['url']; ?>" alt="<?php the_title() ?>">
-                            </div>
-                        <?php endforeach;
+                    <div class="thumbnail ratio ratio-1x1 d-flex">
+                        <img loading=“lazy” src="<?php echo $image['url']; ?>" alt="<?php the_title() ?>">
+                    </div>
+                    <?php endforeach;
                     endif; ?>
                 </div>
 
@@ -89,9 +89,9 @@ $product_id = get_the_ID();
                             <?php
                             $is_favorite = get_post_meta(get_the_ID(), '_is_favorite', true);
                             if ($is_favorite == '1'): ?>
-                                <i class="fa fa-heart" style="color: #E91919" aria-hidden="true"></i>
+                            <i class="fa fa-heart" style="color: #E91919" aria-hidden="true"></i>
                             <?php else: ?>
-                                <i class="fa fa-heart-o" aria-hidden="true"></i>
+                            <i class="fa fa-heart-o" aria-hidden="true"></i>
                             <?php endif; ?>
                         </button>
                     </div>
@@ -107,10 +107,10 @@ $product_id = get_the_ID();
                         </span>
                     </p>
                     <?php if ($displayPrice['original_price_copy']): ?>
-                        <p class="text-32 red-primary ">
-                            <span
-                                class="sale-price"><?php echo formatCurrency($displayPrice['original_price_copy'], $displayPrice['currency']); ?></span>
-                        </p>
+                    <p class="text-32 red-primary ">
+                        <span
+                            class="sale-price"><?php echo formatCurrency($displayPrice['original_price_copy'], $displayPrice['currency']); ?></span>
+                    </p>
                     <?php endif ?>
                 </div>
                 <div class="text-20 gray-tertiary"><?php the_excerpt(); ?></div>
@@ -132,10 +132,10 @@ $product_id = get_the_ID();
                                 $salePrice = formatCurrency($row['sale_price'], $row['currency']);
                                 $image = $row['image']['url'];
                                 ?>
-                                <button type="button" data-color="<?php echo $term->term_id; ?>"
-                                    onclick="handleChangeColor('<?php echo $price; ?>','<?php echo $salePrice; ?>',<?php echo $term->term_id; ?>, '<?php echo $image; ?>'  )"
-                                    class="color-tags" style="background-color: <?php echo $color; ?>;"></button>
-                                <?php
+                        <button type="button" data-color="<?php echo $term->term_id; ?>"
+                            onclick="handleChangeColor('<?php echo $price; ?>','<?php echo $salePrice; ?>',<?php echo $term->term_id; ?>, '<?php echo $image; ?>'  )"
+                            class="color-tags" style="background-color: <?php echo $color; ?>;"></button>
+                        <?php
                             }
                         }
                         ?>
@@ -146,25 +146,25 @@ $product_id = get_the_ID();
             <?php $reasons_to_buy = $moreInfo['reasons_to_buy'];
             if ($reasons_to_buy):
                 ?>
-                <div class="d-flex flex-column gap-2">
-                    <p class="text-20 black-neutral pb-2">Reasons to buy</p>
-                    <?php
+            <div class="d-flex flex-column gap-2">
+                <p class="text-20 black-neutral pb-2">Reasons to buy</p>
+                <?php
                     foreach ($reasons_to_buy as $row) {
                         $text = $row['text'];
                         $tooltip = $row['tooltip'];
                         ?>
-                        <div class="d-flex align-items-center justify-content-start gap-3">
+                <div class="d-flex align-items-center justify-content-start gap-3">
 
-                            <p class="text-20 gray-tertiary"><?php echo $text; ?></p>
-                            <?php if ($tooltip) { ?>
-                                <div class="tooltip-container">
-                                    <img loading=“lazy” src="<?php echo THEME_URL . '/images/product-tooltip.svg' ?>" alt="">
-                                    <div class="tooltip text-20 gray-tertiary"><?php echo $tooltip; ?> </div>
-                                </div>
-                            <?php } ?>
-                        </div>
+                    <p class="text-20 gray-tertiary"><?php echo $text; ?></p>
+                    <?php if ($tooltip) { ?>
+                    <div class="tooltip-container">
+                        <img loading=“lazy” src="<?php echo THEME_URL . '/images/product-tooltip.svg' ?>" alt="">
+                        <div class="tooltip text-20 gray-tertiary"><?php echo $tooltip; ?> </div>
+                    </div>
                     <?php } ?>
                 </div>
+                <?php } ?>
+            </div>
             <?php endif; ?>
             <!-- //TODO -->
             <div class="product-info-cta">
@@ -182,11 +182,6 @@ $product_id = get_the_ID();
                     type="button" data-bs-toggle="collapse" data-bs-target="#collapse-detail" aria-expanded="false"
                     aria-controls="collapse-detail">
                     Detail
-                    <div>
-                        <img class="plus" loading=“lazy” src="<?php echo THEME_URL . '/images/plus.svg' ?>" alt="">
-                        <img class="d-none minus" loading=“lazy” src="<?php echo THEME_URL . '/images/minus.svg' ?>"
-                            alt="">
-                    </div>
                 </button>
 
                 <div class="collapse multi-collapse" id="collapse-detail">
@@ -204,11 +199,6 @@ $product_id = get_the_ID();
                     class="px-0 bg-transparent w-100 text-20 fw-bold black-neutral d-flex justify-content-between align-items-center gap-1 custome-container-sm"
                     type=" button" data-bs-toggle="collapse" data-bs-target="#collapse-size" aria-expanded="false"
                     aria-controls="collapse-size">Size
-                    <div>
-                        <img class="plus" loading=“lazy” src="<?php echo THEME_URL . '/images/plus.svg' ?>" alt="">
-                        <img class="d-none minus" loading=“lazy” src="<?php echo THEME_URL . '/images/minus.svg' ?>"
-                            alt="">
-                    </div>
                 </button>
                 <div class="collapse multi-collapse" id="collapse-size">
                     <div class="d-flex flex-column gap-3 bottom-line-full pb-3">
@@ -223,11 +213,6 @@ $product_id = get_the_ID();
                     class="px-0 bg-transparent w-100 text-20 fw-bold black-neutral d-flex justify-content-between align-items-center gap-1 custome-container-sm"
                     type=" button" data-bs-toggle="collapse" data-bs-target="#collapse-warrant" aria-expanded="false"
                     aria-controls="collapse-warrant">Warrant
-                    <div>
-                        <img class="plus" loading=“lazy” src="<?php echo THEME_URL . '/images/plus.svg' ?>" alt="">
-                        <img class="d-none minus" loading=“lazy” src="<?php echo THEME_URL . '/images/minus.svg' ?>"
-                            alt="">
-                    </div>
                 </button>
                 <div class="collapse multi-collapse" id="collapse-warrant">
                     <div class="d-flex flex-column gap-3 bottom-line-full pb-3">
@@ -241,11 +226,6 @@ $product_id = get_the_ID();
                     class="px-0 bg-transparent w-100 text-20 fw-bold black-neutral d-flex justify-content-between align-items-center gap-1 custome-container-sm"
                     type=" button" data-bs-toggle="collapse" data-bs-target="#collapse-brand" aria-expanded="false"
                     aria-controls="collapse-brand">Brand
-                    <div>
-                        <img class="plus" loading=“lazy” src="<?php echo THEME_URL . '/images/plus.svg' ?>" alt="">
-                        <img class="d-none minus" loading=“lazy” src="<?php echo THEME_URL . '/images/minus.svg' ?>"
-                            alt="">
-                    </div>
                 </button>
                 <div class="collapse multi-collapse" id="collapse-brand">
                     <div class="d-flex flex-column gap-3 bottom-line-full pb-3">
@@ -273,8 +253,8 @@ $product_id = get_the_ID();
         if ($discoverMore) {
             echo $discoverMore;
         } else { ?>
-            <img loading=“lazy” src="<?php echo THEME_URL . '/images/carousel.jpg' ?>" alt="">
-            <div class="overlay-30"></div>
+        <img loading=“lazy” src="<?php echo THEME_URL . '/images/carousel.jpg' ?>" alt="">
+        <div class="overlay-30"></div>
         <?php }
         ?>
     </div>
