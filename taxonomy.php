@@ -120,7 +120,7 @@ $total_products = count(get_posts($args));
     <!-- Breadcrumd -->
 
     <!-- section title -->
-    <div class="pb-5">
+    <div class="pb-lg-5">
         <h2 class="text-60 fw-bold text-left black-neutral pb-2">
             <?php echo $term->name; ?>
         </h2>
@@ -242,8 +242,10 @@ $total_products = count(get_posts($args));
                                     </button>
                                 </div>
                                 <a href="<?php the_permalink(); ?>" class="text-decoration-none">
-                                    <p class="text-20 gray-tertiary pb-2"><?php the_title(); ?></p>
-                                    <p class="text-20 gray-neutral pb-20"><?php echo get_field('more_info')['code']; ?></p>
+                                    <p class="text-20 gray-tertiary pb-2 clamped-text-1"><?php the_title(); ?></p>
+                                    <p class="text-20 gray-neutral pb-20 clamped-text-1">
+                                        <?php echo get_field('more_info')['code']; ?>
+                                    </p>
                                     <p class="fw-medium text-20 gray-neutral">
                                         <?php echo (get_the_terms($product_id, 'color') && !is_wp_error(get_the_terms($product_id, 'color'))) ? count(get_the_terms($product_id, 'color')) . ' colors' : ''; ?>
                                     </p>

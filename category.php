@@ -37,7 +37,7 @@ $category = get_queried_object();
 
 
     </nav>
-    <div class="pb-5">
+    <div class="pb-lg-5">
         <h2 class="text-60 fw-bold text-left black-neutral pb-2">
             <?php echo $category->name; ?>
         </h2>
@@ -74,7 +74,7 @@ $category = get_queried_object();
                             DETAIL</a>
                     </div>
                 </div>
-        <?php
+                <?php
             }
         } else {
             echo 'There are no posts in this category.';

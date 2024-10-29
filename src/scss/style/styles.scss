@@ -121,6 +121,12 @@ button {
   line-height: 120%;
 }
 
+.clamped-text-1 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 // COLORS
 .white-regular {
   color: $white-regular;
@@ -152,6 +158,10 @@ button {
 
 .red-primary {
   color: $red-primary;
+}
+
+.icon-text {
+  color: #09244B;
 }
 
 // SPACING
@@ -194,7 +204,7 @@ button {
   padding-top: 180px;
 
   @media (max-width: 1024px) {
-    padding-top: 36px;
+    padding-top: 72px;
   }
 }
 
@@ -272,8 +282,13 @@ button {
 }
 
 .product-inview {
-  width: calc(271.8px + 10.0625vw) !important;
-  height: calc(282px + 8.75vw) !important;
+  width: 465px;
+  height: 450px;
+
+  @media (max-width: 390px) {
+    width: 100%;
+    height: calc(282px + 8.75vw) !important;
+  }
 }
 
 .img-scale {
@@ -324,6 +339,11 @@ button {
 .w-790 {
   width: calc(206.8px + 30.375vw);
   max-width: 790px;
+
+  @media (max-width: 992px) {
+    width: 100%;
+    // height: calc(282px + 8.75vw) !important;
+  }
 }
 
 .w-title {
@@ -984,6 +1004,8 @@ button {
     }
   }
 
+
+
   // width: 302px;
   .form-check {
     width: fit-content;
@@ -996,6 +1018,10 @@ button {
       }
     }
   }
+}
+
+.filter-show.filter-hidden {
+  display: none;
 }
 
 .form-check-label {
@@ -1066,6 +1092,7 @@ button {
   .card-cta-bg {
     background-color: $yellow-primary;
     opacity: .3s;
+    min-height: 290px;
   }
 
   .card-cta {
@@ -1119,9 +1146,10 @@ button {
 }
 
 //product-picker
-.thumbnails {
+.thumbnail-scroll {
   max-height: 40rem;
-  overflow-y: auto;
+  width: fit-content;
+  overflow: auto;
 }
 
 .product-picker {
@@ -1248,7 +1276,7 @@ button {
   flex-direction: column;
   justify-content: space-between;
 
-  @media (max-width: 767px) {
+  @media (max-width: 992px) {
     flex-direction: column-reverse !important;
     padding-top: 40px;
   }

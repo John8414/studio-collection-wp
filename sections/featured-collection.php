@@ -35,7 +35,7 @@
             <div class="feature-collection-section">
 
                 <!-- Item preview -->
-                <div class="d-block d-md-flex gap-25 image-picker">
+                <div class="d-block d-lg-flex gap-25 image-picker">
                     <div class="product-inview img-scale">
                         <img class="main-image" loading=“lazy”
                             src="<?php echo isset($gallery) ? $gallery[0]['url'] : $defaultImage['url']; ?> "
@@ -54,13 +54,16 @@
                             <a class="text-20 fw-bold green-dark d-block pb-40" href="<?php echo $link; ?>">Read More</a>
                         </div>
 
-                        <div class="d-flex gap-2 flex-wrap thumbnails">
-                            <?php foreach ($gallery as $index => $value): ?>
-                                <div class="<?php echo $index == 0 ? 'item-border' : ''; ?> thumbnail ratio ratio-1x1">
-                                    <img loading=“lazy” src="<?php echo isset($value) ? $value['url'] : $defaultImage['url']; ?> "
-                                        alt="<?php echo isset($value) ? $value['alt'] : $defaultImage['alt']; ?> ">
-                                </div>
-                            <?php endforeach; ?>
+                        <div class="thumbnails overflow-scroll">
+                            <div class="thumbnail-scroll d-flex gap-2">
+                                <?php foreach ($gallery as $index => $value): ?>
+                                    <div class="<?php echo $index == 0 ? 'item-border' : ''; ?> thumbnail ratio ratio-1x1">
+                                        <img loading=“lazy”
+                                            src="<?php echo isset($value) ? $value['url'] : $defaultImage['url']; ?> "
+                                            alt="<?php echo isset($value) ? $value['alt'] : $defaultImage['alt']; ?> ">
+                                    </div>
+                                <?php endforeach; ?>
+                            </div>
                         </div>
 
                     </div>

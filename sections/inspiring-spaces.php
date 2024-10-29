@@ -11,7 +11,7 @@
     <?php
     $is_categories = get_field('is_categories', get_the_ID());
     if ($is_categories): ?>
-        <div class="d-flex flex-wrap justify-content-center gap-40 pt-5">
+        <div class="d-flex justify-content-center gap-40 pt-5">
             <?php foreach ($is_categories as $term):
                 $image = get_field('image', $term);
                 $icon = $image['icon'];

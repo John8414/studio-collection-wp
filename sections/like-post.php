@@ -1,8 +1,8 @@
 <?php
 $args = array(
-    'post_type'      => 'product',
+    'post_type' => 'product',
     'posts_per_page' => 10,
-    'orderby'        => 'rand',
+    'orderby' => 'rand',
 );
 
 $query = new WP_Query($args);
@@ -10,7 +10,7 @@ $term_id = '123';
 
 
 ?>
-<?php if ($query->have_posts()) : ?>
+<?php if ($query->have_posts()): ?>
     <div class="custome-container">
         <div class="custome-container-sm">
             <div class="d-flex justify-content-between">
@@ -28,11 +28,11 @@ $term_id = '123';
         </div>
         <div class="slick-slider custome-container-sm" id="slider<?php echo $term_id; ?>">
             <?php
-            if ($query->have_posts()) :
+            if ($query->have_posts()):
                 $group = get_field('more_info');
                 $product_id = get_the_ID();
                 $displayPrice = get_field('display_price');
-            ?>
+                ?>
                 <div class="slider-item text-start">
                     <a href="<?php the_permalink(); ?>" class="text-decoration-none">
                         <div class="img-scale">
@@ -42,7 +42,7 @@ $term_id = '123';
                     <div class="w-100 position-relative pt-20 pb-2">
                         <a href="<?php the_permalink(); ?>" class="text-decoration-none">
                             <p class="text-20 fw-medium text-black">
-                                <?php echo formatCurrency($displayPrice['original_price'], $displayPrice['currency']);  ?>
+                                <?php echo formatCurrency($displayPrice['original_price'], $displayPrice['currency']); ?>
                             </p>
                         </a>
                         <button class="fav-btn fs-5 " data-product-id="<?php the_ID(); ?>" onclick="toggleFavorite(event)">
@@ -56,15 +56,15 @@ $term_id = '123';
                         </button>
                     </div>
                     <a href="<?php the_permalink(); ?>" class="text-decoration-none">
-                        <p class="text-20 gray-tertiary pb-2"><?php the_title(); ?></p>
-                        <p class="text-20 gray-neutral pb-20"><?php echo get_field('more_info')['code']; ?></p>
+                        <p class="text-20 gray-tertiary pb-2 clamped-text-1"><?php the_title(); ?></p>
+                        <p class="text-20 gray-neutral pb-20 clamped-text-1"><?php echo get_field('more_info')['code']; ?></p>
                         <p class="fw-medium text-20 gray-neutral">
                             <?php echo (get_the_terms($product_id, 'color') && !is_wp_error(get_the_terms($product_id, 'color'))) ? count(get_the_terms($product_id, 'color')) . ' colors' : ''; ?>
                         </p>
                     </a>
 
                 </div>
-            <?php
+                <?php
             endif;
             wp_reset_postdata();
             ?>

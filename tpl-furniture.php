@@ -8,7 +8,7 @@ get_header();
 ?>
 <div class="custome-container  ">
 
-    <div class="pb-5">
+    <div class="pb-lg-5">
         <h2 class="text-60 fw-bold text-left black-neutral pb-2">
             <?php echo get_the_title(); ?>
         </h2>
@@ -26,7 +26,7 @@ get_header();
     </div>
 </div>
 <div class="custome-container">
-    <div class="pb-5">
+    <div class="pb-lg-5">
         <h2 class="text-60 fw-bold text-left black-neutral pb-2">
             Categories
         </h2>

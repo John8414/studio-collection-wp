@@ -46,28 +46,30 @@ $product_id = get_the_ID();
     <!-- product detail  -->
     <div class="d-md-flex d-block align-items-start gap-24">
         <div class="product-picker">
-            <div class="row gap-24 pb-40">
-                <div class="col-12 col-lg-3 d-flex d-lg-block gap-2 thumbnails">
-                    <?php
-                    $price = formatCurrency($displayPrice['original_price'], $displayPrice['currency']);
-                    $salePrice = formatCurrency($displayPrice['original_price_copy'], $displayPrice['currency']);
-                    ?>
-                    <div class="item-border thumbnail ratio ratio-1x1 d-flex" data-image="-1"
-                        onclick="handleChangeImage('<?php echo $price; ?>', '<?php echo $salePrice; ?>', '<?php echo get_the_post_thumbnail_url(); ?>', -1)">
-                        <img loading=“lazy” src="<?php echo get_the_post_thumbnail_url(); ?>"
-                            alt="<?php the_title() ?>">
-                    </div>
+            <div class="row gap-24 flex-lg-row flex-column-reverse pb-40">
+                <div class="col-12 col-lg-3 thumbnails overflow-scroll">
+                    <div class="d-flex d-lg-block gap-2 thumbnail-scroll">
+                        <?php
+                        $price = formatCurrency($displayPrice['original_price'], $displayPrice['currency']);
+                        $salePrice = formatCurrency($displayPrice['original_price_copy'], $displayPrice['currency']);
+                        ?>
+                        <div class="item-border thumbnail ratio ratio-1x1 d-flex mb-2" data-image="-1"
+                            onclick="handleChangeImage('<?php echo $price; ?>', '<?php echo $salePrice; ?>', '<?php echo get_the_post_thumbnail_url(); ?>', -1)">
+                            <img loading=“lazy” src="<?php echo get_the_post_thumbnail_url(); ?>"
+                                alt="<?php the_title() ?>">
+                        </div>
 
-                    <?php $gallery = get_field('gallery');
-                    if ($gallery):
-                        foreach ($gallery as $key => $image):
-                    ?>
-                            <div class="thumbnail ratio ratio-1x1 d-flex" data-image="<?php echo $key; ?>"
-                                onclick="handleChangeImage('<?php echo $price; ?>', '<?php echo $salePrice; ?>', '<?php echo $image['url']; ?>', <?php echo $key; ?>)">
-                                <img loading=“lazy” src="<?php echo $image['url']; ?>" alt="<?php the_title() ?>">
-                            </div>
-                    <?php endforeach;
-                    endif; ?>
+                        <?php $gallery = get_field('gallery');
+                        if ($gallery):
+                            foreach ($gallery as $key => $image):
+                                ?>
+                                <div class="thumbnail ratio ratio-1x1 d-flex mb-2" data-image="<?php echo $key; ?>"
+                                    onclick="handleChangeImage('<?php echo $price; ?>', '<?php echo $salePrice; ?>', '<?php echo $image['url']; ?>', <?php echo $key; ?>)">
+                                    <img loading=“lazy” src="<?php echo $image['url']; ?>" alt="<?php the_title() ?>">
+                                </div>
+                            <?php endforeach;
+                        endif; ?>
+                    </div>
                 </div>
 
                 <div class="col-12 col-lg-8 single-product-detail img-zoom-container" onmouseleave="handleHideLens()"
@@ -130,11 +132,11 @@ $product_id = get_the_ID();
                                 $price = formatCurrency($row['original_price'], $row['currency']);
                                 $salePrice = formatCurrency($row['sale_price'], $row['currency']);
                                 $image = $row['image']['url'];
-                        ?>
+                                ?>
                                 <button type="button" data-color="<?php echo $term->term_id; ?>"
                                     onclick="handleChangeColor('<?php echo $price; ?>','<?php echo $salePrice; ?>',<?php echo $term->term_id; ?>, '<?php echo $image; ?>'  )"
                                     class="color-tags" style="background-color: <?php echo $color; ?>;"></button>
-                        <?php
+                                <?php
                             }
                         }
                         ?>
@@ -144,14 +146,14 @@ $product_id = get_the_ID();
             </div>
             <?php $reasons_to_buy = $moreInfo['reasons_to_buy'];
             if ($reasons_to_buy):
-            ?>
+                ?>
                 <div class="d-flex flex-column gap-2">
                     <p class="text-20 black-neutral pb-2">Reasons to buy</p>
                     <?php
                     foreach ($reasons_to_buy as $row) {
                         $text = $row['text'];
                         $tooltip = $row['tooltip'];
-                    ?>
+                        ?>
                         <div class="d-flex align-items-center justify-content-start gap-3">
 
                             <p class="text-20 gray-tertiary"><?php echo $text; ?></p>
