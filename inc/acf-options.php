@@ -239,7 +239,6 @@ class Mega_Menu_Walker extends Walker_Nav_Menu
             $item_output .= '</div>';
             $item_output .= '</div>';
             $item_output .= '<i class="d-block d-lg-none mega-menu-toggle icon-text fa fa-chevron-right text-16" aria-hidden="true"></i>';
-
         }
 
 

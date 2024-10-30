@@ -5,7 +5,7 @@ if ($query && $query->have_posts()):
         $query->the_post();
         $product_id = get_the_ID();
         $displayPrice = get_field('display_price');
-        ?>
+?>
         <div class="slider-item text-start w-302">
             <a href="<?php the_permalink(); ?>" class="text-decoration-none">
                 <div class="img-scale">
@@ -18,15 +18,7 @@ if ($query && $query->have_posts()):
                         <?php echo formatCurrency($displayPrice['original_price'], $displayPrice['currency']); ?>
                     </p>
                 </a>
-                <button class="fav-btn fs-5 " data-product-id="<?php the_ID(); ?>" onclick="toggleFavorite(event)">
-                    <?php
-                    $is_favorite = get_post_meta(get_the_ID(), '_is_favorite', true);
-                    if ($is_favorite == '1'): ?>
-                        <i class="fa fa-heart" style="color: #E91919" aria-hidden="true"></i>
-                    <?php else: ?>
-                        <i class="fa fa-heart-o" aria-hidden="true"></i>
-                    <?php endif; ?>
-                </button>
+                <?php product_wishlist_button(get_the_ID()); ?>
             </div>
             <a href="<?php the_permalink(); ?>" class="text-decoration-none">
                 <p class="text-20 gray-tertiary pb-2 clamped-text-1"><?php the_title(); ?></p>
@@ -37,7 +29,7 @@ if ($query && $query->have_posts()):
             </a>
 
         </div>
-        <?php
+<?php
     endwhile;
     wp_reset_postdata();
 endif;

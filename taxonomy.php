@@ -176,13 +176,13 @@ $total_products = count(get_posts($args));
                             'name_za' => 'Product name Z-A'
                         ];
                         foreach ($options as $key => $label) {
-                            ?>
-                            <div class="form-check" onclick="handleUpdateSearchParams({ sort: '<?php echo $key; ?>' })">
-                                <input <?php echo $sort == $key ? "checked" : "" ?> class="form-check-input" type="radio"
-                                    name="option" id="<?php echo $key; ?>">
-                                <label class="text-20 gray-subtext form-check-label"
-                                    for="<?php echo $key; ?>"><?php echo $label; ?></label>
-                            </div>
+                        ?>
+                        <div class="form-check" onclick="handleUpdateSearchParams({ sort: '<?php echo $key; ?>' })">
+                            <input <?php echo $sort == $key ? "checked" : "" ?> class="form-check-input" type="radio"
+                                name="option" id="<?php echo $key; ?>">
+                            <label class="text-20 gray-subtext form-check-label"
+                                for="<?php echo $key; ?>"><?php echo $label; ?></label>
+                        </div>
                         <?php }
                         ?>
                     </div>
@@ -206,8 +206,6 @@ $total_products = count(get_posts($args));
             <!-- list -->
             <div class="product-list row">
                 <?php
-
-
                 $query = new WP_Query($args);
                 $index = 0;
 
@@ -216,47 +214,38 @@ $total_products = count(get_posts($args));
                         $query->the_post();
                         $product_id = get_the_ID();
                         $displayPrice = get_field('display_price');
-                        ?>
-                        <div class="col-lg-4 col-6 clearfix">
-                            <div class="card-product text-start flex-grow-1">
-                                <a href="<?php the_permalink(); ?>" class="text-decoration-none">
-                                    <div class="img-scale ratio ratio-1x1">
-                                        <?php the_post_thumbnail('full'); ?>
-                                    </div>
-                                </a>
-                                <div class="w-100 position-relative pt-20 pb-2">
-                                    <a href="<?php the_permalink(); ?>" class="text-decoration-none">
-                                        <p class="text-20 fw-medium text-black">
-                                            <?php echo formatCurrency($displayPrice['original_price'], $displayPrice['currency']); ?>
-                                        </p>
-                                    </a>
-                                    <button class="fav-btn fs-5 " data-product-id="<?php the_ID(); ?>"
-                                        onclick="toggleFavorite(event)">
-                                        <?php
-                                        $is_favorite = get_post_meta(get_the_ID(), '_is_favorite', true);
-                                        if ($is_favorite == '1'): ?>
-                                            <i class="fa fa-heart" style="color: #E91919" aria-hidden="true"></i>
-                                        <?php else: ?>
-                                            <i class="fa fa-heart-o" aria-hidden="true"></i>
-                                        <?php endif; ?>
-                                    </button>
-                                </div>
-                                <a href="<?php the_permalink(); ?>" class="text-decoration-none">
-                                    <p class="text-20 gray-tertiary pb-2 clamped-text-1"><?php the_title(); ?></p>
-                                    <p class="text-20 gray-neutral pb-20 clamped-text-1">
-                                        <?php echo get_field('more_info')['code']; ?>
-                                    </p>
-                                    <p class="fw-medium text-20 gray-neutral">
-                                        <?php echo (get_the_terms($product_id, 'color') && !is_wp_error(get_the_terms($product_id, 'color'))) ? count(get_the_terms($product_id, 'color')) . ' colors' : ''; ?>
-                                    </p>
-                                </a>
+                ?>
+                <div class="col-lg-4 col-6 clearfix">
+                    <div class="card-product text-start flex-grow-1">
+                        <a href="<?php the_permalink(); ?>" class="text-decoration-none">
+                            <div class="img-scale ratio ratio-1x1">
+                                <?php the_post_thumbnail('full'); ?>
                             </div>
+                        </a>
+                        <div class="w-100 position-relative pt-20 pb-2">
+                            <a href="<?php the_permalink(); ?>" class="text-decoration-none">
+                                <p class="text-20 fw-medium text-black">
+                                    <?php echo formatCurrency($displayPrice['original_price'], $displayPrice['currency']); ?>
+                                </p>
+                            </a>
+                            <?php product_wishlist_button(get_the_ID()); ?>
                         </div>
-                        <?php if ($index == 2 || $index == 9 || ($index > 12 && $index % 12 == 0)): ?>
-                            <div class="col-lg-4 col-6 clearfix">
-                                <?php get_template_part('sections/ads-card'); ?>
-                            </div>
-                            <?php
+                        <a href="<?php the_permalink(); ?>" class="text-decoration-none">
+                            <p class="text-20 gray-tertiary pb-2 clamped-text-1"><?php the_title(); ?></p>
+                            <p class="text-20 gray-neutral pb-20 clamped-text-1">
+                                <?php echo get_field('more_info')['code']; ?>
+                            </p>
+                            <p class="fw-medium text-20 gray-neutral">
+                                <?php echo (get_the_terms($product_id, 'color') && !is_wp_error(get_the_terms($product_id, 'color'))) ? count(get_the_terms($product_id, 'color')) . ' colors' : ''; ?>
+                            </p>
+                        </a>
+                    </div>
+                </div>
+                <?php if ($index == 2 || $index == 9 || ($index > 12 && $index % 12 == 0)): ?>
+                <div class="col-lg-4 col-6 clearfix">
+                    <?php get_template_part('sections/ads-card'); ?>
+                </div>
+                <?php
                         endif;
                         $index++;
                     endwhile;
@@ -265,12 +254,11 @@ $total_products = count(get_posts($args));
                     echo '<div class="text-center pt-5">No products.</div>';
 
                 endif;
-                ?>
-                <?php if ($total_products > 0 && $total_products < 3): ?>
-                    <div class="col-lg-4 col-6 clearfix">
-                        <?php get_template_part('sections/ads-card'); ?>
-                    </div>
-                    <?php
+                 if ($total_products > 0 && $total_products < 3): ?>
+                <div class="col-lg-4 col-6 clearfix">
+                    <?php get_template_part('sections/ads-card'); ?>
+                </div>
+                <?php
                 endif;
                 if (function_exists('devvn_wp_corenavi'))
                     devvn_wp_corenavi($query); ?>

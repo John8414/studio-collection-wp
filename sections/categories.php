@@ -15,18 +15,18 @@
             $avatar = $image['avatar'];
             $parent_link = get_term_link($category);
             ?>
-            <div class="col-6 col-lg-4 px-2 custome-container-sm">
-                <div class="img-scale">
-                    <img loading=“lazy” src="<?php echo $avatar['url'] ? $avatar['url'] : $defaultImage['url'] ?>"
-                        alt="<?php echo $category->name; ?>">
-                </div>
-                <div class="bottom-line-full w-fit pt-2">
-                    <a class="text-32 black-neutral text-decoration-none w-fit" href="<?php echo $parent_link; ?>">
-                        <?php echo $category->name; ?>
-                    </a>
-                </div>
-            </div>
-            <?php
+    <div class="col-6 col-lg-4 px-2 custome-container-sm">
+        <div class="img-scale slider-item-img">
+            <img loading=“lazy” src="<?php echo $avatar['url'] ? $avatar['url'] : $defaultImage['url'] ?>"
+                alt="<?php echo $category->name; ?>">
+        </div>
+        <div class="bottom-line-full w-fit pt-2">
+            <a class="text-32 black-neutral text-decoration-none w-fit" href="<?php echo $parent_link; ?>">
+                <?php echo $category->name; ?>
+            </a>
+        </div>
+    </div>
+    <?php
         }
     }
     ?>

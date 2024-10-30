@@ -15,7 +15,7 @@ $banner = $image['banner']['image'];
             </p>
         </div>
         <div class="w-fit pt-2">
-            <a class="text-24 text-white w-fit" href="#newsLetter">SEND YOUR EMAIL</a>
+            <a class="text-20 text-white w-fit" href="#newsLetter">SEND YOUR EMAIL</a>
         </div>
     </div>
 </div>

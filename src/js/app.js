@@ -175,7 +175,22 @@ $(document).ready(function () {
   // toggle mobile header
 
   $("#mobileMenuToggle").on("click", function () {
-    $("#mobileNav").toggleClass("show-menu");
+    if ($("html").hasClass("overflow-hidden")) {
+      $("html").removeClass("overflow-hidden");
+      $("#mobileNav").removeClass("show-menu");
+    } else {
+      $("html").addClass("overflow-hidden");
+      $("#mobileNav").addClass("show-menu");
+    }
+  });
+  $(document).click(function (event) {
+    if (
+      !$(event.target).closest(".main-menu, #mobileMenuToggle, .logo-info")
+        .length
+    ) {
+      $("#mobileNav").removeClass("show-menu");
+      $("html").removeClass("overflow-hidden");
+    }
   });
 
   // Close the menu when clicking outside of the mobile header
@@ -312,13 +327,8 @@ $(document).ready(function () {
     handleUpdateSearchParams({ min, max });
   });
 
-
-
-
-
   ///mobile mega
-  $('.has-mega-menu .mega-menu-toggle').on('click', function() {
-    $(this).closest('.has-mega-menu').toggleClass('show-mega-mobile');
+  $(".has-mega-menu .mega-menu-toggle").on("click", function () {
+    $(this).closest(".has-mega-menu").toggleClass("show-mega-mobile");
   });
-
 });

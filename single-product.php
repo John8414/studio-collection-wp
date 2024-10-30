@@ -47,7 +47,7 @@ $product_id = get_the_ID();
     <div class="d-md-flex d-block align-items-start gap-24">
         <div class="product-picker">
             <div class="row gap-24 flex-lg-row flex-column-reverse pb-40">
-                <div class="col-12 col-lg-3 thumbnails overflow-scroll">
+                <div class="col-12 col-lg-3 thumbnails overflow-auto">
                     <div class="d-flex d-lg-block gap-2 thumbnail-scroll">
                         <?php
                         $price = formatCurrency($displayPrice['original_price'], $displayPrice['currency']);
@@ -62,12 +62,12 @@ $product_id = get_the_ID();
                         <?php $gallery = get_field('gallery');
                         if ($gallery):
                             foreach ($gallery as $key => $image):
-                                ?>
-                                <div class="thumbnail ratio ratio-1x1 d-flex mb-2" data-image="<?php echo $key; ?>"
-                                    onclick="handleChangeImage('<?php echo $price; ?>', '<?php echo $salePrice; ?>', '<?php echo $image['url']; ?>', <?php echo $key; ?>)">
-                                    <img loading=“lazy” src="<?php echo $image['url']; ?>" alt="<?php the_title() ?>">
-                                </div>
-                            <?php endforeach;
+                        ?>
+                        <div class="thumbnail ratio ratio-1x1 d-flex mb-2" data-image="<?php echo $key; ?>"
+                            onclick="handleChangeImage('<?php echo $price; ?>', '<?php echo $salePrice; ?>', '<?php echo $image['url']; ?>', <?php echo $key; ?>)">
+                            <img loading=“lazy” src="<?php echo $image['url']; ?>" alt="<?php the_title() ?>">
+                        </div>
+                        <?php endforeach;
                         endif; ?>
                     </div>
                 </div>
@@ -85,16 +85,7 @@ $product_id = get_the_ID();
                 <div class="d-flex justify-content-between align-items-start">
                     <h1 class="text-32 black-neutral"><?php the_title(); ?></h1>
                     <div>
-                        <button class="fav-btn fs-5 position-static" data-product-id="<?php the_ID(); ?>"
-                            onclick="toggleFavorite(event)">
-                            <?php
-                            $is_favorite = get_post_meta(get_the_ID(), '_is_favorite', true);
-                            if ($is_favorite == '1'): ?>
-                                <i class="fa fa-heart" style="color: #E91919" aria-hidden="true"></i>
-                            <?php else: ?>
-                                <i class="fa fa-heart-o" aria-hidden="true"></i>
-                            <?php endif; ?>
-                        </button>
+                        <?php product_wishlist_button(get_the_ID(), 'position-static'); ?>
                     </div>
                 </div>
                 <p class="text-20 gray-tertiary"><?php echo $moreInfo['provider']; ?></p>
@@ -108,10 +99,10 @@ $product_id = get_the_ID();
                         </span>
                     </p>
                     <?php if ($displayPrice['original_price_copy']): ?>
-                        <p class="text-32 red-primary ">
-                            <span
-                                class="sale-price"><?php echo formatCurrency($displayPrice['original_price_copy'], $displayPrice['currency']); ?></span>
-                        </p>
+                    <p class="text-32 red-primary ">
+                        <span
+                            class="sale-price"><?php echo formatCurrency($displayPrice['original_price_copy'], $displayPrice['currency']); ?></span>
+                    </p>
                     <?php endif ?>
                 </div>
                 <div class="text-20 gray-tertiary"><?php the_excerpt(); ?></div>
@@ -132,11 +123,11 @@ $product_id = get_the_ID();
                                 $price = formatCurrency($row['original_price'], $row['currency']);
                                 $salePrice = formatCurrency($row['sale_price'], $row['currency']);
                                 $image = $row['image']['url'];
-                                ?>
-                                <button type="button" data-color="<?php echo $term->term_id; ?>"
-                                    onclick="handleChangeColor('<?php echo $price; ?>','<?php echo $salePrice; ?>',<?php echo $term->term_id; ?>, '<?php echo $image; ?>'  )"
-                                    class="color-tags" style="background-color: <?php echo $color; ?>;"></button>
-                                <?php
+                        ?>
+                        <button type="button" data-color="<?php echo $term->term_id; ?>"
+                            onclick="handleChangeColor('<?php echo $price; ?>','<?php echo $salePrice; ?>',<?php echo $term->term_id; ?>, '<?php echo $image; ?>'  )"
+                            class="color-tags" style="background-color: <?php echo $color; ?>;"></button>
+                        <?php
                             }
                         }
                         ?>
@@ -146,30 +137,30 @@ $product_id = get_the_ID();
             </div>
             <?php $reasons_to_buy = $moreInfo['reasons_to_buy'];
             if ($reasons_to_buy):
-                ?>
-                <div class="d-flex flex-column gap-2">
-                    <p class="text-20 black-neutral pb-2">Reasons to buy</p>
-                    <?php
+            ?>
+            <div class="d-flex flex-column gap-2">
+                <p class="text-20 black-neutral pb-2">Reasons to buy</p>
+                <?php
                     foreach ($reasons_to_buy as $row) {
                         $text = $row['text'];
                         $tooltip = $row['tooltip'];
-                        ?>
-                        <div class="d-flex align-items-center justify-content-start gap-3">
+                    ?>
+                <div class="d-flex align-items-center justify-content-start gap-3">
 
-                            <p class="text-20 gray-tertiary"><?php echo $text; ?></p>
-                            <?php if ($tooltip) { ?>
-                                <div class="tooltip-container">
-                                    <img loading=“lazy” src="<?php echo THEME_URL . '/images/product-tooltip.svg' ?>" alt="">
-                                    <div class="tooltip text-20 gray-tertiary"><?php echo $tooltip; ?> </div>
-                                </div>
-                            <?php } ?>
-                        </div>
+                    <p class="text-20 gray-tertiary"><?php echo $text; ?></p>
+                    <?php if ($tooltip) { ?>
+                    <div class="tooltip-container">
+                        <img loading=“lazy” src="<?php echo THEME_URL . '/images/product-tooltip.svg' ?>" alt="">
+                        <div class="tooltip text-20 gray-tertiary"><?php echo $tooltip; ?> </div>
+                    </div>
                     <?php } ?>
                 </div>
+                <?php } ?>
+            </div>
             <?php endif; ?>
             <!-- //TODO -->
             <div class="product-info-cta">
-                <?php echo do_shortcode('[gravityform id="3" title="true" description="true" ajax="true"] '); ?>
+                <?php echo do_shortcode('[gravityform id="5" title="true" description="true" ajax="true"] '); ?>
             </div>
             <!-- //TODO -->
             <div>
@@ -254,8 +245,8 @@ $product_id = get_the_ID();
         if ($discoverMore) {
             echo $discoverMore;
         } else { ?>
-            <img loading=“lazy” src="<?php echo THEME_URL . '/images/carousel.jpg' ?>" alt="">
-            <div class="overlay-30"></div>
+        <img loading=“lazy” src="<?php echo THEME_URL . '/images/carousel.jpg' ?>" alt="">
+        <div class="overlay-30"></div>
         <?php }
         ?>
     </div>
