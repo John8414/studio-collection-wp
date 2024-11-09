@@ -9,7 +9,7 @@
                 <?php the_field('promotion', 'option'); ?>
             </div>
         </div>
-        <div class="mobile px-1">
+        <div class="mobile px-3 py-2">
             <div class="menu-toggle py-1 justify-content-between align-items-center d-flex">
                 <div class="d-flex justify-content-start align-items-center gap-2">
 
@@ -63,9 +63,9 @@
                             the_row();
                             $title = get_sub_field('title');
                             $link = get_sub_field('link'); ?>
-                            <a class="text-14 text-uppercase" href="<?php echo $link ?>"><?php echo $title; ?></a>
-                            <?php if ($i < count($rows)): ?>
-                                <p class="text-14 text-white">•</p>
+                    <a class="text-14 text-uppercase" href="<?php echo $link ?>"><?php echo $title; ?></a>
+                    <?php if ($i < count($rows)): ?>
+                    <p class="text-14 text-white">•</p>
                     <?php
                             endif;
                             $i++;
@@ -143,23 +143,23 @@
             <?php
             $terms = get_field('search_categories', 'option');
             if ($terms): ?>
-                <ul class="search-icon-list pt-40 ps-0">
-                    <?php foreach ($terms as $term):
+            <ul class="search-icon-list pt-40 ps-0">
+                <?php foreach ($terms as $term):
                         $hero = get_field('image', $term);
                         $avatar = $hero['icon'];
                     ?>
-                        <li class="d-flex">
-                            <a href="<?php echo esc_url(get_term_link($term)); ?>"
-                                class="black-neutral d-flex flex-column align-items-center justify-content-center text-decoration-none">
-                                <p class="text-center text-uppercase"><?php echo esc_html($term->name); ?></p>
-                                <div class="icon-search-enable">
-                                    <img class="h-100 w-100" src="<?php echo $avatar['url'] ?> "
-                                        alt="<?php echo $avatar['alt'] ?> ">
-                                </div>
-                            </a>
-                        </li>
-                    <?php endforeach; ?>
-                </ul>
+                <li class="d-flex">
+                    <a href="<?php echo esc_url(get_term_link($term)); ?>"
+                        class="black-neutral d-flex flex-column align-items-center justify-content-center text-decoration-none">
+                        <p class="text-center text-uppercase"><?php echo esc_html($term->name); ?></p>
+                        <div class="icon-search-enable">
+                            <img class="h-100 w-100" src="<?php echo $avatar['url'] ?> "
+                                alt="<?php echo $avatar['alt'] ?> ">
+                        </div>
+                    </a>
+                </li>
+                <?php endforeach; ?>
+            </ul>
             <?php endif; ?>
         </div>
     </div>

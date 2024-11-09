@@ -60,23 +60,25 @@ if (empty($wishlist)) {
                 $displayPrice = get_field('display_price');
         ?>
         <div class="col-lg-4 col-6 clearfix">
-            <div class="card-product text-start">
+            <div class="card-product text-start flex-grow-1">
                 <a href="<?php the_permalink(); ?>" class="text-decoration-none">
-                    <div class="img-scale slider-item-img">
+                    <div class="img-scale ratio ratio-1x1">
                         <?php the_post_thumbnail('full'); ?>
                     </div>
                 </a>
                 <div class="w-100 position-relative pt-20 pb-2">
                     <a href="<?php the_permalink(); ?>" class="text-decoration-none">
                         <p class="text-20 fw-medium text-black">
-                            <?php echo formatCurrency($displayPrice['original_price'], $displayPrice['currency']);  ?>
+                            <?php echo formatCurrency($displayPrice['original_price'], $displayPrice['currency']); ?>
                         </p>
                     </a>
                     <?php product_wishlist_button(get_the_ID(), '', true); ?>
                 </div>
                 <a href="<?php the_permalink(); ?>" class="text-decoration-none">
                     <p class="text-20 gray-tertiary pb-2 clamped-text-1"><?php the_title(); ?></p>
-                    <p class="text-20 gray-neutral pb-20"><?php echo get_field('more_info')['code']; ?></p>
+                    <p class="text-20 gray-neutral pb-20 clamped-text-1">
+                        <?php echo get_field('more_info')['code']; ?>
+                    </p>
                     <p class="fw-medium text-20 gray-neutral">
                         <?php echo (get_the_terms($product_id, 'color') && !is_wp_error(get_the_terms($product_id, 'color'))) ? count(get_the_terms($product_id, 'color')) . ' colors' : ''; ?>
                     </p>

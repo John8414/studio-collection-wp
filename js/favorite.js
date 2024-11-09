@@ -15,9 +15,9 @@ jQuery(document).ready(function ($) {
         beforeSend: () => {
           btn.prop("disabled", true);
         },
-        success: function (response) {
+        success: async function (response) {
           if (response.success) {
-            btn.prop("disabled", false);
+            await btn.prop("disabled", false);
             if (response?.data?.status) {
               $(`[data-product-id=${productId}]`).html(
                 '<i class="fa fa-heart-o" style="color: #E91919" aria-hidden="true"></i>'
@@ -33,7 +33,10 @@ jQuery(document).ready(function ($) {
             } else {
               $("[data-id=favorite-count-number] > span").addClass("d-none");
             }
-            if (isRefresh) window.location.reload();
+            if (isRefresh)
+              setTimeout(() => {
+                window.location.reload();
+              }, 1000);
           }
         },
         error: function () {

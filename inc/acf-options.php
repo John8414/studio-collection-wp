@@ -179,7 +179,7 @@ class Mega_Menu_Walker extends Walker_Nav_Menu
 
             $item_output .= '<div class="mega-menu bg-white position-absolute top-100 ' . ($layout ? 'inline' : 'vertical') . ' ">';
             $item_output .= '<div class="mobile-title-mega d-flex d-lg-none "><i class="mega-menu-toggle icon-text fa fa-chevron-left text-16" aria-hidden="true"></i>' . $atts['title'] . ' </div>';
-            $item_output .= '<div class="custome-container">';
+            $item_output .= '<div class="custome-container navbar-nav-scroll">';
 
             $item_output .= ' <div class="d-lg-flex d-block justify-content-end">';
             if (!$layout) {
