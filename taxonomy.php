@@ -132,7 +132,7 @@ $total_products = count(get_posts($args));
 <!-- Product list -->
 <div class="custome-container" id="productList">
     <!-- Filter bar  -->
-    <div class="d-block d-lg-flex align-items-center justify-content-between pb-4">
+    <div class="d-flex align-items-center justify-content-between pb-4 ">
         <div class="d-flex flex-wrap align-items-center gap-24">
             <button type="button" id="toggleFilter"
                 class="bg-transparent transtext-20 black-neutral d-flex justify-content-center align-items-center gap-1">
@@ -143,7 +143,7 @@ $total_products = count(get_posts($args));
             </button>
             <button type="button" id="reset-button" class="bg-transparent bottom-line-full text-20 gray-subtext">Clear
                 filter</button>
-            <div class="d-flex flex-wrap align-items-center justify-content-center gap-24">
+            <div class="d-lg-flex d-block flex-wrap align-items-center justify-content-center gap-24">
                 <button type="button" id="viewAll" onclick="handleUpdateSearchParams({ view: 'all' }, true)"
                     class="tag <?php echo $view == 'all' ? 'clicked' : ''; ?> text-20 gray-subtext">View All </button>
                 <button type="button" onclick="handleUpdateSearchParams({ stock: 'in' }, true)"
@@ -177,12 +177,12 @@ $total_products = count(get_posts($args));
                         ];
                         foreach ($options as $key => $label) {
                         ?>
-                        <div class="form-check" onclick="handleUpdateSearchParams({ sort: '<?php echo $key; ?>' })">
-                            <input <?php echo $sort == $key ? "checked" : "" ?> class="form-check-input" type="radio"
-                                name="option" id="<?php echo $key; ?>">
-                            <label class="text-20 gray-subtext form-check-label"
-                                for="<?php echo $key; ?>"><?php echo $label; ?></label>
-                        </div>
+                            <div class="form-check" onclick="handleUpdateSearchParams({ sort: '<?php echo $key; ?>' })">
+                                <input <?php echo $sort == $key ? "checked" : "" ?> class="form-check-input" type="radio"
+                                    name="option" id="<?php echo $key; ?>">
+                                <label class="text-20 gray-subtext form-check-label"
+                                    for="<?php echo $key; ?>"><?php echo $label; ?></label>
+                            </div>
                         <?php }
                         ?>
                     </div>
@@ -196,9 +196,7 @@ $total_products = count(get_posts($args));
     <div class="row">
         <div class="col-12 col-lg-3">
             <!-- filter collapse -->
-            <div class="filter-collapse pb-5">
-                <?php get_template_part('sidebar'); ?>
-            </div>
+            <?php get_template_part('sidebar'); ?>
             <!-- filter collapse -->
         </div>
 
@@ -215,37 +213,37 @@ $total_products = count(get_posts($args));
                         $product_id = get_the_ID();
                         $displayPrice = get_field('display_price');
                 ?>
-                <div class="col-lg-4 col-6 clearfix">
-                    <div class="card-product text-start flex-grow-1">
-                        <a href="<?php the_permalink(); ?>" class="text-decoration-none">
-                            <div class="img-scale ratio ratio-1x1">
-                                <?php the_post_thumbnail('full'); ?>
+                        <div class="col-lg-4 col-6 clearfix">
+                            <div class="card-product text-start flex-grow-1">
+                                <a href="<?php the_permalink(); ?>" class="text-decoration-none">
+                                    <div class="img-scale ratio ratio-1x1">
+                                        <?php the_post_thumbnail('full'); ?>
+                                    </div>
+                                </a>
+                                <div class="w-100 position-relative pt-20 pb-2">
+                                    <a href="<?php the_permalink(); ?>" class="text-decoration-none">
+                                        <p class="text-20 fw-medium text-black">
+                                            <?php echo formatCurrency($displayPrice['original_price'], $displayPrice['currency']); ?>
+                                        </p>
+                                    </a>
+                                    <?php product_wishlist_button(get_the_ID()); ?>
+                                </div>
+                                <a href="<?php the_permalink(); ?>" class="text-decoration-none">
+                                    <p class="text-20 gray-tertiary pb-2 clamped-text-1"><?php the_title(); ?></p>
+                                    <p class="text-20 gray-neutral pb-20 clamped-text-1">
+                                        <?php echo get_field('more_info')['code']; ?>
+                                    </p>
+                                    <p class="fw-medium text-20 gray-neutral">
+                                        <?php echo (get_the_terms($product_id, 'color') && !is_wp_error(get_the_terms($product_id, 'color'))) ? count(get_the_terms($product_id, 'color')) . ' colors' : ''; ?>
+                                    </p>
+                                </a>
                             </div>
-                        </a>
-                        <div class="w-100 position-relative pt-20 pb-2">
-                            <a href="<?php the_permalink(); ?>" class="text-decoration-none">
-                                <p class="text-20 fw-medium text-black">
-                                    <?php echo formatCurrency($displayPrice['original_price'], $displayPrice['currency']); ?>
-                                </p>
-                            </a>
-                            <?php product_wishlist_button(get_the_ID()); ?>
                         </div>
-                        <a href="<?php the_permalink(); ?>" class="text-decoration-none">
-                            <p class="text-20 gray-tertiary pb-2 clamped-text-1"><?php the_title(); ?></p>
-                            <p class="text-20 gray-neutral pb-20 clamped-text-1">
-                                <?php echo get_field('more_info')['code']; ?>
-                            </p>
-                            <p class="fw-medium text-20 gray-neutral">
-                                <?php echo (get_the_terms($product_id, 'color') && !is_wp_error(get_the_terms($product_id, 'color'))) ? count(get_the_terms($product_id, 'color')) . ' colors' : ''; ?>
-                            </p>
-                        </a>
-                    </div>
-                </div>
-                <?php if ($index == 2 || $index == 9 || ($index > 12 && $index % 12 == 0)): ?>
-                <div class="col-lg-4 col-6 clearfix">
-                    <?php get_template_part('sections/ads-card'); ?>
-                </div>
-                <?php
+                        <?php if ($index == 2 || $index == 9 || ($index > 12 && $index % 12 == 0)): ?>
+                            <div class="col-lg-4 col-6 clearfix">
+                                <?php get_template_part('sections/ads-card'); ?>
+                            </div>
+                    <?php
                         endif;
                         $index++;
                     endwhile;
@@ -254,10 +252,10 @@ $total_products = count(get_posts($args));
                     echo '<div class="text-center pt-5">No products.</div>';
 
                 endif;
-                 if ($total_products > 0 && $total_products < 3): ?>
-                <div class="col-lg-4 col-6 clearfix">
-                    <?php get_template_part('sections/ads-card'); ?>
-                </div>
+                if ($total_products > 0 && $total_products < 3): ?>
+                    <div class="col-lg-4 col-6 clearfix">
+                        <?php get_template_part('sections/ads-card'); ?>
+                    </div>
                 <?php
                 endif;
                 if (function_exists('devvn_wp_corenavi'))
@@ -268,7 +266,12 @@ $total_products = count(get_posts($args));
     </div>
 </div>
 <!-- Product list -->
-
+<div id="loadingSpinner" class="overlay-60 position-fixed bottom-0 d-none justify-content-center align-items-center"
+    style="z-index: 1000;">
+    <div class="spinner-border text-primary" role="status">
+        <span class="sr-only">Loading...</span>
+    </div>
+</div>
 
 <?php
 get_template_part('sections/discover');

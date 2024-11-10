@@ -275,7 +275,7 @@ $(document).ready(function () {
     window.location.href = window.location.pathname + "#productList";
   });
   $("#toggleFilter").on("click", function () {
-    window.location.reload();
+    $(".filter-collapse").toggleClass("d-none");
   });
 
   handleUpdateSearchParams = (
@@ -283,42 +283,52 @@ $(document).ready(function () {
     isToggle = false,
     isCheckbox = false
   ) => {
-    let url = new URL(window.location.href);
-    let searchParams = new URLSearchParams(url.search);
-    let hash = "#productList";
-    $.each(paramsToToggle, function (key, value) {
-      let currentValue = searchParams.get(key);
-      if (isToggle && currentValue) {
-        let valuesArray = currentValue.split(",");
-        valuesArray = valuesArray.filter(
-          (val) => val.trim() !== value.toString()
-        );
+    // Show loading spinner
+    $("#loadingSpinner").addClass("d-flex").removeClass("d-none");
 
-        if (valuesArray.length > 0) {
-          searchParams.set(key, valuesArray.join(","));
-        } else {
-          searchParams.delete(key);
-        }
-      } else if (isCheckbox && currentValue) {
-        let valuesArray = currentValue.split(",");
-        if (valuesArray.includes(value.toString())) {
-          valuesArray = valuesArray.filter((val) => val !== value.toString());
-        } else {
-          valuesArray.push(value.toString());
-        }
-        if (valuesArray.length > 0) {
-          searchParams.set(key, valuesArray.join(","));
-        } else {
-          searchParams.delete(key);
-        }
-      } else {
-        searchParams.set(key, value);
-      }
-    });
+    setTimeout(() => {
+      let url = new URL(window.location.href);
+      let searchParams = new URLSearchParams(url.search);
+      let hash = "#productList";
 
-    url.search = searchParams.toString();
-    url.hash = hash;
-    window.location.href = url.toString();
+      $.each(paramsToToggle, function (key, value) {
+        let currentValue = searchParams.get(key);
+        if (isToggle && currentValue) {
+          let valuesArray = currentValue.split(",");
+          valuesArray = valuesArray.filter(
+            (val) => val.trim() !== value.toString()
+          );
+
+          if (valuesArray.length > 0) {
+            searchParams.set(key, valuesArray.join(","));
+          } else {
+            searchParams.delete(key);
+          }
+        } else if (isCheckbox && currentValue) {
+          let valuesArray = currentValue.split(",");
+          if (valuesArray.includes(value.toString())) {
+            valuesArray = valuesArray.filter((val) => val !== value.toString());
+          } else {
+            valuesArray.push(value.toString());
+          }
+          if (valuesArray.length > 0) {
+            searchParams.set(key, valuesArray.join(","));
+          } else {
+            searchParams.delete(key);
+          }
+        } else {
+          searchParams.set(key, value);
+        }
+      });
+
+      url.search = searchParams.toString();
+      url.hash = hash;
+
+      // Hide loading spinner after completion
+      $("#loadingSpinner").addClass("d-none").removeClass("d-flex");
+      // Update the URL
+      window.location.href = url.toString();
+    }, 1000); // Adjust delay as needed
   };
 
   $("#priceFilter").on("click", function () {

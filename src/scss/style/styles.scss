@@ -54,8 +54,8 @@ button {
 
 .carousel-height {
   height: calc(320px + 25vw);
-  min-height: 768px;
-  max-height: 800px;
+  // min-height: 768px;
+  // max-height: 800px;
 }
 
 .overlay-60 {
@@ -338,9 +338,8 @@ button {
   max-width: 628px;
 
   @media (max-width: 420px) {
-    .w-628 {
-      width: 100%;
-    }
+    margin-bottom: 2rem;
+    width: 100%;
   }
 }
 
@@ -943,6 +942,10 @@ button {
   background: transparent;
   padding: 0;
   z-index: 9;
+
+  @media (max-width: 992px) {
+    font-size: 1rem !important;
+  }
 }
 
 // Slick custom styles
@@ -1314,10 +1317,8 @@ button {
   height: 120px;
   cursor: cell;
 
-  @media (max-width: 420px) {
-    .img-zoom-lens {
-      display: none;
-    }
+  @media (max-width: 992px) {
+    display: none !important;
   }
 }
 

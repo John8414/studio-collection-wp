@@ -16,7 +16,7 @@ $spec_ids = explode(',', $selected_spec);
 
 ?>
 
-<div class="filter-collapse custome-container-sm d-flex flex-column">
+<div class="filter-collapse custome-container-sm d-none d-lg-flex flex-column">
     <p class="text-32 black-neutral filter-title">Filter</p>
     <?php
     $listColorCat = get_terms(array(

@@ -32,32 +32,31 @@ $s = get_search_query(); ?>
                         while ($the_query->have_posts()) {
                             $the_query->the_post();
                             $permalink = get_permalink($post->ID);
-                            $title = get_the_title($post->ID->ID);
-                            $except = get_the_excerpt($post->ID->ID);
-                            $img = get_the_post_thumbnail($post->ID->ID);
-                            ?>
-                            <div class="col-md-4 col-6 mb-5">
-                                <a href="<?php echo $permalink; ?>" class="post-item image-scale color-grey-7">
-                                    <p class="image-cover mb-5 h-240 bg-opacity position-relative">
-                                        <?php
-                                        if ($img) {
-                                            echo $img;
-                                        } else { ?>
-                                            <img loading=“lazy” src="<?php echo THEME_URL . '/images/no-image.jpg' ?>"
-                                                alt="no image">
-                                        <?php } ?>
-                                    </p>
-                                    <h4 class="bold fs-18 pb-4 text-black mb-0"><?php echo $title; ?></h4>
-                                    <div class="line-row light text-black">
-                                        <?php echo $except ?>
-                                    </div>
-                                </a>
+                            $title = get_the_title($post->ID);
+                            $except = get_the_excerpt($post->ID);
+                            $img = get_the_post_thumbnail($post->ID);
+                    ?>
+
+                            <div class="col-lg-4 col-6 clearfix">
+                                <div class="card-product text-start flex-grow-1">
+                                    <a href="<?php echo $permalink; ?>" class="text-decoration-none">
+                                        <div class="img-scale ratio ratio-1x1">
+                                            <?php echo $img; ?>
+                                        </div>
+
+                                        <p class="text-20 gray-tertiary pb-2 clamped-text-1 pt-20"><?php echo $title; ?></p>
+                                        <p class="text-20 gray-neutral pb-20 clamped-text-1">
+                                            <?php echo $except; ?>
+                                        </p>
+
+                                    </a>
+                                </div>
                             </div>
-                            <?php
-                        } ?>
                         <?php
+                        } ?>
+                    <?php
                     } else {
-                        ?>
+                    ?>
                         <p class="bold fs-20">No results found</p>
                         <p>We are sorry, but no content matches your search query. Please try again with different keywords.
                         </p>
@@ -72,4 +71,4 @@ $s = get_search_query(); ?>
 <?php
 get_template_part('sections/news-letter-main');
 get_footer()
-    ?>
+?>

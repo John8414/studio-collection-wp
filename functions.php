@@ -105,12 +105,12 @@ function product_wishlist_button($product_id, $className = '', $isReload = false
     $wishlist = isset($_COOKIE['wishlist']) ? json_decode(stripslashes($_COOKIE['wishlist']), true) : array();
     $is_favorite = in_array($product_id, $wishlist);
 
-    ?>
+?>
     <button class="wishlist-btn fav-btn fs-5 <?php echo $className; ?>"
         onclick="toggleFavorite(event, <?php echo $isReload; ?>)" data-product-id="<?php echo esc_attr($product_id); ?>">
         <?php echo $is_favorite ? '<i class="fa fa-heart-o" style="color: #E91919" aria-hidden="true"></i>' : '<i class="fa fa-heart-o black-neutral" aria-hidden="true"></i>'; ?>
     </button>
-    <?php
+<?php
 }
 
 

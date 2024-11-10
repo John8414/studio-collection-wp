@@ -1,4 +1,4 @@
-<section class="pb-80 pt-80">
+<section class="pb-80 pt-80 custome-container">
     <div class="pb-40">
         <h2 class="text-60 text-center black-neutral pb-2">
             <?php echo get_field('bp_title', get_the_ID()); ?>
