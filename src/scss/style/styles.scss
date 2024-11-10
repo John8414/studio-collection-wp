@@ -54,7 +54,7 @@ button {
 
 .carousel-height {
   height: calc(320px + 25vw);
-  min-height: 400px;
+  min-height: 768px;
   max-height: 800px;
 }
 
@@ -285,7 +285,7 @@ button {
   width: 465px;
   height: 450px;
 
-  @media (max-width: 390px) {
+  @media (max-width: 420px) {
     width: 100%;
     height: calc(282px + 8.75vw) !important;
   }
@@ -312,7 +312,9 @@ button {
 }
 
 .slider-item-img {
-  height: calc(290px + 2.4375vw);
+  height: calc(158.8px + 7.5625vw);
+  max-height: 304px;
+  min-height: 183px;
 }
 
 .w-30 {
@@ -334,6 +336,12 @@ button {
 .w-628 {
   width: calc(239.2px + 20.25vw);
   max-width: 628px;
+
+  @media (max-width: 420px) {
+    .w-628 {
+      width: 100%;
+    }
+  }
 }
 
 .w-790 {
@@ -1305,6 +1313,12 @@ button {
   width: 120px;
   height: 120px;
   cursor: cell;
+
+  @media (max-width: 420px) {
+    .img-zoom-lens {
+      display: none;
+    }
+  }
 }
 
 .img-zoom-result {

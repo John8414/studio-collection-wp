@@ -51,7 +51,7 @@ $term_id = '123';
                             if ($is_favorite == '1'): ?>
                                 <i class="fa fa-heart" style="color: #E91919" aria-hidden="true"></i>
                             <?php else: ?>
-                                <i class="fa fa-heart-o" aria-hidden="true"></i>
+                                <i class="fa fa-heart-o black-neutral" aria-hidden="true"></i>
                             <?php endif; ?>
                         </button>
                     </div>

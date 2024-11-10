@@ -105,12 +105,12 @@ function product_wishlist_button($product_id, $className = '', $isReload = false
     $wishlist = isset($_COOKIE['wishlist']) ? json_decode(stripslashes($_COOKIE['wishlist']), true) : array();
     $is_favorite = in_array($product_id, $wishlist);
 
-?>
+    ?>
     <button class="wishlist-btn fav-btn fs-5 <?php echo $className; ?>"
         onclick="toggleFavorite(event, <?php echo $isReload; ?>)" data-product-id="<?php echo esc_attr($product_id); ?>">
-        <?php echo $is_favorite ? '<i class="fa fa-heart-o" style="color: #E91919" aria-hidden="true"></i>' : '<i class="fa fa-heart-o" aria-hidden="true"></i>'; ?>
+        <?php echo $is_favorite ? '<i class="fa fa-heart-o" style="color: #E91919" aria-hidden="true"></i>' : '<i class="fa fa-heart-o black-neutral" aria-hidden="true"></i>'; ?>
     </button>
-<?php
+    <?php
 }
 
 
@@ -120,7 +120,7 @@ function enqueue_favorite_scripts()
     wp_enqueue_script('favorite-js', get_template_directory_uri() . '/js/favorite.js', array('jquery'), null, true);
     wp_localize_script('favorite-js', 'favorite_ajax', array(
         'ajax_url' => admin_url('admin-ajax.php'),
-        'nonce'    => wp_create_nonce('favorite_nonce'),
+        'nonce' => wp_create_nonce('favorite_nonce'),
     ));
 }
 add_action('wp_enqueue_scripts', 'enqueue_favorite_scripts');

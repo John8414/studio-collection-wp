@@ -8,7 +8,7 @@
                 $des = get_sub_field('description');
                 $link = get_sub_field('link');
                 ?>
-                <div class="carousel-item">
+                <div class="carousel-item carousel-height">
                     <div class="overlay-60"></div>
                     <a href="<?php echo $link; ?>">
                         <img loading=“lazy” src="<?php echo esc_url($image['url']); ?>"
