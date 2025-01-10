@@ -1232,9 +1232,23 @@ button {
   color: #676767;
 }
 
-.slick-prev,
-.slick-next {
-  display: none !important;
+.categories-slide .slick-prev,
+.categories-slide .slick-next {
+  width: 35px;
+  height: 35px;
+}
+.categories-slide .slick-prev::before,
+.categories-slide .slick-next::before {
+  font-size: 35px;
+  color: rgba(0, 0, 0, 0.82);
+}
+.categories-slide .slick-prev {
+  left: -5px;
+  z-index: 99;
+}
+.categories-slide .slick-next {
+  right: -5px;
+  z-index: 99;
 }
 
 .tag {
@@ -1309,12 +1323,12 @@ button {
 .color-button {
   width: 2rem;
   height: 2rem;
-  border: 2px solid transparent;
+  border: 1px solid transparent;
+  padding: 2px;
 }
 
 .visually-hidden:checked + label .color-button {
-  border: 2px solid #000;
-  transform: scale(1.1);
+  border: 1px solid #010101;
 }
 
 .dropdown .dropdown-menu {

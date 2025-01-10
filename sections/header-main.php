@@ -32,9 +32,8 @@
                     </a>
                 </div>
 
-                <div class="img-icon-sm">
-
-                    <a class="icon-item black-neutral text-decoration-none" href="/wishlist">
+                <div>
+                    <a class="icon-item img-icon-sm black-neutral text-decoration-none d-inline-block" href="/wishlist">
                         <div data-id="favorite-count-number" class="position-relative">
                             <img loading=“lazy” src="<?php echo THEME_URL . '/images/heart.svg' ?> " alt="">
                             <span

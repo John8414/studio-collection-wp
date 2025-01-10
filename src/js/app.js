@@ -43,6 +43,7 @@ $(document).ready(function () {
       slidesToScroll: 1,
       autoplay: true,
       autoplaySpeed: 2000,
+      arrows: false,
       responsive: [
         {
           breakpoint: 1024,
@@ -82,6 +83,7 @@ $(document).ready(function () {
       slidesToScroll: 1,
       autoplay: true,
       autoplaySpeed: 2000,
+      arrows: false,
       responsive: [
         {
           breakpoint: 768,
@@ -99,6 +101,29 @@ $(document).ready(function () {
         },
       ],
     });
+  });
+
+  $(".categories-slide").slick({
+    dots: false,
+    infinite: false,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    responsive: [
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
   });
 
   //image picker
@@ -152,6 +177,7 @@ $(document).ready(function () {
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 5000,
+    arrows: false,
   });
 
   handleChangeColor = (price, salePrice, color, url) => {

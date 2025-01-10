@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "repository": "git@github.com:ThanhDieu/laravel-mix-pack.git",
-  "author": "dieu <dieu@nvpcloud.com>",
+  "author": "dieu <nguyenthanhdieu96@gmail.com>",
   "license": "MIT",
   "scripts": {
     "development": "mix",

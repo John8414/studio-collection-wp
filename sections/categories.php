@@ -1,4 +1,4 @@
-<div class="row">
+<div class="categories-slide">
     <?php
     $args = array(
         'taxonomy' => 'product-category',
@@ -14,8 +14,8 @@
             $image = get_field('image', $category);
             $avatar = $image['avatar'];
             $parent_link = get_term_link($category);
-            ?>
-    <div class="col-6 col-lg-4 px-2 custome-container-sm">
+    ?>
+    <div class="slider-item custome-container-sm">
         <div class="img-scale slider-item-img">
             <img loading=“lazy” src="<?php echo $avatar['url'] ? $avatar['url'] : $defaultImage['url'] ?>"
                 alt="<?php echo $category->name; ?>">

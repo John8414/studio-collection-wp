@@ -960,9 +960,28 @@ button {
   }
 }
 
-.slick-prev,
-.slick-next {
-  display: none !important;
+.categories-slide {
+
+  .slick-prev,
+  .slick-next {
+    width: 35px;
+    height: 35px;
+
+    &::before {
+      font-size: 35px;
+      color: rgb(0 0 0 / 82%);
+    }
+  }
+
+  .slick-prev {
+    left: -5px;
+    z-index: 99;
+  }
+
+  .slick-next {
+    right: -5px;
+    z-index: 99;
+  }
 }
 
 // Product Out let
@@ -1049,13 +1068,13 @@ button {
 .color-button {
   width: 2rem;
   height: 2rem;
-  border: 2px solid transparent;
+  border: 1px solid transparent;
+  padding: 2px;
 }
 
 .visually-hidden:checked+label {
   .color-button {
-    border: 2px solid #000;
-    transform: scale(1.1);
+    border: 1px solid #010101;
   }
 }
 
